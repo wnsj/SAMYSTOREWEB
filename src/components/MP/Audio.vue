@@ -43,17 +43,17 @@
 				</div>
 			</div>
 		</div>
-		<div class="row" style="margin-top: 15px;padding-bottom:1.5%;">	
+		<div class="row" style="margin-top: 15px;padding-bottom:1.5%;">
 			<button type="button" class="btn btn-warning pull-right m_r_10" style="margin-right:1.5%;" data-toggle="modal"
-			 v-on:click="selectRule('1')" >添加</button>
+			 v-on:click="selectRule('1')">添加</button>
 			<button type="button" class="btn btn-primary pull-right m_r_10" style="margin-right:1.5%;" data-toggle="modal"
 			 v-on:click="checkProject(1)">查询</button>
 		</div>
 		<div class="">
 			<div class="col-md-12 col-lg-12">
 				<div class="table-responsive pre-scrollable">
-					<table class="table table-bordered table-hover" id="datatable" >
-						
+					<table class="table table-bordered table-hover" id="datatable">
+
 						<thead class="datathead">
 							<tr>
 								<th class="text-center">ID</th>
@@ -80,20 +80,20 @@
 						</tbody>
 					</table>
 				</div>
-                <!--分页插件-->
-                <div class="page">
-                    <!--这里时通过props传值到子级，并有一个回调change的函数，来获取自己传值到父级的值-->
-                    <paging ref="paging" @change="pageChange"></paging>
-                </div>
+				<!--分页插件-->
+				<div class="page">
+					<!--这里时通过props传值到子级，并有一个回调change的函数，来获取自己传值到父级的值-->
+					<paging ref="paging" @change="pageChange"></paging>
+				</div>
 			</div>
 			<div class="col-md-12 col-lg-12 posAb">
 				<p class="tips">* 双击单行，可对当前数据进行修改</p>
 			</div>
 		</div>
 		<div class="row row_edit">
-			<div class="modal fade" id="projectContent">
+			<div class="modal fade" id="audioContent">
 				<div class="modal-dialog">
-					<SubProject ref='subProject' @certainAction='feedBack'></SubProject>
+					<SubAudio ref='SubAudio' @certainAction='feedBack'></SubAudio>
 				</div>
 			</div>
 		</div>
@@ -105,102 +105,73 @@
 <script>
 	import store from '../common/Store.vue'
 	import emp from '../common/Employee.vue'
-	import SubProject from '../MP/SubProject/SubProject.vue'
+	import SubAudio from '../MP/SubProject/SubAudio.vue'
 	import {
 		init
 	} from '@/../static/js/common.js'
-    import Paging from '../common/paging'
+	import Paging from '../common/paging'
 	export default {
 		components: {
 			store,
 			emp,
-			SubProject,
-            Paging
+			SubAudio,
+			Paging
 		},
 		data() {
 			return {
 				projectList: [],
 				isuse: '1',
 				proName: '',
-				storeId:this.storeId(),
-				accountType:this.accountType(),
-				empId:'',
-                //分页需要的数据
-                pages: '', //总页数
-                current: 1, //当前页码
-                pageSize: 10, //一页显示的数量
-                total: '', //数据的数量
+				storeId: this.storeId(),
+				accountType: this.accountType(),
+				empId: '',
+				//分页需要的数据
+				pages: '', //总页数
+				current: 1, //当前页码
+				pageSize: 10, //一页显示的数量
+				total: '', //数据的数量
 			};
 		},
 		methods: {
-            //子级传值到父级上来的动态拿去
-            pageChange: function(page) {
-                this.current = page
-                this.checkProject(page);
-            },
-			initData(){
+			//子级传值到父级上来的动态拿去
+			pageChange: function(page) {
+				this.current = page
+				this.checkProject(page);
+			},
+			initData() {
 				this.$refs.emp.setPosName("咨询师")
 				this.$refs.emp.setEmp("")
 			},
 			//feedback from adding and modifying view
 			feedBack() {
 				this.checkProject(1)
-				$("#projectContent").modal('hide')
+				$("#audioContent").modal('hide')
 			},
-			
-			storeChange(param){
-				if(this.isBlank(param)){
-					this.storeId=""
-				}else{
-					this.storeId=param.storeId
+
+			storeChange(param) {
+				if (this.isBlank(param)) {
+					this.storeId = ""
+				} else {
+					this.storeId = param.storeId
 				}
 			},
-			empChange(param){
-				if(this.isBlank(param)){
-					this.empId=""
-				}else{
-					this.empId=param.empId
+			empChange(param) {
+				if (this.isBlank(param)) {
+					this.empId = ""
+				} else {
+					this.empId = param.empId
 				}
 			},
 			// check the adding and modifying rule of account
-			selectRule(param,item){
-				var url = this.url + '/ruleAction/queryRule'
-				
-				this.$ajax({
-					method: 'POST',
-					url: url,
-					headers: {
-						'Content-Type': this.contentType,
-						'Access-Token': this.accessToken
-					},
-					data: {
-						posId: this.accountPosId(),
-						moduleGrade:'2',
-						urlName:'/MP/Project',
-						operateType:param,
-					},
-					dataType: 'json',
-				}).then((response) => {
-					var res = response.data
-					if (res.retCode == '0000') {
-						if(res.retData=='0010'){
-							if(param=="1"){
-								this.$refs.subProject.initData('add')
-								$("#projectContent").modal('show')
-							}else if(param=="3"){
-								this.$refs.subProject.initData('modify',item)
-								$("#projectContent").modal('show')
-							}
-						}else{
-							alert('您没有此权限，请联系管理员！！')
-						}
-					} else {
-						alert(res.retMsg)
-					}
-				
-				}).catch((error) => {
-					console.log('课程添加修改失败')
-				});
+			selectRule(param, item) {
+				if (param == "1") {
+					this.$refs.subProject.initData('add')
+					$("#audioContent").modal('show')
+				} else if (param == "3") {
+					this.$refs.subProject.initData('modify', item)
+					$("#audioContent").modal('show')
+				}
+
 			},
 			//check the list of position
 			checkProject(page) {
@@ -216,21 +187,21 @@
 					data: {
 						proName: this.proName,
 						state: this.isuse,
-						empId:this.empId,
-						storeId:this.storeId,
-						
-                        page:page.toString(),
-                        pageSize:this.pageSize
+						empId: this.empId,
+						storeId: this.storeId,
+
+						page: page.toString(),
+						pageSize: this.pageSize
 					},
 					dataType: 'json',
 				}).then((response) => {
 					var res = response.data
 					if (res.retCode == '0000') {
-                        this.pages=res.retData.pages //总页数
-                        this.current=res.retData.current //当前页码
-                        this.pageSize=res.retData.size//一页显示的数量
-                        this.total=res.retData.total //数据的数量
-                        this.$refs.paging.setParam(this.pages,this.current,this.total)
+						this.pages = res.retData.pages //总页数
+						this.current = res.retData.current //当前页码
+						this.pageSize = res.retData.size //一页显示的数量
+						this.total = res.retData.total //数据的数量
+						this.$refs.paging.setParam(this.pages, this.current, this.total)
 						this.projectList = res.retData.records
 					} else {
 						alert(res.retMsg)
@@ -240,58 +211,64 @@
 					console.log('请求失败处理')
 				});
 			},
-			handleScroll(e){
-				var self=this
+			handleScroll(e) {
+				var self = this
 				var etop = e.target.scrollTop
 				var fHeaderwidth = $("#fHeader").width($(".datathead").width())
 				var fHeaderheight = $("#fHeader").height($(".datathead").height())
 				var theadheight = $(".datathead").height()
 				var thlength = $(".datathead tr th").length
-				for (var i=0;i<thlength;i++)
-				{
+				for (var i = 0; i < thlength; i++) {
 					$("#fHeader div").eq(i).width(
-					$(".datathead tr th").eq(i).width()
+						$(".datathead tr th").eq(i).width()
 					)
 					$("#fHeader div").eq(i).height(
-					$(".datathead tr th").eq(i).height()
+						$(".datathead tr th").eq(i).height()
 					)
 				}
-				if(etop > 0){
-					self.fixedHeader=true
-					$("#fHeader").css("top",etop)
-				}else{
-					self.fixedHeader=false
+				if (etop > 0) {
+					self.fixedHeader = true
+					$("#fHeader").css("top", etop)
+				} else {
+					self.fixedHeader = false
 				}
 			}
 		},
-		mounted () {
+		mounted() {
 			this.initData()
-			window.addEventListener('scroll',this.handleScroll,true);
+			window.addEventListener('scroll', this.handleScroll, true);
 			init();
 		},
 		created() {
-		  // this.checkProject(1)
+			// this.checkProject(1)
 		}
 	}
 </script>
 
 <style>
-  #datatable{position:relative;}
-  #fHeader {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: #eeeeee;
-    overflow: hidden;
-  }
-  #fHeader div.text-center{
-    float: left;
-    display: inline-block;
-    padding:8px;
-    border: 1px solid #ddd;
-    font-weight: bold;
-  }
-  @media print {
-    #fHeader{display:none}
-  }
+	#datatable {
+		position: relative;
+	}
+
+	#fHeader {
+		position: absolute;
+		top: 0;
+		left: 0;
+		background: #eeeeee;
+		overflow: hidden;
+	}
+
+	#fHeader div.text-center {
+		float: left;
+		display: inline-block;
+		padding: 8px;
+		border: 1px solid #ddd;
+		font-weight: bold;
+	}
+
+	@media print {
+		#fHeader {
+			display: none
+		}
+	}
 </style>

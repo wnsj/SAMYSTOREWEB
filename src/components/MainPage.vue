@@ -93,17 +93,17 @@
                                     编辑管理
                                 </i>
                             </dt>
-                            <dd @click="addCheck('Project')" v-bind:class="{'li-active':onString=='Project'}">
-                            	<router-link to="/MP/Project"><i class="fa" aria-hidden="true">音频管理</i></router-link>
+                            <dd @click="addCheck('Audio')" v-bind:class="{'li-active':onString=='Audio'}">
+                            	<router-link to="/MP/Audio"><i class="fa" aria-hidden="true">音频管理</i></router-link>
                             </dd>
-							<dd @click="addCheck('Project')" v-bind:class="{'li-active':onString=='Project'}">
-								<router-link to="/MP/Project"><i class="fa" aria-hidden="true">视频管理</i></router-link>
+							<dd @click="addCheck('Article')" v-bind:class="{'li-active':onString=='Article'}">
+								<router-link to="/MP/Article"><i class="fa" aria-hidden="true">视频管理</i></router-link>
 							</dd>
-							<dd @click="addCheck('Project')" v-bind:class="{'li-active':onString=='Project'}">
-								<router-link to="/MP/Project"><i class="fa" aria-hidden="true">测评管理</i></router-link>
+							<dd @click="addCheck('Evaluation')" v-bind:class="{'li-active':onString=='Evaluation'}">
+								<router-link to="/MP/Evaluation"><i class="fa" aria-hidden="true">测评管理</i></router-link>
 							</dd>
-							<dd @click="addCheck('Project')" v-bind:class="{'li-active':onString=='Project'}">
-								<router-link to="/MP/Project"><i class="fa" aria-hidden="true">文章管理</i></router-link>
+							<dd @click="addCheck('Video')" v-bind:class="{'li-active':onString=='Video'}">
+								<router-link to="/MP/Video"><i class="fa" aria-hidden="true">文章管理</i></router-link>
 							</dd>
                         </dl>
                         <dl v-bind:class="{h10:bool5}">

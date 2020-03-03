@@ -18,6 +18,10 @@ import RuleManager from '../components/MP/RuleManager.vue'
 import CashDeposit from '../components/MP/CashDeposit.vue'
 import CurrentSummary from '../components/MP/CurrentSummary.vue'
 import Project from '../components/MP/Project.vue'
+import Audio from '../components/MP/Audio.vue'
+import Article from '../components/MP/Article.vue'
+import Evaluation from '../components/MP/Evaluation.vue'
+import Video from '../components/MP/Video.vue'
 import test from '../components/MP/test.vue'
 import newtree from '../components/MP/newtree.vue'
 import ZxsSummary from '../components/MP/ZxsSummary.vue'
@@ -121,6 +125,26 @@ export default new Router({
 					path: '/MP/Project',
 					name: 'Project',
 					component: Project,
+				},
+				{
+					path: '/MP/Audio',
+					name: 'Audio',
+					component: Audio,
+				},
+				{
+					path: '/MP/Article',
+					name: 'Article',
+					component: Article,
+				},
+				{
+					path: '/MP/Evaluation',
+					name: 'Evaluation',
+					component: Evaluation,
+				},
+				{
+					path: '/MP/Video',
+					name: 'Video',
+					component: Video,
 				},
 				{
 					path: '/MP/test',
