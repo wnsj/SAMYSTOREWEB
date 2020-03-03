@@ -1,0 +1,173 @@
+@charset "utf-8";
+
+body{
+    background-color: #eeeeee;
+}
+.pos-re{
+    position: relative;
+}
+.pos-ab{
+    position:absolute;
+}
+.end-aline{
+    display: inline-block;
+    text-align:justify;
+    text-align-last:justify;
+}
+.sign-left{
+    float: left;
+    line-height: 34px;
+    font-weight: bold;
+}
+.titleCss{
+	color: #ffffff;
+	margin-top:35px;
+    margin-top: -120px;
+    font-weight:bold;
+    text-indent: -2em;
+	margin-right: 300px;
+}
+.clear-mp{
+    margin: 0;
+    padding: 0;
+}
+.my-aside{
+    height: 100%;
+    background-color:rgb(230, 230, 230);
+    box-sizing: border-box;
+    border-right:1px solid #ccc;
+}
+.my-aside ul{
+    list-style: none;
+    width: 100%;
+    margin: 0;
+    margin-top: -10px;
+    padding: 10px 0;
+}
+.my-aside ul li{
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+	font-weight: bold;
+    color: #1b4fa3;
+    border-top:1px solid #ccc;
+}
+.my-aside ul li:nth-child(1){
+    border-top:0 none;
+}
+.my-aside ul li a{
+	text-align: center;
+    display:inline-block;
+    width: 100%;
+    line-height: 50px;
+    /* color: #fff; */
+}
+.my-aside ul li i{
+    display:inline-block;
+    text-align: left;
+    width:190px;
+}   
+.my-aside ul li p{
+    display:inline-block;
+    text-align: left;
+    width:190px;
+}
+.my-aside ul .li-active{
+    background-color: #fff; 
+}
+.my-aside ul .li-active a{
+    color: #f0ad4e;
+}
+.second-menu{
+    /* display: none; */
+    background-color: #1e2831;
+}
+.second-menu li{
+    padding-left: 15px;
+}
+
+.aside-logo{
+    /* background-color: #283643; 
+    background-color: #66ccff;*/
+    background-color:rgba(166, 132, 74, 0.57);
+    padding:10px 0;
+    min-height: 50px;
+    width: 100%;
+}
+.aside-logo h2{
+    margin: 0px;
+    color: #9a773b;
+    text-align: center;
+}
+.aside-logo h2 span{
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+}
+.item-down{
+    float: right;
+    margin-top: 14px;
+    font-size: 18px;
+}
+
+.my-navbar{
+    border: none;
+    height: 68px;
+    background-color: #fff;
+    border-radius: 0;
+}
+.my-navbar-brand{
+    height: 68px;
+}
+.my-signed{
+    margin-top: 9px;
+    font-size: 16px;
+}
+.my-signed i{
+    font-size: 20px;
+}
+.my-main{
+    margin: 0 15px;
+}
+
+#myModalJoin{ overflow-y:hidden!important;}
+.tableContent{
+    width:95%; margin: 0 auto;
+}
+.modal-header{
+    border-bottom: none;
+}
+.con-cen{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tips{ 
+    display:block; 
+    text-align:left; 
+    color:red; 
+    font-size:12px; 
+    margin-top:15px;
+}
+.wraper{
+    position:relative;
+    box-shadow: -5px 0 5px #ccc, 5px 0 5px #ccc, 0 -5px 5px #ccc, 0 5px 5px #ccc;
+    width:95%; 
+    background:#fff; 
+    margin:30px auto;
+    padding:10px 10px 20px 10px;
+}
+.posAb{
+    position:absolute;
+    bottom:20px;
+    left:0;
+}
+.pos-tr{ 
+    top:0;
+    right:20px; 
+    line-height:34px;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
