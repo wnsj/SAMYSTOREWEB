@@ -129,7 +129,7 @@
                     console.log(res)
                     if (res.retCode == '0000') {
                         alert(res.retMsg)
-                        this.$emit('checkProject')
+                        this.$emit('certainAction')
                     }
                 }).catch((error) => {
                     console.log('提交失败')

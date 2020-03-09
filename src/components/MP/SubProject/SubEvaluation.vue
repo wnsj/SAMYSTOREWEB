@@ -34,7 +34,12 @@
 							<span class="pos-ab pos-tr">个</span>
 						</div>
 					</div>
-					
+					<div class="col-md-6 form-group clearfix">
+						<label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">问题链接</label><span class="sign-left">:</span>
+						<div class="col-md-8">
+							<input type="text" class="form-control" v-model="evaluation.problemUrl">
+						</div>
+					</div>
 					<div class="form-group clearfix">
 						<div class="col-md-12">
 							<button type="button" class="btn btn-warning pull-right m_r_10" style="margin-right:1.5%;" data-toggle="modal"
@@ -66,6 +71,7 @@
 					title: '',
 					price: '',
 					problemNum:'',
+					problemUrl:'',
 				},
 				title: '',
 			};
@@ -81,6 +87,7 @@
 						title: '',
 						price: '',
 						problemNum:'',
+						problemUrl:'',
 					}
 				} else if (param == 'modify') {
 					console.log('Initialization evaluation’s content, which modifies evaluation')
@@ -110,6 +117,10 @@
 				}
 				if (this.isBlank(this.evaluation.problemNum)) {
 					alert("问题个数不能为空")
+					return
+				}
+				if (this.isBlank(this.evaluation.problemUrl)) {
+					alert("问题链接不能为空")
 					return
 				}
 				switch(this.title){

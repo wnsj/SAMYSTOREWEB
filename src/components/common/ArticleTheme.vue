@@ -58,7 +58,7 @@
             },
         },
         created() {
-            //this.getProject()
+            this.getProject()
         },
     }
 </script>
