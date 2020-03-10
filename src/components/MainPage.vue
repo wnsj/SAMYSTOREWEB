@@ -4,7 +4,7 @@
             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 con-cen" style="height:100%;">
                 <h2 class="pull-left" style="padding:10px 0; height:100%;">
                     <img style="width: 50px; height: 50px;" src="../assets/img/logo1.png" /> <strong style=" display:inline-block;font-size: 35px; line-height:40px;">
-                    圣安米悦</strong><br />
+                        圣安米悦</strong><br />
                     <font style=" disply:block; font-size:26px;line-height:30px;">商 城 管 理 系 统</font>
                 </h2>
             </div>
@@ -28,14 +28,14 @@
                                 </i>
                             </dt>
                             <dd @click="addCheck('MemberSummary')" v-bind:class="{'li-active':onString=='MemberSummary'}">
-								<router-link to="/MP/MemberSummary"><i class="fa" aria-hidden="true">会员汇总</i></router-link>
+                                <router-link to="/MP/MemberSummary"><i class="fa" aria-hidden="true">会员汇总</i></router-link>
                             </dd>
                             <dd @click="addCheck('Member')" v-bind:class="{'li-active':onString=='Member'}">
-								<router-link to="/MP/Member"><i class="fa" aria-hidden="true">会员管理</i></router-link>
+                                <router-link to="/MP/Member"><i class="fa" aria-hidden="true">会员管理</i></router-link>
                             </dd>
-							<dd @click="addCheck('Visitor')" v-bind:class="{'li-active':onString=='Visitor'}">
-								<router-link to="/MP/Visitor"><i class="fa" aria-hidden="true">咨客管理</i></router-link>
-							</dd>
+                            <dd @click="addCheck('Visitor')" v-bind:class="{'li-active':onString=='Visitor'}">
+                                <router-link to="/MP/Visitor"><i class="fa" aria-hidden="true">咨客管理</i></router-link>
+                            </dd>
                         </dl>
                         <dl v-bind:class="{h25:bool2}">
                             <dt @click="onShow(1)" v-bind:class="{'li-active':bool2}">
@@ -44,19 +44,19 @@
                                 </i>
                             </dt>
                             <dd @click="addCheck('SettleSummary')" v-bind:class="{'li-active':onString=='SettleSummary'}">
-								<router-link to="/MP/SettleSummary"><i class="fa" aria-hidden="true">消费汇总</i></router-link>
+                                <router-link to="/MP/SettleSummary"><i class="fa" aria-hidden="true">消费汇总</i></router-link>
                             </dd>
                             <dd @click="addCheck('Charge')" v-bind:class="{'li-active':onString=='Charge'}">
-								<router-link to="/MP/Charge"><i class="fa" aria-hidden="true">已购课程管理</i></router-link>
+                                <router-link to="/MP/Charge"><i class="fa" aria-hidden="true">已购课程管理</i></router-link>
                             </dd>
                             <dd @click="addCheck('Order')" v-bind:class="{'li-active':onString=='Order'}">
-								<router-link to="/MP/Order"><i class="fa" aria-hidden="true">预约管理</i></router-link>
+                                <router-link to="/MP/Order"><i class="fa" aria-hidden="true">预约管理</i></router-link>
                             </dd>
                             <dd @click="addCheck('CashDeposit')" v-bind:class="{'li-active':onString=='CashDeposit'}">
-								<router-link to="/MP/CashDeposit"><i class="fa" aria-hidden="true">定金管理</i></router-link>
+                                <router-link to="/MP/CashDeposit"><i class="fa" aria-hidden="true">定金管理</i></router-link>
                             </dd>
                             <dd @click="addCheck('ZxsSummary')" v-bind:class="{'li-active':onString=='ZxsSummary'}">
-								<router-link to="/MP/ZxsSummary"><i class="fa" aria-hidden="true">咨询师汇总</i></router-link>
+                                <router-link to="/MP/ZxsSummary"><i class="fa" aria-hidden="true">咨询师汇总</i></router-link>
                             </dd>
                         </dl>
                         <dl v-bind:class="{h40:bool3}">
@@ -69,22 +69,22 @@
                                 <router-link to="/MP/Employee"><i class="fa" aria-hidden="true">员工管理</i></router-link>
                             </dd>
                             <dd @click="addCheck('ScheduleEmp')" v-bind:class="{'li-active':onString=='ScheduleEmp'}">
-								<router-link to="/MP/ScheduleEmp"><i class="fa" aria-hidden="true">排班管理</i></router-link>
+                                <router-link to="/MP/ScheduleEmp"><i class="fa" aria-hidden="true">排班管理</i></router-link>
                             </dd>
                             <dd @click="addCheck('Position')" v-bind:class="{'li-active':onString=='Position'}">
-								<router-link to="/MP/Position"><i class="fa" aria-hidden="true">岗位管理</i></router-link>
+                                <router-link to="/MP/Position"><i class="fa" aria-hidden="true">岗位管理</i></router-link>
                             </dd>
                             <dd @click="addCheck('Store')" v-bind:class="{'li-active':onString=='Store'}">
-								<router-link to="/MP/Store"><i class="fa" aria-hidden="true">门店管理</i></router-link>
+                                <router-link to="/MP/Store"><i class="fa" aria-hidden="true">门店管理</i></router-link>
                             </dd>
                             <dd @click="addCheck('RuleManager')" v-bind:class="{'li-active':onString=='RuleManager'}">
-								<router-link to="/MP/RuleManager"><i class="fa" aria-hidden="true">权限管理</i></router-link>
+                                <router-link to="/MP/RuleManager"><i class="fa" aria-hidden="true">权限管理</i></router-link>
                             </dd>
                             <dd @click="addCheck('Royalty')" v-bind:class="{'li-active':onString=='Royalty'}">
-								<router-link to="/MP/Royalty"><i class="fa" aria-hidden="true">提成规则管理</i></router-link>
+                                <router-link to="/MP/Royalty"><i class="fa" aria-hidden="true">提成规则管理</i></router-link>
                             </dd>
                             <dd @click="addCheck('Project')" v-bind:class="{'li-active':onString=='Project'}">
-								<router-link to="/MP/Project"><i class="fa" aria-hidden="true">课程管理</i></router-link>
+                                <router-link to="/MP/Project"><i class="fa" aria-hidden="true">课程管理</i></router-link>
                             </dd>
                         </dl>
                         <dl v-bind:class="{h10:bool4}">
@@ -93,19 +93,25 @@
                                     编辑管理
                                 </i>
                             </dt>
-                            <dd @click="addCheck('Audio')" v-bind:class="{'li-active':onString=='Audio'}">
-                            	<router-link to="/MP/Audio"><i class="fa" aria-hidden="true">音频管理</i></router-link>
+                          <!--  <dd @click="addCheck('Audio')" v-bind:class="{'li-active':onString=='Audio'}">
+                                <router-link to="/MP/Audio"><i class="fa" aria-hidden="true">音频管理</i></router-link>
+                            </dd> -->
+                            <dd @click="addCheck('CourceManage')" v-bind:class="{'li-active':onString=='CourceManage'}">
+                                <router-link to="/MP/CourceManage"><i class="fa" aria-hidden="true">课程管理</i></router-link>
                             </dd>
-                            <dd @click="addCheck('Video')" v-bind:class="{'li-active':onString=='Video'}">
-                            	<router-link to="/MP/Video"><i class="fa" aria-hidden="true">视频管理</i></router-link>
+                          <!--  <dd @click="addCheck('Video')" v-bind:class="{'li-active':onString=='Video'}">
+                                <router-link to="/MP/Video"><i class="fa" aria-hidden="true">视频管理</i></router-link>
+                            </dd> -->
+
+                            <dd @click="addCheck('Evaluation')" v-bind:class="{'li-active':onString=='Evaluation'}">
+                                <router-link to="/MP/Evaluation"><i class="fa" aria-hidden="true">测评管理</i></router-link>
                             </dd>
-						
-							<dd @click="addCheck('Evaluation')" v-bind:class="{'li-active':onString=='Evaluation'}">
-								<router-link to="/MP/Evaluation"><i class="fa" aria-hidden="true">测评管理</i></router-link>
-							</dd>
-							<dd @click="addCheck('Article')" v-bind:class="{'li-active':onString=='Article'}">
-								<router-link to="/MP/Article"><i class="fa" aria-hidden="true">文章管理</i></router-link>
-							</dd>
+                            <dd @click="addCheck('Article')" v-bind:class="{'li-active':onString=='Article'}">
+                                <router-link to="/MP/Article"><i class="fa" aria-hidden="true">文章管理</i></router-link>
+                            </dd>
+                            <dd @click="addCheck('PlayAV')" v-bind:class="{'li-active':onString=='PlayAV'}">
+                                <router-link to="/PlayAV"><i class="fa" aria-hidden="true">音视频播放</i></router-link>
+                            </dd>
                         </dl>
                         <dl v-bind:class="{h10:bool5}">
                             <dt @click="onShow(4)" v-bind:class="{'li-active':bool5}">
@@ -114,7 +120,7 @@
                                 </i>
                             </dt>
                             <dd @click="addCheck('RoyaltySummary')" v-bind:class="{'li-active':onString=='RoyaltySummary'}">
-								<router-link to="/MP/RoyaltySummary"><i class="fa" aria-hidden="true">提成汇总</i></router-link>
+                                <router-link to="/MP/RoyaltySummary"><i class="fa" aria-hidden="true">提成汇总</i></router-link>
                             </dd>
                         </dl>
 
@@ -125,7 +131,7 @@
                                 </i>
                             </dt>
                         </dl> -->
-						<!-- <router-link to="/MP/PatientStype"><i class="fa fa-table" aria-hidden="false" v-on:click="titleChange('患者类型')">　患者类型</i></router-link> -->
+                        <!-- <router-link to="/MP/PatientStype"><i class="fa fa-table" aria-hidden="false" v-on:click="titleChange('患者类型')">　患者类型</i></router-link> -->
                     </div>
                 </div>
                 <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 embed-responsive embed-responsive-16by9" style="overflow: inherit; background-color:">
@@ -278,24 +284,101 @@
 </script>
 
 <style>
-    #aside-menu{border-top:1px solid #ccc;height:640px; overflow-y:auto; overflow-x:hidden;}
-    #aside-menu::-webkit-scrollbar { display:none;}
-    #aside-menu dl{ margin-bottom:0; height:50px;overflow:hidden; color:#795548;font-size:20px; background:#f1f1f1;transition:height .5s }
-    #aside-menu dl.noShow{color:#f2ad4e }
-    #aside-menu dl.h10{height:250px; }
-    #aside-menu dl.h15{height:200px; }
-    #aside-menu dl.h25{height:300px; }
-    #aside-menu dl.h40{height:400px; }
-    #aside-menu dl dt{height:50px;text-align:center;background:#e6e6e6;border-bottom:1px solid #ccc;}
-    #aside-menu dl dd{height:50px;text-align:center;border-bottom:1px solid #ccc;}
-    #aside-menu dl dd:hover{background:#f5f5f5;color:#603b2c;}
-    #aside-menu dl i{ position:relative; display:inline-block;width:200px;height:50px;text-align:left;line-height:50px;text-indent:25px;}
-    #aside-menu dl i:before{position:absolute;left:-25px; display:block;}
-    #aside-menu dl dd.li-active {background:#fff}
-    .li-active i {color: #f2ad4e;}
-    .root{width:100%; overflow-x:hidden;}
-	a{color: #795548 !important;}
-	a:hover{color: #795548 !important;}
+    #aside-menu {
+        border-top: 1px solid #ccc;
+        height: 640px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    #aside-menu::-webkit-scrollbar {
+        display: none;
+    }
+
+    #aside-menu dl {
+        margin-bottom: 0;
+        height: 50px;
+        overflow: hidden;
+        color: #795548;
+        font-size: 20px;
+        background: #f1f1f1;
+        transition: height .5s
+    }
+
+    #aside-menu dl.noShow {
+        color: #f2ad4e
+    }
+
+    #aside-menu dl.h10 {
+        height: 250px;
+    }
+
+    #aside-menu dl.h15 {
+        height: 200px;
+    }
+
+    #aside-menu dl.h25 {
+        height: 300px;
+    }
+
+    #aside-menu dl.h40 {
+        height: 400px;
+    }
+
+    #aside-menu dl dt {
+        height: 50px;
+        text-align: center;
+        background: #e6e6e6;
+        border-bottom: 1px solid #ccc;
+    }
+
+    #aside-menu dl dd {
+        height: 50px;
+        text-align: center;
+        border-bottom: 1px solid #ccc;
+    }
+
+    #aside-menu dl dd:hover {
+        background: #f5f5f5;
+        color: #603b2c;
+    }
+
+    #aside-menu dl i {
+        position: relative;
+        display: inline-block;
+        width: 200px;
+        height: 50px;
+        text-align: left;
+        line-height: 50px;
+        text-indent: 25px;
+    }
+
+    #aside-menu dl i:before {
+        position: absolute;
+        left: -25px;
+        display: block;
+    }
+
+    #aside-menu dl dd.li-active {
+        background: #fff
+    }
+
+    .li-active i {
+        color: #f2ad4e;
+    }
+
+    .root {
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    a {
+        color: #795548 !important;
+    }
+
+    a:hover {
+        color: #795548 !important;
+    }
 </style>
 <host>
 

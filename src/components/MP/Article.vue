@@ -49,7 +49,7 @@
                         </thead>
                         <tbody>
                             <tr v-for="(item,index) in projectList" :key="index" v-on:dblclick="selectRule('3',item)">
-                                <td class="text-center" style="line-height:33px;">{{item.atId}}</td>
+                                <td class="text-center" style="line-height:33px;">{{item.artId}}</td>
                                 <td class="text-center" style="line-height:33px;">{{item.title}}</td>
                                 <td class="text-center" style="line-height:33px;">{{item.author}}</td>
                                 <td class="text-center" style="line-height:33px;">{{item.content}}</td>
