@@ -8,7 +8,7 @@ import moment from 'moment'
 import Cookies from 'js-cookie'
 import constant from '../src/assets/js/constant'
 import vueBeauty from 'vue-beauty'
-    
+
 // import utilDate from '../src/assets/js/utilDate'
 import {
   exportTableToExcel
@@ -179,4 +179,3 @@ new Vue({
   },
   template: '<App/>'
 })
-

@@ -26,6 +26,8 @@ import test from '../components/MP/test.vue'
 import newtree from '../components/MP/newtree.vue'
 import ZxsSummary from '../components/MP/ZxsSummary.vue'
 import Visitor from '../components/MP/Visitor.vue'
+import CourceManage from '../components/MP/CourceManage.vue'
+import PlayAV from '@/components/common/PlayAV.vue'
 
 
 Vue.use(Router)
@@ -33,136 +35,146 @@ Vue.use(Router)
 //解决路由多次跳转同一页面报错
 const originalPush = Router.prototype.push;
 Router.prototype.push = function push(location) {
-	return originalPush.call(this, location).catch(err => err);
+    return originalPush.call(this, location).catch(err => err);
 }
 
 export default new Router({
-	routes: [{
-			path: '/login',
-			component: login,
-			hidden: true
-		},
-		{
-			path: '/MainPage',
-			name: 'MainPage',
-			component: MainPage,
-			children: [{
-					path: '/MP/RoyaltySummary',
-					name: 'RoyaltySummary',
-					component: RoyaltySummary,
-				},
-				{
-					path: '/MP/MemberSummary',
-					name: 'MemberSummary',
-					component: MemberSummary,
-				},
-				{
-					path: '/MP/Visitor',
-					name: 'Visitor',
-					component: Visitor,
-				},
-				{
-					path: '/MP/SettleSummary',
-					name: 'SettleSummary',
-					component: SettleSummary,
-				},
-				{
-					path: '/MP/Employee',
-					name: 'Employee',
-					component: Employee,
-				},
-				{
-					path: '/MP/ScheduleEmp',
-					name: 'ScheduleEmp',
-					component: ScheduleEmp,
-				},
-				{
-					path: '/MP/Charge',
-					name: 'Charge',
-					component: Charge,
-				},
-				{
-					path: '/MP/Member',
-					name: 'Member',
-					component: Member,
-				},
-				{
-					path: '/MP/Position',
-					name: 'Position',
-					component: Position,
-				},
-				{
-					path: '/MP/Order',
-					name: 'Order',
-					component: Order,
-				},
-				{
-					path: '/MP/Royalty',
-					name: 'Royalty',
-					component: Royalty,
-				},
-				{
-					path: '/MP/Store',
-					name: 'Store',
-					component: Store,
-				},
-				{
-					path: '/MP/RuleManager',
-					name: 'RuleManager',
-					component: RuleManager,
-				},
-				{
-					path: '/MP/CashDeposit',
-					name: 'CashDeposit',
-					component: CashDeposit,
-				},
-				{
-					path: '/MP/CurrentSummary',
-					name: 'CurrentSummary',
-					component: CurrentSummary,
-				},
-				{
-					path: '/MP/Project',
-					name: 'Project',
-					component: Project,
-				},
-				{
-					path: '/MP/Audio',
-					name: 'Audio',
-					component: Audio,
-				},
-				{
-					path: '/MP/Article',
-					name: 'Article',
-					component: Article,
-				},
-				{
-					path: '/MP/Evaluation',
-					name: 'Evaluation',
-					component: Evaluation,
-				},
-				{
-					path: '/MP/Video',
-					name: 'Video',
-					component: Video,
-				},
-				{
-					path: '/MP/test',
-					name: 'test',
-					component: test,
-				},
-				{
-					path: '/MP/newtree',
-					name: 'newtree',
-					component: newtree,
-				},
-				{
-					path: '/MP/ZxsSummary',
-					name: 'ZxsSummary',
-					component: ZxsSummary,
-				},
-			],
-			redirect: '/MP/MemberSummary'
-		}
-	]
+    routes: [{
+            path: '/login',
+            component: login,
+            hidden: true
+        },
+        {
+            path: '/MainPage',
+            name: 'MainPage',
+            component: MainPage,
+            children: [{
+                    path: '/MP/RoyaltySummary',
+                    name: 'RoyaltySummary',
+                    component: RoyaltySummary,
+                },
+                {
+                    path: '/MP/MemberSummary',
+                    name: 'MemberSummary',
+                    component: MemberSummary,
+                },
+                {
+                    path: '/MP/Visitor',
+                    name: 'Visitor',
+                    component: Visitor,
+                },
+                {
+                    path: '/MP/SettleSummary',
+                    name: 'SettleSummary',
+                    component: SettleSummary,
+                },
+                {
+                    path: '/MP/Employee',
+                    name: 'Employee',
+                    component: Employee,
+                },
+                {
+                    path: '/MP/ScheduleEmp',
+                    name: 'ScheduleEmp',
+                    component: ScheduleEmp,
+                },
+                {
+                    path: '/MP/Charge',
+                    name: 'Charge',
+                    component: Charge,
+                },
+                {
+                    path: '/MP/Member',
+                    name: 'Member',
+                    component: Member,
+                },
+                {
+                    path: '/MP/Position',
+                    name: 'Position',
+                    component: Position,
+                },
+                {
+                    path: '/MP/Order',
+                    name: 'Order',
+                    component: Order,
+                },
+                {
+                    path: '/MP/Royalty',
+                    name: 'Royalty',
+                    component: Royalty,
+                },
+                {
+                    path: '/MP/Store',
+                    name: 'Store',
+                    component: Store,
+                },
+                {
+                    path: '/MP/RuleManager',
+                    name: 'RuleManager',
+                    component: RuleManager,
+                },
+                {
+                    path: '/MP/CashDeposit',
+                    name: 'CashDeposit',
+                    component: CashDeposit,
+                },
+                {
+                    path: '/MP/CurrentSummary',
+                    name: 'CurrentSummary',
+                    component: CurrentSummary,
+                },
+                {
+                    path: '/MP/Project',
+                    name: 'Project',
+                    component: Project,
+                },
+                {
+                    path: '/MP/Audio',
+                    name: 'Audio',
+                    component: Audio,
+                },
+                {
+                    path: '/MP/Article',
+                    name: 'Article',
+                    component: Article,
+                },
+                {
+                    path: '/MP/Evaluation',
+                    name: 'Evaluation',
+                    component: Evaluation,
+                },
+                {
+                    path: '/MP/Video',
+                    name: 'Video',
+                    component: Video,
+                },
+                {
+                    path: '/MP/CourceManage',
+                    name: 'CourceManage',
+                    component: CourceManage,
+                },
+                {
+                    path: '/MP/test',
+                    name: 'test',
+                    component: test,
+                },
+                {
+                    path: '/MP/newtree',
+                    name: 'newtree',
+                    component: newtree,
+                },
+                {
+                    path: '/MP/ZxsSummary',
+                    name: 'ZxsSummary',
+                    component: ZxsSummary,
+                },
+                {
+                    path: '/PlayAV',
+                    name: 'PlayAV',
+                    component: PlayAV,
+                }
+            ],
+            redirect: '/MP/MemberSummary'
+        }
+    ]
 })
