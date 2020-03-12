@@ -62,7 +62,8 @@
 								<th class="text-center">价格(元)</th>
 								<th class="text-center">题目数(个)</th>
 								<th class="text-center">测试题链接</th>
-								<th class="text-center">操作人</th>
+								<!-- <th class="text-center">操作人</th> -->
+								<th class="text-center">头图链接</th>
 								<th class="text-center">修改</th>
 								<!-- <th class="text-center">添加测评题</th> -->
 							</tr>
@@ -75,7 +76,8 @@
 								<td class="text-center" style="line-height:33px;">{{item.price}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.problemNum}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.problemUrl}}</td>
-								<td class="text-center" style="line-height:33px;">{{item.price}}</td>
+								<!-- <td class="text-center" style="line-height:33px;">{{item.newPrice}}</td> -->
+								<td class="text-center" style="line-height:33px;">{{item.imgUrl}}</td>
 								<td class="text-center" style="line-height:33px;"><button type="button" class="btn btn-warning" v-on:click="selectRule('3',item)">修改</button></td>
 								<!-- <td class="text-center" style="line-height:33px;"><button type="button" class="btn btn-warning">添加测试题</button></td> -->
 							</tr>

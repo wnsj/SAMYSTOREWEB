@@ -66,18 +66,21 @@
 						</div>
 					</div>
 					<div class="col-md-6 form-group clearfix">
-						 <button type="button" class="btn btn-primary" style="margin-right:1.5%; float:left;" data-toggle="modal"
-						  v-on:click="myFile()">
-						  <input type="file" id="imgFile" class="inputfile" style="display:none;" @change="handlerUpload1($event,'/testProblemBase/addTestProblemBase')">
-						  选择头图
-						  </button>
+					    <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">上传文件</label><span
+					        class="sign-left">:</span>
+					    <div class="col-md-8">
+					        <input type="file" id="imgFile" />
+					    </div>
+					</div>
+					<div class="col-md-12 form-group clearfix">
+						<p class="tips">* 提示：图片尺寸572*314</p>
 					</div>
 					<div class="form-group clearfix">
 						<div class="col-md-12">
 							<button type="button" class="btn btn-warning pull-right m_r_10" style="margin-right:1.5%;" data-toggle="modal"
-							 v-on:click="closeCurrentPage()">返回</button>
+							v-on:click="closeCurrentPage()">返回</button>
 							<button type="button" class="btn btn-primary pull-right m_r_10" style="margin-right:1.5%;" data-toggle="modal"
-							  @change="handlerUpload($event,'/testProblemBase/addTestProblemBase')">确认</button>							
+							v-on:click="certainAction()">确认</button>							
 						</div>
 					</div>
 				</form>
@@ -109,10 +112,10 @@
 					perchasers:'',
 				},
 				title: '',
-				files: [],
-				tFiles:[],
-				uploadSuccess: 0,
-				fixedHeader: false,
+// 				files: [],
+// 				tFiles:[],
+// 				uploadSuccess: 0,
+// 				fixedHeader: false,
 			};
 		},
 		methods: {
@@ -164,6 +167,13 @@
 					alert("问题链接不能为空")
 					return
 				}
+				
+				var fd = new FormData();
+				var file = $("#imgFile")[0].files[0];
+				fd.append("file", file);
+				fd.append("evaluationData", JSON.stringify(this.evaluation));
+				
+				
 				switch(this.title){
 					case '新增':
 						var url = this.url+'/testProblemBase/addTestProblemBase'
@@ -180,7 +190,7 @@
 						'Content-Type': this.contentType,
 						'Access-Token': this.accessToken
 					},
-					data: this.evaluation,
+					data: fd,
 					dataType: 'json',
 				}).then((response) => {
 					var res = response.data

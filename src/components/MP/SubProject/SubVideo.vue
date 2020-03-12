@@ -102,6 +102,9 @@
                             <div id='pingZheng'></div>
                         </div>
                     </div>
+					<div class="col-md-12 form-group clearfix">
+						<p class="tips">* 提示：图片尺寸572*314</p>
+					</div>
 
                     <div class="form-group clearfix">
                         <div class="col-md-12">
