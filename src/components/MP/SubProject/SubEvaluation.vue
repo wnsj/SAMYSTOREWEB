@@ -73,7 +73,7 @@
 					    </div>
 					</div>
 					<div class="col-md-12 form-group clearfix">
-						<p class="tips">* 提示：图片尺寸572*314</p>
+						<p class="tips">* 提示：图片尺寸640*400</p>
 					</div>
 					<div class="form-group clearfix">
 						<div class="col-md-12">
@@ -161,10 +161,6 @@
 				}
 				if (this.isBlank(this.evaluation.problemNum)) {
 					alert("问题个数不能为空")
-					return
-				}
-				if (this.isBlank(this.evaluation.problemUrl)) {
-					alert("问题链接不能为空")
 					return
 				}
 				
