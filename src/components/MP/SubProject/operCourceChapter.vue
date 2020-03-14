@@ -39,6 +39,9 @@
                             <input type="file" id="medFile" />
                         </div>
                     </div>
+					<div class="col-md-12 form-group clearfix">
+						<p class="tips">* 提示：图片尺寸572*314</p>
+					</div>
                     <div class="form-group clearfix">
                         <div class="col-md-12">
                             <button type="button" class="btn btn-warning pull-right m_r_10" style="margin-right:1.5%;"

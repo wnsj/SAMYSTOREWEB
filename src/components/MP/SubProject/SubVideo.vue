@@ -102,6 +102,7 @@
                             <div id='pingZheng'></div>
                         </div>
                     </div>
+
                     <div class="col-md-6 form-group clearfix">
                         <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">签到赠送</label><span
                             class="sign-left">:</span>
@@ -112,6 +113,10 @@
                             </select>
                         </div>
                     </div>
+
+					<div class="col-md-12 form-group clearfix">
+						<p class="tips">* 提示：图片尺寸640*400</p>
+					</div>
 
                     <div class="form-group clearfix">
                         <div class="col-md-12">
