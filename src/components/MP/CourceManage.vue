@@ -86,6 +86,19 @@
                     </select>
                 </div>
             </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="padding: 0; line-height: 34px;">
+                    <p class="end-aline col-md-11 col-lg-11" style="padding-right:5px; padding-left:20px;">签到赠送</p><span
+                        class="sign-left">:</span>
+                </div>
+                <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+                    <select class="form-control" v-model="isGive">
+                        <option value="">全部</option>
+                        <option value="0">否</option>
+                        <option value="1">是</option>
+                    </select>
+                </div>
+            </div>
         </div>
         <div class="row" style="margin-top: 15px;padding-bottom:1.5%;">
             <button type="button" class="btn btn-warning pull-right m_r_10" style="margin-right:1.5%;" data-toggle="modal"
@@ -107,6 +120,7 @@
                                 <th class="text-center">课时</th>
                                 <th class="text-center">精品课</th>
                                 <th class="text-center">是否免费</th>
+                                <th class="text-center">签到赠送</th>
                                 <th class="text-center">修改</th>
                                 <th class="text-center">章节</th>
                             </tr>
@@ -121,6 +135,7 @@
                                 <td class="text-center" style="line-height:33px;">{{item.couLength}}</td>
                                 <td class="text-center" style="line-height:33px;">{{item.boutique == '1' ? '是' : '否'}}</td>
                                 <td class="text-center" style="line-height:33px;">{{item.isFree == '0' ? '免费' : item.isFree == '1' ? '限时免费' : '付费'}}</td>
+                                <td class="text-center" style="line-height:33px;">{{item.isGive == '1' ? '是' : '否'}}</td>
                                 <td class="text-center" style="line-height:33px;"><button type="button" class="btn btn-warning"
                                         v-on:click="selectRule('3',item)">修改</button></td>
                                 <td class="text-center" style="line-height:33px;"><button type="button" class="btn btn-warning"
@@ -180,6 +195,7 @@
                 isUse: '1',
                 isFree: '',
                 couType: '',
+                isGive: '',
                 //分页需要的数据
                 pages: '', //总页数
                 current: 1, //当前页码
@@ -229,6 +245,7 @@
                         isUse: this.isUse,
                         isFree: this.isFree,
                         couType: this.couType,
+                        isGive: this.isGive,
                         page: page.toString(),
                         pageSize: this.pageSize
                     },

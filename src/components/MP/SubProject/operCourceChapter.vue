@@ -80,7 +80,7 @@
                         title: '',
                         isTry: 0,
                         ccSort: '',
-                        couId: project
+                        couId: project,
                     }
                     //this.project.couId = project
                 } else if (param == 'modify') {

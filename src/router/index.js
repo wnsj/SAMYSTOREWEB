@@ -28,6 +28,7 @@ import ZxsSummary from '../components/MP/ZxsSummary.vue'
 import Visitor from '../components/MP/Visitor.vue'
 import CourceManage from '../components/MP/CourceManage.vue'
 import PlayAV from '@/components/common/PlayAV.vue'
+import SignInImgManage from '../components/MP/SignInImgManage.vue'
 
 
 Vue.use(Router)
@@ -172,6 +173,11 @@ export default new Router({
                     path: '/PlayAV',
                     name: 'PlayAV',
                     component: PlayAV,
+                },
+                {
+                    path: '/MP/SignInImgManage',
+                    name: 'SignInImgManage',
+                    component: SignInImgManage,
                 }
             ],
             redirect: '/MP/MemberSummary'

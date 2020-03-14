@@ -102,6 +102,16 @@
                             <div id='pingZheng'></div>
                         </div>
                     </div>
+                    <div class="col-md-6 form-group clearfix">
+                        <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">签到赠送</label><span
+                            class="sign-left">:</span>
+                        <div class="col-md-8">
+                            <select class="form-control" v-model="project.isGive">
+                                <option value="0">否</option>
+                                <option value="1">是</option>
+                            </select>
+                        </div>
+                    </div>
 
                     <div class="form-group clearfix">
                         <div class="col-md-12">
@@ -137,6 +147,7 @@
                     couType: 1,
                     couLength: 0,
                     couExplain:'',
+                    isGive:0,
                     freeDate:this.moment('','YYYY-MM-DD HH:mm:ss')
                 },
                 title: ''
@@ -160,6 +171,7 @@
                         couType: 1,
                         couLength: 0,
                         couExplain:'',
+                        isGive:0,
                         freeDate:this.moment('','YYYY-MM-DD HH:mm:ss')
                     }
                     this.$refs.counselorRef.setAtId(0);
@@ -216,7 +228,8 @@
                 fd.append("isUse", this.project.isUse);
                 fd.append("isFree", this.project.isFree);
                 fd.append("couType", this.project.couType);
-                fd.append("couExplain",this.project.couExplain)
+                fd.append("couExplain",this.project.couExplain);
+                fd.append("isGive",this.project.isGive);
                 if(!this.isBlank(this.project.freeDate)){
                     fd.append("freeDate", this.project.freeDate)
                 }
@@ -237,7 +250,7 @@
                     dataType: 'json',
                 }).then((response) => {
                     var res = response.data
-                    console.log(res)
+                    //console.log(res)
                     if (res.retCode == '0000') {
                         alert(res.retMsg)
                         this.$emit('certainAction')
