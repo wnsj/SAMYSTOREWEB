@@ -75,6 +75,11 @@
                     <operSignInImg ref="operSignInImgRef" @retBack="feedBack()"></operSignInImg>
                 </div>
             </div>
+            <div class="modal fade" id="checkDateContent">
+                <div class="modal-dialog">
+                    <checkDate ref="checkDateRef"></checkDate>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -85,6 +90,7 @@
     import datePicker from 'vue2-datepicker'
     import moment from 'moment'
     import operSignInImg from '../MP/SubProject/operSignInImg.vue'
+    import checkDate from '../MP/SubProject/checkDate.vue'
     import {
         init
     } from '@/../static/js/common.js'
@@ -93,7 +99,8 @@
         components: {
             datePicker,
             Paging,
-            operSignInImg
+            operSignInImg,
+            checkDate
         },
         data() {
             return {
@@ -224,7 +231,7 @@
                     var res = response.data
                     if (res.retCode == '0000') {
                         this.projectList = res.retData;
-                        console.log( this.projectList)
+                        //console.log( this.projectList)
                         var begTime = moment(this.begDate);
                         var endTime = moment(this.endDate);
                         var diffDay = endTime.diff(begTime, 'days');
@@ -238,30 +245,36 @@
                             var nextDate = moment(this.begDate).add(i, 'day').format("YYYY-MM-DD");
                             //console.log(nextDate);
                             var dateFlag = false;
-                            for (var d = 0; d < this.projectList; d++) {
-                                var imgDate = this.projectList[d].imgDate;
-                                if (!this.isBlank(imgDate)) {
-                                    var imgTime = this.moment(imgDate, 'YYYY-MM-DD')
-                                    console.log("imgTime:" + imgTime)
-                                    if (imgTime == nextDate) {
-                                        dateFlag = true;
-                                        break;
+                            if (this.projectList.length <= 0) {
+                                this.errorDateList.push(nextDate)
+                            } else {
+                                for (var d = 0; d < this.projectList.length; d++) {
+                                    var imgDate = this.projectList[d].imgDate;
+                                    if (!this.isBlank(imgDate)) {
+                                        var imgTime = this.moment(imgDate, 'YYYY-MM-DD')
+                                        //console.log("imgTime:" + imgTime)
+                                        if (imgTime == nextDate) {
+                                            dateFlag = true;
+                                            break;
+                                        }
                                     }
                                 }
+                                if (!dateFlag) {
+                                    //console.log("nextDate:" + nextDate)
+                                    this.errorDateList.push(nextDate)
+                                }
                             }
-                            if (!dateFlag) {
-                                console.log("nextDate:" + nextDate)
-                                this.errorDateList.push(nextDate)
-                            }
+
                         }
-                        console.log("errorDateList:" + this.errorDateList)
+                        //console.log("errorDateList:" + this.errorDateList)
+                        $("#checkDateContent").modal('show')
+                        this.$refs.checkDateRef.setData(this.errorDateList)
                     } else {
                         alert(res.retMsg)
                     }
                 }).catch((error) => {
                     console.log('请求失败处理')
                 });
-
             },
             handleScroll(e) {
                 var self = this
@@ -284,6 +297,9 @@
                 } else {
                     self.fixedHeader = false
                 }
+            },
+            closeCheckDateContent() {
+                $("#checkDateContent").modal('hide')
             }
         },
         mounted() {

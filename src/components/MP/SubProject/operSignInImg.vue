@@ -12,13 +12,14 @@
                     <label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">日期</label><span
                         class="sign-left">:</span>
                     <div class="col-md-8">
-                        <dPicker type="date" value-type="format" format="YYYY-MM-DD" v-model="project.imgDate" :disabled="flag"></dPicker>
+                        <dPicker type="date" value-type="format" format="YYYY-MM-DD" v-model="project.imgDate"
+                            :disabled="flag"></dPicker>
                     </div>
                 </div>
 
                 <div class="col-md-6 form-group clearfix">
-                    <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">上传文件</label><span
-                        class="sign-left">:</span>
+                    <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">上传文件</label>
+                    <span class="sign-left">:</span>
                     <div class="col-md-8">
                         <input type="file" id="file" @change="imgChange" />
                         <div id='signInImgOutDiv'></div>
@@ -47,10 +48,10 @@
             return {
                 project: {
                     imgDate: this.moment("", 'YYYY-MM-DD'),
-                    imgType:1
+                    imgType: 1
                 },
                 title: '',
-                flag:true
+                flag: true
             };
         },
         methods: {
@@ -60,11 +61,20 @@
                 $("#signInImgInnDiv").remove();
                 if (param == 'add') {
                     this.title = '新增'
-                    this.project = {
-                        imgDate: this.moment("", 'YYYY-MM-DD'),
-                        imgType:1
+                    if (this.isBlank(project)) {
+                        this.project = {
+                            imgDate: this.moment("", 'YYYY-MM-DD'),
+                            imgType: 1
+                        }
+                        this.flag = false;
+                    } else {
+                        this.project = {
+                            imgDate: project,
+                            imgType: 1
+                        }
+                        this.flag = true;
                     }
-                    this.flag = false;
+
                     //this.project.couId = project
                 } else if (param == 'modify') {
                     this.title = '修改';
@@ -135,6 +145,7 @@
             },
             closeCurrentPage() {
                 $("#operSignInContent").modal("hide")
+                //$("#addImgContent").modal("hide")
                 //console.log('关闭添加课程界面')
             },
             //预览图
