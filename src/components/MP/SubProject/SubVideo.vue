@@ -187,7 +187,7 @@
                     this.colId = project.colId;
                     this.$refs.counselorRef.setAtId(project.colId);
                     if (!this.isBlank(project.couImg)) {
-                        var dataUrl = this.url + project.couImg;
+                        var dataUrl = this.addTimesParam(this.url + project.couImg);
                         if ($("#pingZhengDiv").length <= 0) $("#pingZheng").html(
                             "<div id='pingZhengDiv' ><img class='my-img' src='#' style='width:100%' /></div>"
                         );

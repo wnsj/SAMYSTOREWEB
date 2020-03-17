@@ -103,6 +103,21 @@ Vue.prototype.moment = function(targetDate, format) {
   if (!constant.isBlank(format)) formatStr = format;
   return momentObj.format(formatStr);
 }
+//返回moment对象
+Vue.prototype.getMoment = function(targetDate){
+    if (!constant.isBlank(targetDate)) {
+     return moment(targetDate);
+    }
+    return moment();
+}
+//返回当前时间秒时间戳
+Vue.prototype.getSecTimestamp = function(){
+    return this.getMoment().valueOf()
+}
+//为链接添加时间戳参数
+Vue.prototype.addTimesParam = function(url){
+    return ''.concat(url).concat("&t=").concat(this.getSecTimestamp())
+}
 // Vue.prototype.endDate = function(beginDate,index){
 //
 // 	return utilDate.calculateEndDate(beginDate,index);

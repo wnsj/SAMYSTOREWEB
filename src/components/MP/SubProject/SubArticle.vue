@@ -27,7 +27,15 @@
                         <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">内容</label><span
                             class="sign-left">:</span>
                         <div class="col-md-8">
-                            <textarea style="height: 300px;width: 400px;" v-model="project.content"></textarea>
+                            <textarea v-model="project.content"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-6 form-group clearfix">
+                        <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">图片</label><span
+                            class="sign-left">:</span>
+                        <div class="col-md-8">
+                            <input type="file" id="artImgFile" @change="imgChange" />
+                            <div id="artImgOutDiv"></div>
                         </div>
                     </div>
                     <div class="form-group clearfix">
@@ -47,6 +55,7 @@
 </template>
 
 <script>
+    import moment from 'moment'
     import ArticleTheme from '@/components/common/ArticleTheme.vue'
     export default {
         components: {
@@ -74,7 +83,8 @@
                     content: '',
                     author: ''
                 }
-
+                $("#artImgInnDiv").remove();
+                $("#artImgFile").val("");
                 if (param == 'add') {
                     //console.log('Initialization project’s content, which adds project')
                     this.$refs.atRef.setAtId(0);
@@ -91,6 +101,14 @@
                     this.title = '修改文章'
                     Object.assign(this.project, project)
                     this.$refs.atRef.setAtId(project.atId);
+                    if (!this.isBlank(project.artImg)) {
+                        var dataUrl = this.addTimesParam(this.url + project.artImg);
+                        console.log("dataUrl:" + dataUrl)
+                        if ($("#artImgInnDiv").length <= 0) $("#artImgOutDiv").html(
+                            "<div id='artImgInnDiv' ><img id='artImg' src='#' style='width:100%' /></div>"
+                        );
+                        $("#artImg").attr("src", dataUrl);
+                    }
                 }
             },
             //the event of addtional button
@@ -105,6 +123,14 @@
                     alert("分类不能为空")
                     return
                 }
+                var fd = new FormData();
+                var file = $("#artImgFile")[0].files[0];
+                fd.append("title", this.project.title);
+                fd.append("atId", this.project.atId);
+                fd.append("content", this.project.content);
+                if (!this.isBlank(file)) {
+                    fd.append("file", file);
+                }
 
                 switch (this.title) {
                     case '新增文章':
@@ -112,6 +138,11 @@
                         break;
                     case '修改文章':
                         var url = this.url + '/article/updateArticle'
+                        if (this.isBlank(this.project.artId) || this.project.artId == 0) {
+                            alert("请重新打开本页面!")
+                            return
+                        }
+                        fd.append("artId", this.project.artId);
                         break;
                 }
 
@@ -119,14 +150,14 @@
                     method: 'POST',
                     url: url,
                     headers: {
-                        'Content-Type': this.contentType,
+                        'Content-Type': 'multipart/form-data',
                         'Access-Token': this.accessToken
                     },
-                    data: this.project,
+                    data: fd,
                     dataType: 'json',
                 }).then((response) => {
                     var res = response.data
-                    console.log(res)
+                    //console.log(res)
                     if (res.retCode == '0000') {
                         alert(res.retMsg)
                         this.$emit('certainAction')
@@ -149,9 +180,34 @@
                     //console.log("at" + atObj.atId)
                     this.project.atId = atObj.atId
                 }
+            },
+            //预览图
+            imgChange() {
+                var file = $("#artImgFile")[0].files[0]; //获取file对象
+                if (file == null || file == undefined) {
+                    $("#signInImgInnDiv").remove();
+                } else {
+                    //console.log("file:"+file)
+                    //检查文件类型
+                    var type = file.type.split("/");
+                    if (type[0] != "image") {
+                        alert("请选择图片");
+                        return false;
+                    }
+                    //新建fileReader对象
+                    var reader = new FileReader();
+                    reader.readAsDataURL(file);
+                    //图片加载事件style='width:350px;height:350px;overflow:hidden'
+                    reader.onloadend = function() {
+                        var dataUrl = reader.result;
+                        if ($("#artImgInnDiv").length <= 0) $("#artImgOutDiv").html(
+                            "<div id='artImgInnDiv' ><img id='artImg' src='#' style='width:100%' /></div>"
+                        );
+                        $("#artImg").attr("src", dataUrl);
+                    }
+                }
             }
         }
-
     }
 </script>
 
