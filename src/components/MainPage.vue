@@ -10,9 +10,6 @@
             </div>
             <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 text-right">
                 <p style="color: #1b4fa3;">欢迎<span style="color: #d58512;"> {{accountName}} </span>来到，商城管理系统</p>
-                <button class="btn btn-warning m_r_10" style="margin-top: 40px;" v-on:click="chargeManager()">课程购买</button>
-                <button class="btn btn-success m_r_10" style="margin-top: 40px;" v-on:click="customAction()">课程消费</button>
-                <button class="btn btn-danger m_r_10" style="margin-top: 40px;" v-on:click="refundAction()">课程退费</button>
                 <button class="btn btn-default m_r_10" style="margin-top: 40px;" v-on:click="loginOut()">退出</button>
             </div>
         </div>
@@ -21,7 +18,7 @@
                 <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 my-aside clear-mp" id="Adiv" style="padding-top: 10px;">
                     <p style=" display:block; width:190px; height:50px;margin:0 auto; line-height:50px; font-size: 30px;font-weight: bold;color: #795548;text-align: left; margin-bottom:10px;">功能列表</p>
                     <div id="aside-menu">
-                        <dl v-bind:class="{h15:bool1}">
+                        <!-- <dl v-bind:class="{h15:bool1}">
                             <dt @click="onShow(0)" v-bind:class="{'li-active':bool1}">
                                 <i class="fa" v-bind:class="{'fa-folder-open':bool1,'fa-folder':!bool1}" aria-hidden="true">
                                     咨客管理模块
@@ -36,8 +33,8 @@
                             <dd @click="addCheck('Visitor')" v-bind:class="{'li-active':onString=='Visitor'}">
                                 <router-link to="/MP/Visitor"><i class="fa" aria-hidden="true">咨客管理</i></router-link>
                             </dd>
-                        </dl>
-                        <dl v-bind:class="{h25:bool2}">
+                        </dl> -->
+                       <!-- <dl v-bind:class="{h25:bool2}">
                             <dt @click="onShow(1)" v-bind:class="{'li-active':bool2}">
                                 <i class="fa" v-bind:class="{'fa-folder-open':bool2,'fa-folder':!bool2}" aria-hidden="true">
                                     消费管理模块
@@ -58,8 +55,8 @@
                             <dd @click="addCheck('ZxsSummary')" v-bind:class="{'li-active':onString=='ZxsSummary'}">
                                 <router-link to="/MP/ZxsSummary"><i class="fa" aria-hidden="true">咨询师汇总</i></router-link>
                             </dd>
-                        </dl>
-                        <dl v-bind:class="{h40:bool3}">
+                        </dl> -->
+                        <!-- <dl v-bind:class="{h40:bool3}">
                             <dt @click="onShow(2)" v-bind:class="{'li-active':bool3}">
                                 <i class="fa" v-bind:class="{'fa-folder-open':bool3,'fa-folder':!bool3}" aria-hidden="true">
                                     基础设置
@@ -86,7 +83,7 @@
                             <dd @click="addCheck('Project')" v-bind:class="{'li-active':onString=='Project'}">
                                 <router-link to="/MP/Project"><i class="fa" aria-hidden="true">课程管理</i></router-link>
                             </dd>
-                        </dl>
+                        </dl> -->
                         <dl v-bind:class="{h10:bool4}">
                             <dt @click="onShow(3)" v-bind:class="{'li-active':bool4}">
                                 <i class="fa" v-bind:class="{'fa-folder-open':bool4,'fa-folder':!bool4}" aria-hidden="true">
@@ -113,7 +110,7 @@
                                 <router-link to="/PlayAV"><i class="fa" aria-hidden="true">音视频播放</i></router-link>
                             </dd>
                         </dl>
-                        <dl v-bind:class="{h10:bool5}">
+                        <!-- <dl v-bind:class="{h10:bool5}">
                             <dt @click="onShow(4)" v-bind:class="{'li-active':bool5}">
                                 <i class="fa" v-bind:class="{'fa-folder-open':bool5,'fa-folder':!bool5}" aria-hidden="true">
                                     提成汇总
@@ -122,7 +119,7 @@
                             <dd @click="addCheck('RoyaltySummary')" v-bind:class="{'li-active':onString=='RoyaltySummary'}">
                                 <router-link to="/MP/RoyaltySummary"><i class="fa" aria-hidden="true">提成汇总</i></router-link>
                             </dd>
-                        </dl>
+                        </dl> -->
 
                         <!-- <dl>
                             <dt v-on:click="selectRule('newtree')" v-bind:class="{'li-active':onString == 'newtree'}">
@@ -139,35 +136,11 @@
                 </div>
             </div>
         </div>
-        <div class="row row_edit">
-            <div class="modal fade" id="addFee">
-                <div class="modal-dialog">
-                    <SubRecharge ref="fee" @func="gainFun"></SubRecharge>
-                </div>
-            </div>
-        </div>
-        <div class="row row_edit">
-            <div class="modal fade" id="addRefund">
-                <div class="modal-dialog">
-                    <refund ref="refund"></refund>
-                </div>
-            </div>
-        </div>
-        <div class="row row_edit">
-            <div class="modal fade" id="addCustom">
-                <div class="modal-dialog">
-                    <custom ref="custom" @func2="gainFun2"></custom>
-                </div>
-            </div>
-        </div>
     </div>
 
 </template>
 
 <script type="module">
-    import SubRecharge from '../components/MP/SubRecharge/SubRecharge.vue'
-    import refund from '../components/MP/SubRecharge/Refund.vue'
-    import custom from '../components/MP/SubRecharge/Custom.vue'
     import axios from 'axios'
     import Cookies from 'js-cookie'
     import {
@@ -175,9 +148,6 @@
     } from '@/../static/js/common.js'
     export default {
         components: {
-            SubRecharge,
-            refund,
-            custom,
         },
         data() {
             return {
@@ -192,18 +162,6 @@
             }
         },
         methods:{
-            chargeManager: function() {
-                this.$refs.fee.initData();
-                $("#addFee").modal("show");
-            },
-            refundAction(){
-                this.$refs.refund.initData();
-                $("#addRefund").modal("show");
-            },
-            customAction(){
-                this.$refs.custom.initData();
-                $("#addCustom").modal("show");
-            },
             titleChange(param){
                 console.log('param:'+param)
                 this.title=param

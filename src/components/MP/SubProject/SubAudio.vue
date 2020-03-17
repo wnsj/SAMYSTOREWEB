@@ -17,7 +17,7 @@
 					<div class="col-md-6 form-group clearfix">
 						<label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">咨询师</label><span class="sign-left">:</span>
 						<div class="col-md-8">
-							<emp ref='emp' @employeeChange='empChange'></emp>
+							<!-- <emp ref='emp' @employeeChange='empChange'></emp> -->
 						</div>
 					</div>
 					<div class="col-md-6 form-group clearfix">
@@ -77,11 +77,11 @@
 
 <script>
 	import dPicker from 'vue2-datepicker'
-	import emp from '../../common/Employee.vue'
+	// import emp from '../../common/Employee.vue'
 	export default {
 		components: {
 			dPicker,
-			emp,
+			// emp,
 		},
 		data() {
 			return {

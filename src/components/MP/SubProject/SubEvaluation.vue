@@ -29,14 +29,14 @@
 					<div class="col-md-6 form-group clearfix">
 						<label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">原价</label><span class="sign-left">:</span>
 						<div class="col-md-8">
-							<input type="text" class="form-control" v-model="evaluation.newPrice" placeholder="">
+							<input type="text" class="form-control" v-model="evaluation.price" placeholder="">
 							<span class="pos-ab pos-tr">¥</span>
 						</div>
 					</div>
 					<div class="col-md-6 form-group clearfix">
 						<label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">现价</label><span class="sign-left">:</span>
 						<div class="col-md-8">
-							<input type="text" class="form-control" v-model="evaluation.price" placeholder="">
+							<input type="text" class="form-control" v-model="evaluation.newPrice" placeholder="">
 							<span class="pos-ab pos-tr">¥</span>
 						</div>
 					</div>
@@ -48,9 +48,9 @@
 						</div>
 					</div>
 					<div class="col-md-6 form-group clearfix">
-						<label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">问题链接</label><span class="sign-left">:</span>
+						<label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">简介</label><span class="sign-left">:</span>
 						<div class="col-md-8">
-							<input type="text" class="form-control" v-model="evaluation.problemUrl">
+							<input type="text" class="form-control" v-model="evaluation.simpleIntroduce">
 						</div>
 					</div>
 					<div class="col-md-6 form-group clearfix">
@@ -62,7 +62,16 @@
 					<div class="col-md-6 form-group clearfix">
 						<label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">已测试人数</label><span class="sign-left">:</span>
 						<div class="col-md-8">
-							<input type="text" class="form-control" v-model="evaluation.perchasers" placeholder="">
+							<input type="text" class="form-control" v-model="evaluation.testNum" placeholder="">
+						</div>
+					</div>
+					<div class="col-md-6 form-group clearfix">
+						<label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">是否停用</label><span class="sign-left">:</span>
+						<div class="col-md-8">
+							<select class="form-control" v-model="evaluation.isUse">
+								<option value="1">在用</option>
+								<option value="0">停用</option>
+							</select>
 						</div>
 					</div>
 					<div class="col-md-6 form-group clearfix">
@@ -74,6 +83,13 @@
 					</div>
 					<div class="col-md-12 form-group clearfix">
 						<p class="tips">* 提示：图片尺寸640*400</p>
+					</div>
+					<div class="col-md-6 form-group clearfix">
+					    <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">内容</label><span
+					        class="sign-left">:</span>
+					    <div class="col-md-8">
+					        <textarea style="height: 300px;width: 400px;" v-model="evaluation.introduce"></textarea>
+					    </div>
 					</div>
 					<div class="form-group clearfix">
 						<div class="col-md-12">
@@ -93,12 +109,12 @@
 
 <script>
 	import dPicker from 'vue2-datepicker'
-	import emp from '../../common/Employee.vue'
+	// import emp from '../../common/Employee.vue'
 	import axios from 'axios'
 	export default {
 		components: {
 			dPicker,
-			emp,
+			// emp,
 		},
 		data() {
 			return {
@@ -106,10 +122,13 @@
 					tpbId:'',
 					title: '',
 					price: '',
+					newPrice:'',
 					problemNum:'',
-					problemUrl:'',
 					timeLength:'',
-					perchasers:'',
+					introduce:'',
+					testNum:'',
+					simpleIntroduce:'',
+					isUse:'1',
 				},
 				title: '',
 // 				files: [],
@@ -128,10 +147,14 @@
 						tpbId:'',
 						title: '',
 						price: '',
+						newPrice:'',
 						problemNum:'',
 						problemUrl:'',
 						timeLength:'',
-						perchasers:'',
+						introduce:'',
+						testNum:'',
+						isUse:'1',
+						simpleIntroduce:'',
 					}
 				} else if (param == 'modify') {
 					console.log('Initialization evaluation’s content, which modifies evaluation')

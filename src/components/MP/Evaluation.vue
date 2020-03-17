@@ -3,7 +3,7 @@
 
 	<div class="wraper">
 		<div class="col-md-12 col-lg-12 main-title">
-			<h1 class="titleCss">课程管理</h1>
+			<h1 class="titleCss">测评管理</h1>
 		</div>
 		<div class="row" style="margin-top: 40px;">
 			<!-- <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" v-show="accountType==true">

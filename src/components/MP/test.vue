@@ -28,10 +28,10 @@
 
 
 <script>
-	import SubStore from '../MP/SubStore/SubStore.vue'
+	// import SubStore from '../MP/SubStore/SubStore.vue'
 	export default {
 		components: {
-			SubStore,
+			// SubStore,
 		},
 		data() {
 			return {
