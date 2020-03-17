@@ -8,7 +8,7 @@
                 webkit-playsinline="true" playsinline="true" allowsInlineMediaPlayback=YES
                 webview.allowsInlineMediaPlayback=YES width='100%' ref='videoRef' x5-video-player-fullscreen="true"
                 :poster="posterSrc">
-                <source id="sourceBox" :src="videoSrc" type="video/mp4">
+               <!-- <source id="sourceBox" :src="videoSrc" type="video/mp4"> -->
                 <p class="vjs-no-js">不支持播放</p>
             </video>
             <!-- <audio id="videobox" class="video-js vjs-default-skin vjs-big-play-centered vjs-16-9" controls preload="auto"

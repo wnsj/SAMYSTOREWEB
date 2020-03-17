@@ -106,8 +106,11 @@
                             <dd @click="addCheck('Article')" v-bind:class="{'li-active':onString=='Article'}">
                                 <router-link to="/MP/Article"><i class="fa" aria-hidden="true">文章管理</i></router-link>
                             </dd>
-                            <dd @click="addCheck('PlayAV')" v-bind:class="{'li-active':onString=='PlayAV'}">
+                            <!-- <dd @click="addCheck('PlayAV')" v-bind:class="{'li-active':onString=='PlayAV'}">
                                 <router-link to="/PlayAV"><i class="fa" aria-hidden="true">音视频播放</i></router-link>
+                            </dd> -->
+                            <dd @click="addCheck('SignInImgManage')" v-bind:class="{'li-active':onString=='SignInImgManage'}">
+                                <router-link to="/MP/SignInImgManage"><i class="fa" aria-hidden="true">签到图片管理</i></router-link>
                             </dd>
                         </dl>
                         <!-- <dl v-bind:class="{h10:bool5}">
