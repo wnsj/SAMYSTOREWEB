@@ -103,7 +103,7 @@
                     this.$refs.atRef.setAtId(project.atId);
                     if (!this.isBlank(project.artImg)) {
                         var dataUrl = this.addTimesParam(this.url + project.artImg);
-                        console.log("dataUrl:" + dataUrl)
+                        //console.log("dataUrl:" + dataUrl)
                         if ($("#artImgInnDiv").length <= 0) $("#artImgOutDiv").html(
                             "<div id='artImgInnDiv' ><img id='artImg' src='#' style='width:100%' /></div>"
                         );
