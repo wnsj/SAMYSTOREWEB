@@ -113,16 +113,16 @@
                                 <router-link to="/MP/SignInImgManage"><i class="fa" aria-hidden="true">签到图片管理</i></router-link>
                             </dd>
                         </dl>
-                        <!-- <dl v-bind:class="{h10:bool5}">
+                        <dl v-bind:class="{h10:bool5}">
                             <dt @click="onShow(4)" v-bind:class="{'li-active':bool5}">
                                 <i class="fa" v-bind:class="{'fa-folder-open':bool5,'fa-folder':!bool5}" aria-hidden="true">
-                                    提成汇总
+                                    测试
                                 </i>
                             </dt>
-                            <dd @click="addCheck('RoyaltySummary')" v-bind:class="{'li-active':onString=='RoyaltySummary'}">
-                                <router-link to="/MP/RoyaltySummary"><i class="fa" aria-hidden="true">提成汇总</i></router-link>
+                            <dd @click="addCheck('test')" v-bind:class="{'li-active':onString=='test'}">
+                                <router-link to="/MP/test"><i class="fa" aria-hidden="true">测试文本编辑</i></router-link>
                             </dd>
-                        </dl> -->
+                        </dl>
 
                         <!-- <dl>
                             <dt v-on:click="selectRule('newtree')" v-bind:class="{'li-active':onString == 'newtree'}">

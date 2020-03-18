@@ -109,12 +109,10 @@
 
 <script>
 	import dPicker from 'vue2-datepicker'
-	// import emp from '../../common/Employee.vue'
 	import axios from 'axios'
 	export default {
 		components: {
 			dPicker,
-			// emp,
 		},
 		data() {
 			return {
@@ -140,6 +138,7 @@
 		methods: {
 			// Initialization projcet’s content
 			initData(param, evaluation) {
+				$('#evaluationContent').modal({backdrop: 'static', keyboard: false});
 				if (param == 'add') {
 					console.log('Initialization evaluation’s content, which adds evaluation')
 					this.title = '新增'
@@ -326,7 +325,12 @@
 			myFile: function(param) {
 				$("#imgFile").click();
 			},
-		}
+		},
+		computed: {
+		  editor () {
+		    return this.$refs.myQuillEditor.quill
+		  }
+		},
 
 	}
 </script>

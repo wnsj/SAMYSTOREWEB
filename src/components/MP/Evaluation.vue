@@ -13,16 +13,16 @@
 				<div class="col-md-7 col-lg-7">
 					<store ref='store' @storeChange='storeChange'></store>
 				</div>
-			</div>
+			</div> -->
 			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 				<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="padding: 0; line-height: 34px;">
-					<p class="end-aline col-md-11 col-lg-11" style="padding-right:5px; padding-left:20px;">课程名称</p><span class="sign-left">:</span>
+					<p class="end-aline col-md-11 col-lg-11" style="padding-right:5px; padding-left:20px;">标题</p><span class="sign-left">:</span>
 				</div>
 				<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
-					<input class="form-control" type="text" v-model="proName">
+					<input class="form-control" type="text" v-model="title">
 				</div>
 			</div>
-			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+			<!-- <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 				<div class="col-md-5 col-lg-5 text-right" style="padding: 0; line-height: 34px;">
 					<p class="end-aline col-md-11 col-lg-11" style="padding-right:5px; padding-left:20px;">咨询师</p><span class="sign-left">:</span>
 				</div>
@@ -124,6 +124,7 @@
 		data() {
 			return {
 				evaluationList: [],
+				title:'',
 				//分页需要的数据
 				pages: '', //总页数
 				current: 1, //当前页码
@@ -167,20 +168,24 @@
 					},
 					data: {
 						tpbId: "",
+						title:this.title,
 
-// 						page: page.toString(),
-// 						pageSize: this.pageSize
+						page: page.toString(),
+						pageSize: this.pageSize,
 					},
 					dataType: 'json',
 				}).then((response) => {
 					var res = response.data
 					if (res.retCode == '0000') {
-						this.evaluationList=res.retData
-						// console.log("返回的测评题信息"+JSON.stringify(res))
+						this.pages = res.retData.pages //总页数
+						this.current = res.retData.current //当前页码
+						this.pageSize = res.retData.size //一页显示的数量  必须是奇数
+						this.total = res.retData.total //数据的数量
+						this.$refs.paging.setParam(this.pages, this.current, this.total)
+						this.evaluationList = res.retData.records
 					} else {
 						alert(res.retMsg)
 					}
-
 				}).catch((error) => {
 					console.log('请求失败处理')
 				});

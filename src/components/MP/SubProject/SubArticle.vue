@@ -22,14 +22,14 @@
                             <ArticleTheme ref="atRef" @atChange="setAtData"></ArticleTheme>
                         </div>
                     </div>
-
-                    <div class="col-md-6 form-group clearfix">
-                        <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">内容</label><span
-                            class="sign-left">:</span>
-                        <div class="col-md-8">
-                            <textarea style="height: 300px;width: 400px;" v-model="project.content"></textarea>
-                        </div>
-                    </div>
+					<div class="col-md-6 form-group clearfix">
+					    <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">内容</label><span
+					        class="sign-left">:</span>
+					</div>
+					<div class="col-md-12 form-group clearfix">
+						<quill-editor v-model="project.content" :options="quillOption"></quill-editor>
+					</div>
+                    
                     <div class="form-group clearfix">
                         <div class="col-md-12">
                             <button type="button" class="btn btn-warning pull-right m_r_10" style="margin-right:1.5%;"
@@ -48,12 +48,17 @@
 
 <script>
     import ArticleTheme from '@/components/common/ArticleTheme.vue'
+	import quillConfig from '../../../assets/js/quill-config.js'
     export default {
         components: {
             ArticleTheme
         },
         data() {
             return {
+				editorOption: {
+				  theme: 'snow'
+				},
+				quillOption: quillConfig,
                 project: {
                     artId: '',
                     atId: '',
@@ -156,5 +161,12 @@
 </script>
 
 <style>
-
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
 </style>
