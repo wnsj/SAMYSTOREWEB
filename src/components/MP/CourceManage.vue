@@ -115,7 +115,8 @@
                                 <th class="text-center">ID</th>
                                 <th class="text-center">课程名称</th>
                                 <th class="text-center">咨询师</th>
-                                <th class="text-center">价格</th>
+                                <th class="text-center">原价</th>
+                                <th class="text-center">现价</th>
                                 <th class="text-center">课程类型</th>
                                 <th class="text-center">课时</th>
                                 <th class="text-center">精品课</th>
@@ -131,6 +132,7 @@
                                 <td class="text-center" style="line-height:33px;">{{item.couName}}</td>
                                 <td class="text-center" style="line-height:33px;">{{item.colName}}</td>
                                 <td class="text-center" style="line-height:33px;">{{item.price}}</td>
+                                <td class="text-center" style="line-height:33px;">{{item.realPrice}}</td>
                                 <td class="text-center" style="line-height:33px;">{{item.couType == '1' ? '音频':'视频'}}</td>
                                 <td class="text-center" style="line-height:33px;">{{item.couLength}}</td>
                                 <td class="text-center" style="line-height:33px;">{{item.boutique == '1' ? '是' : '否'}}</td>
