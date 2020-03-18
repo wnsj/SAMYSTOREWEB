@@ -171,7 +171,7 @@
 						title:this.title,
 
 						page: page.toString(),
-						pageSize: this.pageSize,
+						pageSize: this.pageSize.toString(),
 					},
 					dataType: 'json',
 				}).then((response) => {
