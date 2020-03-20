@@ -79,7 +79,7 @@
         methods: {
             // Initialization projcet’s content
             initData(param, project) {
-                this.$refs.SummerNoteRef.resetData();
+                //this.$refs.SummerNoteRef.resetData();
                 this.project = {
                     artId: '',
                     atId: '',
