@@ -12,6 +12,7 @@ import newtree from '../components/MP/newtree.vue'
 import CourceManage from '../components/MP/CourceManage.vue'
 import PlayAV from '@/components/common/PlayAV.vue'
 import SignInImgManage from '../components/MP/SignInImgManage.vue'
+import SummerNote from '@/components/common/SummerNote.vue'
 
 
 Vue.use(Router)
@@ -77,6 +78,11 @@ export default new Router({
                     path: '/MP/SignInImgManage',
                     name: 'SignInImgManage',
                     component: SignInImgManage,
+                },
+                {
+                    path: '/SummerNote',
+                    name: 'SummerNote',
+                    component: SummerNote,
                 }
             ],
             redirect: '/MP/CourceManage'

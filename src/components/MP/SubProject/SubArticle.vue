@@ -27,7 +27,7 @@
                         <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">内容</label><span
                             class="sign-left">:</span>
                         <div class="col-md-8">
-                            <textarea v-model="project.content"></textarea>
+                           <textarea v-model="project.content"></textarea>
                         </div>
                     </div>
                     <div class="col-md-6 form-group clearfix">
@@ -38,6 +38,7 @@
                             <div id="artImgOutDiv"></div>
                         </div>
                     </div>
+                    <div> <!-- <SummerNote ref="SummerNoteRef"></SummerNote> --></div>
                     <div class="form-group clearfix">
                         <div class="col-md-12">
                             <button type="button" class="btn btn-warning pull-right m_r_10" style="margin-right:1.5%;"
@@ -57,9 +58,11 @@
 <script>
     import moment from 'moment'
     import ArticleTheme from '@/components/common/ArticleTheme.vue'
+    import SummerNote from '@/components/common/SummerNote.vue'
     export default {
         components: {
-            ArticleTheme
+            ArticleTheme,
+            SummerNote
         },
         data() {
             return {
@@ -76,6 +79,7 @@
         methods: {
             // Initialization projcet’s content
             initData(param, project) {
+                this.$refs.SummerNoteRef.resetData();
                 this.project = {
                     artId: '',
                     atId: '',

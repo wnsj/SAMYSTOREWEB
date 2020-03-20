@@ -34,7 +34,7 @@
                                 <router-link to="/MP/Visitor"><i class="fa" aria-hidden="true">咨客管理</i></router-link>
                             </dd>
                         </dl> -->
-                       <!-- <dl v-bind:class="{h25:bool2}">
+                        <!-- <dl v-bind:class="{h25:bool2}">
                             <dt @click="onShow(1)" v-bind:class="{'li-active':bool2}">
                                 <i class="fa" v-bind:class="{'fa-folder-open':bool2,'fa-folder':!bool2}" aria-hidden="true">
                                     消费管理模块
@@ -84,19 +84,19 @@
                                 <router-link to="/MP/Project"><i class="fa" aria-hidden="true">课程管理</i></router-link>
                             </dd>
                         </dl> -->
-                        <dl v-bind:class="{h10:bool4}">
+                        <dl v-bind:class="{h25:bool4}">
                             <dt @click="onShow(3)" v-bind:class="{'li-active':bool4}">
                                 <i class="fa" v-bind:class="{'fa-folder-open':bool4,'fa-folder':!bool4}" aria-hidden="true">
                                     编辑管理
                                 </i>
                             </dt>
-                          <!--  <dd @click="addCheck('Audio')" v-bind:class="{'li-active':onString=='Audio'}">
+                            <!--  <dd @click="addCheck('Audio')" v-bind:class="{'li-active':onString=='Audio'}">
                                 <router-link to="/MP/Audio"><i class="fa" aria-hidden="true">音频管理</i></router-link>
                             </dd> -->
                             <dd @click="addCheck('CourceManage')" v-bind:class="{'li-active':onString=='CourceManage'}">
                                 <router-link to="/MP/CourceManage"><i class="fa" aria-hidden="true">课程管理</i></router-link>
                             </dd>
-                          <!--  <dd @click="addCheck('Video')" v-bind:class="{'li-active':onString=='Video'}">
+                            <!--  <dd @click="addCheck('Video')" v-bind:class="{'li-active':onString=='Video'}">
                                 <router-link to="/MP/Video"><i class="fa" aria-hidden="true">视频管理</i></router-link>
                             </dd> -->
 
@@ -111,6 +111,9 @@
                             </dd> -->
                             <dd @click="addCheck('SignInImgManage')" v-bind:class="{'li-active':onString=='SignInImgManage'}">
                                 <router-link to="/MP/SignInImgManage"><i class="fa" aria-hidden="true">签到图片管理</i></router-link>
+                            </dd>
+                            <dd @click="addCheck('SummerNote')" v-bind:class="{'li-active':onString=='SummerNote'}">
+                                <router-link to="/SummerNote"><i class="fa" aria-hidden="true">排版</i></router-link>
                             </dd>
                         </dl>
                         <!-- <dl v-bind:class="{h10:bool5}">
