@@ -36,7 +36,7 @@
                         <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">内容</label><span
                             class="sign-left">:</span>
                         <div class="col-md-8">
-                            <textarea v-model="project.content"></textarea>
+                           <textarea v-model="project.content"></textarea>
                         </div>
                     </div>
                     <div class="col-md-6 form-group clearfix">
@@ -67,10 +67,15 @@
 <script>
     import moment from 'moment'
     import ArticleTheme from '@/components/common/ArticleTheme.vue'
+
 	import quillConfig from '../../../assets/js/quill-config.js'
+
+    import SummerNote from '@/components/common/SummerNote.vue'
+
     export default {
         components: {
-            ArticleTheme
+            ArticleTheme,
+            SummerNote
         },
         data() {
             return {
@@ -91,6 +96,7 @@
         methods: {
             // Initialization projcet’s content
             initData(param, project) {
+                //this.$refs.SummerNoteRef.resetData();
                 this.project = {
                     artId: '',
                     atId: '',
