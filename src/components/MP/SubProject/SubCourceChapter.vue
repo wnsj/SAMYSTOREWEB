@@ -8,31 +8,38 @@
 
         <div class="modal-body  pos_r">
             <div class="tab-pane fade in active martop" id="basic">
-               <button type="button" class="btn btn-warning" @click="selectRule(1)">添加</button>
-              <!-- <button type="button" class="btn btn-warning" @click="selectRule(1)">批量上传</button> -->
-               <table class="table table-bordered table-hover" id="datatable">
-                   <thead class="datathead">
-                       <tr>
-                           <th class="text-center">章节名</th>
-                           <!-- <th class="text-center">文件</th> -->
-                           <th class="text-center">是否可试看</th>
-                           <th class="text-center">排序</th>
-                           <th class="text-center"></th>
-                       </tr>
-                   </thead>
-                   <tbody>
-                       <tr v-for="item in chapterList" :key="item.ccId">
-                           <th class="text-center"><span>{{item.title}}</span></th>
-                         <!--  <th class="text-center">{{item.path}}</th> -->
-                           <th class="text-center">{{item.isTry == 1 ? '是' : '否'}}</th>
-                           <th class="text-center">{{item.ccSort}}</th>
-                           <th class="text-center">
-                               <button type="button" class="btn btn-warning" @click="playAV(item)" >播放</button>
-                               <button type="button" class="btn btn-warning" @click="selectRule(3,item)" >修改</button>
-                               <button type="button" class="btn btn-warning" @click="deleteCourceChapter(item)">删除</button>
-                           </th>
-                       </tr>
-                   </tbody>
+                <button type="button" class="btn btn-warning" @click="selectRule(1)">添加</button>
+                <!-- <button type="button" class="btn btn-warning" @click="selectRule(1)">批量上传</button> -->
+                <table class="table table-bordered table-hover" id="datatable">
+                    <thead class="datathead">
+                        <tr>
+                            <th class="text-center">章节名</th>
+                            <th class="text-center">原价</th>
+                            <th class="text-center">现价</th>
+                            <th class="text-center">是否免费</th>
+                            <!-- <th class="text-center">文件</th> -->
+                            <!-- <th class="text-center">是否可试看</th> -->
+                            <th class="text-center">排序</th>
+                            <th class="text-center"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="item in chapterList" :key="item.ccId">
+                            <th class="text-center"><span>{{item.title}}</span></th>
+                            <!--  <th class="text-center">{{item.path}}</th> -->
+                            <!-- <th class="text-center">{{item.isTry == 1 ? '是' : '否'}}</th> -->
+                            <th class="text-center"><span>{{item.price}}</span></th>
+                            <th class="text-center"><span>{{item.realPrice}}</span></th>
+                            <th class="text-center">{{item.isFree == 0 ? '免费' : '付费'}}</th>
+                            <th class="text-center">{{item.ccSort}}</th>
+
+                            <th class="text-center">
+                                <button type="button" class="btn btn-warning" @click="playAV(item)">播放</button>
+                                <button type="button" class="btn btn-warning" @click="selectRule(3,item)">修改</button>
+                                <button type="button" class="btn btn-warning" @click="deleteCourceChapter(item)">删除</button>
+                            </th>
+                        </tr>
+                    </tbody>
                 </table>
                 <div class="row row_edit">
                     <div class="modal fade" id="operCourceChapterContent">
@@ -81,7 +88,7 @@
                 },
                 title: '',
                 couId: '',
-                chapterList:[]
+                chapterList: []
             };
         },
         methods: {
@@ -95,7 +102,7 @@
             queryCourceChapter() {
                 var fd = new FormData();
                 fd.append("couId", this.couId);
-                fd.append("path",'1')
+                fd.append("path", '1')
                 this.$ajax({
                     method: 'POST',
                     url: this.url + '/courceChapterAction/queryCourceChapter',
@@ -132,20 +139,20 @@
                 }
             },
             //选择文件
-            fileChange(item,e){
+            fileChange(item, e) {
                 //调用方法fileChange(item,$event)
                 var file = e.target.files[0];
                 console.log(e.target.value)
                 console.log(e.target.files[0])
-                if(file == null || file == undefined){
+                if (file == null || file == undefined) {
 
-                }else{
+                } else {
                     item.file = file;
                 }
             },
             selectRule(param, item) {
                 if (param == "1") {
-                    this.$refs.operCourceChapterRef.initData('add',this.couId)
+                    this.$refs.operCourceChapterRef.initData('add', this.couId)
                     $("#operCourceChapterContent").modal('show')
                 } else if (param == "3") {
                     this.$refs.operCourceChapterRef.initData('modify', item)
@@ -156,8 +163,8 @@
                 $("#operCourceChapterContent").modal("hide")
                 this.queryCourceChapter();
             },
-            deleteCourceChapter(item){
-                if(!confirm("确定删除吗?"))return;
+            deleteCourceChapter(item) {
+                if (!confirm("确定删除吗?")) return;
                 var fd = new FormData();
                 fd.append("ccId", item.ccId);
                 this.$ajax({
@@ -172,8 +179,8 @@
                 }).then((response) => {
                     var res = response.data
                     if (res.retCode == '0000') {
-                       alert(res.retMsg)
-                       this.queryCourceChapter();
+                        alert(res.retMsg)
+                        this.queryCourceChapter();
                     } else {
                         alert(res.retMsg)
                     }
@@ -182,10 +189,10 @@
                 });
             },
             //播放音视频
-            playAV(item){
-                 $("#playAVContent").modal('show')
-                 var url = this.url + item.path + '&power=1'
-                 this.$refs.PlayAVRef.initData(url)
+            playAV(item) {
+                $("#playAVContent").modal('show')
+                var url = this.url + item.path + '&power=1'
+                this.$refs.PlayAVRef.initData(url)
             }
         }
     }

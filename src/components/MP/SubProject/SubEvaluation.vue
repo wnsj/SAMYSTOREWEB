@@ -20,12 +20,12 @@
 							<input type="text" class="form-control" v-model="evaluation.subtitle" placeholder="">
 						</div>
 					</div>
-					<!-- <div class="col-md-6 form-group clearfix">
-						<label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">咨询师</label><span class="sign-left">:</span>
+					<div class="col-md-6 form-group clearfix">
+						<label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">测评类型</label><span class="sign-left">:</span>
 						<div class="col-md-8">
-							<emp ref='emp' @employeeChange='empChange'></emp>
+							<et ref='et' @etChange='etChange'></et>
 						</div>
-					</div> -->
+					</div>
 					<div class="col-md-6 form-group clearfix">
 						<label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">原价</label><span class="sign-left">:</span>
 						<div class="col-md-8">
@@ -45,6 +45,12 @@
 						<div class="col-md-8">
 							<input type="text" class="form-control" v-model="evaluation.problemNum">
 							<span class="pos-ab pos-tr">个</span>
+						</div>
+					</div>
+					<div class="col-md-6 form-group clearfix">
+						<label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">序号</label><span class="sign-left">:</span>
+						<div class="col-md-8">
+							<input type="text" class="form-control" v-model="evaluation.serialNumber">
 						</div>
 					</div>
 					<div class="col-md-6 form-group clearfix">
@@ -108,11 +114,13 @@
 </template>
 
 <script>
+	import et from '../../common/EvaluationType.vue'
 	import dPicker from 'vue2-datepicker'
 	import axios from 'axios'
 	export default {
 		components: {
 			dPicker,
+			et,
 		},
 		data() {
 			return {
@@ -125,6 +133,7 @@
 					timeLength:'',
 					introduce:'',
 					testNum:'',
+					serialNumber:'',
 					simpleIntroduce:'',
 					isUse:'1',
 				},
@@ -150,8 +159,10 @@
 						problemNum:'',
 						problemUrl:'',
 						timeLength:'',
+						testType:'',
 						introduce:'',
 						testNum:'',
+						serialNumber:'',
 						isUse:'1',
 						simpleIntroduce:'',
 					}
@@ -161,14 +172,14 @@
 					Object.assign(this.evaluation,evaluation)
 				}
 			},
-// 			
-// 			empChange(param){
-// 				if(this.isBlank(param)){
-// 					this.evaluation.empId=""
-// 				}else{
-// 					this.evaluation.empId=param.empId
-// 				}
-// 			},
+			
+			etChange(param){
+				if(this.isBlank(param)){
+					this.evaluation.testType=""
+				}else{
+					this.evaluation.testType=param.ttId
+				}
+			},
 			//the event of addtional button
 			certainAction() {
 				console.log('the event of addtional button')

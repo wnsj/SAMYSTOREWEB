@@ -22,15 +22,13 @@
 					<input class="form-control" type="text" v-model="title">
 				</div>
 			</div>
-			<!-- <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-				<div class="col-md-5 col-lg-5 text-right" style="padding: 0; line-height: 34px;">
-					<p class="end-aline col-md-11 col-lg-11" style="padding-right:5px; padding-left:20px;">咨询师</p><span class="sign-left">:</span>
-				</div>
-				<div class="col-md-7 col-lg-7">
-					<emp ref='emp' @employeeChange='empChange'></emp>
+			<div class="col-md-3 form-group clearfix">
+				<label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">测评类型</label><span class="sign-left">:</span>
+				<div class="col-md-8">
+					<et ref='et' @etChange='etChange'></et>
 				</div>
 			</div>
-			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+			<!-- <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 				<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="padding: 0; line-height: 34px;">
 					<p class="end-aline col-md-11 col-lg-11" style="padding-right:5px; padding-left:20px;">是否在用</p><span class="sign-left">:</span>
 				</div>
@@ -56,30 +54,26 @@
 
 						<thead class="datathead">
 							<tr>
-								<th class="text-center">ID</th>
+								<th class="text-center">序号</th>
 								<th class="text-center">标题</th>
 								<th class="text-center">测试人数(人)</th>
 								<th class="text-center">价格(元)</th>
 								<th class="text-center">题目数(个)</th>
-								<th class="text-center">测试题链接</th>
-								<!-- <th class="text-center">操作人</th> -->
+								<th class="text-center">测试题类型</th>
 								<th class="text-center">头图链接</th>
 								<th class="text-center">修改</th>
-								<!-- <th class="text-center">添加测评题</th> -->
 							</tr>
 						</thead>
 						<tbody>
 							<tr v-for="(item,index) in evaluationList" :key="index" v-on:dblclick="selectRule('3',item)">
-								<td class="text-center" style="line-height:33px;">{{item.tpbId}}</td>
+								<td class="text-center" style="line-height:33px;">{{item.serialNumber}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.title}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.testNum}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.price}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.problemNum}}</td>
-								<td class="text-center" style="line-height:33px;">{{item.problemUrl}}</td>
-								<!-- <td class="text-center" style="line-height:33px;">{{item.newPrice}}</td> -->
+								<td class="text-center" style="line-height:33px;">{{item.ttName}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.imgUrl}}</td>
 								<td class="text-center" style="line-height:33px;"><button type="button" class="btn btn-warning" v-on:click="selectRule('3',item)">修改</button></td>
-								<!-- <td class="text-center" style="line-height:33px;"><button type="button" class="btn btn-warning">添加测试题</button></td> -->
 							</tr>
 						</tbody>
 					</table>
@@ -108,6 +102,7 @@
 
 <script>
 	import store from '../common/Store.vue'
+	import et from '../common/EvaluationType.vue'
 	import emp from '../common/Employee.vue'
 	import SubEvaluation from '../MP/SubProject/SubEvaluation.vue'
 	import {
@@ -119,12 +114,15 @@
 			store,
 			emp,
 			SubEvaluation,
-			Paging
+			Paging,
+			et,
 		},
 		data() {
 			return {
 				evaluationList: [],
 				title:'',
+				testType:'',
+				
 				//分页需要的数据
 				pages: '', //总页数
 				current: 1, //当前页码
@@ -156,6 +154,13 @@
 				}
 
 			},
+			etChange(param){
+				if(this.isBlank(param)){
+					this.testType=""
+				}else{
+					this.testType=param.ttId
+				}
+			},
 			//check the list of position
 			checkEvaluation(page) {
 				var url = this.url + '/testProblemBase/queryTestProblemBaseList'
@@ -169,7 +174,8 @@
 					data: {
 						tpbId: "",
 						title:this.title,
-
+						testType:this.testType,
+						
 						page: page.toString(),
 						pageSize: this.pageSize.toString(),
 					},

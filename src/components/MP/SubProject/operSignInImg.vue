@@ -81,7 +81,7 @@
                     this.flag = true;
                     Object.assign(this.project, project)
                     if (!this.isBlank(project.imgPath)) {
-                        var dataUrl = this.url + project.imgPath;
+                        var dataUrl = this.addTimesParam(this.url + project.imgPath);
                         if ($("#signInImgInnDiv").length <= 0) $("#signInImgOutDiv").html(
                             "<div id='signInImgInnDiv' ><img id='signInImg' src='#' style='width:100%' /></div>"
                         );

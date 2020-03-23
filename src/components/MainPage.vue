@@ -56,34 +56,6 @@
                                 <router-link to="/MP/ZxsSummary"><i class="fa" aria-hidden="true">咨询师汇总</i></router-link>
                             </dd>
                         </dl> -->
-                        <!-- <dl v-bind:class="{h40:bool3}">
-                            <dt @click="onShow(2)" v-bind:class="{'li-active':bool3}">
-                                <i class="fa" v-bind:class="{'fa-folder-open':bool3,'fa-folder':!bool3}" aria-hidden="true">
-                                    基础设置
-                                </i>
-                            </dt>
-                            <dd @click="addCheck('Employee')" v-bind:class="{'li-active':onString=='Employee'}">
-                                <router-link to="/MP/Employee"><i class="fa" aria-hidden="true">员工管理</i></router-link>
-                            </dd>
-                            <dd @click="addCheck('ScheduleEmp')" v-bind:class="{'li-active':onString=='ScheduleEmp'}">
-                                <router-link to="/MP/ScheduleEmp"><i class="fa" aria-hidden="true">排班管理</i></router-link>
-                            </dd>
-                            <dd @click="addCheck('Position')" v-bind:class="{'li-active':onString=='Position'}">
-                                <router-link to="/MP/Position"><i class="fa" aria-hidden="true">岗位管理</i></router-link>
-                            </dd>
-                            <dd @click="addCheck('Store')" v-bind:class="{'li-active':onString=='Store'}">
-                                <router-link to="/MP/Store"><i class="fa" aria-hidden="true">门店管理</i></router-link>
-                            </dd>
-                            <dd @click="addCheck('RuleManager')" v-bind:class="{'li-active':onString=='RuleManager'}">
-                                <router-link to="/MP/RuleManager"><i class="fa" aria-hidden="true">权限管理</i></router-link>
-                            </dd>
-                            <dd @click="addCheck('Royalty')" v-bind:class="{'li-active':onString=='Royalty'}">
-                                <router-link to="/MP/Royalty"><i class="fa" aria-hidden="true">提成规则管理</i></router-link>
-                            </dd>
-                            <dd @click="addCheck('Project')" v-bind:class="{'li-active':onString=='Project'}">
-                                <router-link to="/MP/Project"><i class="fa" aria-hidden="true">课程管理</i></router-link>
-                            </dd>
-                        </dl> -->
                         <dl v-bind:class="{h10:bool4}">
                             <dt @click="onShow(3)" v-bind:class="{'li-active':bool4}">
                                 <i class="fa" v-bind:class="{'fa-folder-open':bool4,'fa-folder':!bool4}" aria-hidden="true">
@@ -113,6 +85,34 @@
                                 <router-link to="/MP/SignInImgManage"><i class="fa" aria-hidden="true">签到图片管理</i></router-link>
                             </dd>
                         </dl>
+						<dl v-bind:class="{h40:bool3}">
+						    <dt @click="onShow(2)" v-bind:class="{'li-active':bool3}">
+						        <i class="fa" v-bind:class="{'fa-folder-open':bool3,'fa-folder':!bool3}" aria-hidden="true">
+						            基础设置
+						        </i>
+						    </dt>
+						    <dd @click="addCheck('EvaluationType')" v-bind:class="{'li-active':onString=='EvaluationType'}">
+						        <router-link to="/MP/EvaluationType"><i class="fa" aria-hidden="true">测评类型管理</i></router-link>
+						    </dd>
+						    <!-- <dd @click="addCheck('ScheduleEmp')" v-bind:class="{'li-active':onString=='ScheduleEmp'}">
+						        <router-link to="/MP/ScheduleEmp"><i class="fa" aria-hidden="true">排班管理</i></router-link>
+						    </dd>
+						    <dd @click="addCheck('Position')" v-bind:class="{'li-active':onString=='Position'}">
+						        <router-link to="/MP/Position"><i class="fa" aria-hidden="true">岗位管理</i></router-link>
+						    </dd>
+						    <dd @click="addCheck('Store')" v-bind:class="{'li-active':onString=='Store'}">
+						        <router-link to="/MP/Store"><i class="fa" aria-hidden="true">门店管理</i></router-link>
+						    </dd>
+						    <dd @click="addCheck('RuleManager')" v-bind:class="{'li-active':onString=='RuleManager'}">
+						        <router-link to="/MP/RuleManager"><i class="fa" aria-hidden="true">权限管理</i></router-link>
+						    </dd>
+						    <dd @click="addCheck('Royalty')" v-bind:class="{'li-active':onString=='Royalty'}">
+						        <router-link to="/MP/Royalty"><i class="fa" aria-hidden="true">提成规则管理</i></router-link>
+						    </dd>
+						    <dd @click="addCheck('Project')" v-bind:class="{'li-active':onString=='Project'}">
+						        <router-link to="/MP/Project"><i class="fa" aria-hidden="true">课程管理</i></router-link>
+						    </dd> -->
+						</dl>
                         <dl v-bind:class="{h10:bool5}">
                             <dt @click="onShow(4)" v-bind:class="{'li-active':bool5}">
                                 <i class="fa" v-bind:class="{'fa-folder-open':bool5,'fa-folder':!bool5}" aria-hidden="true">

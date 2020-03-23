@@ -23,10 +23,18 @@
                         </div>
                     </div>
                     <div class="col-md-6 form-group clearfix">
-                        <label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">单价</label><span
+                        <label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">原价</label><span
                             class="sign-left">:</span>
                         <div class="col-md-8">
                             <input type="text" class="form-control" v-model="project.price" placeholder="">
+                            <span class="pos-ab pos-tr">¥</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 form-group clearfix">
+                        <label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">现价</label><span
+                            class="sign-left">:</span>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" v-model="project.realPrice" placeholder="">
                             <span class="pos-ab pos-tr">¥</span>
                         </div>
                     </div>
@@ -94,16 +102,7 @@
                             <textarea class="form-control" v-model="project.couExplain" />
                             </div>
                     </div>
-                    <div class="col-md-6 form-group clearfix">
-                        <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">课程缩略图</label><span
-                            class="sign-left">:</span>
-                        <div class="col-md-8">
-                            <input type="file" @change="imgChange" id="file" accept="image/*"/>
-                            <div id='pingZheng'></div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 form-group clearfix">
+                     <div class="col-md-6 form-group clearfix">
                         <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">签到赠送</label><span
                             class="sign-left">:</span>
                         <div class="col-md-8">
@@ -113,6 +112,33 @@
                             </select>
                         </div>
                     </div>
+                    <div class="col-md-6 form-group clearfix">
+                        <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">课程图</label><span
+                            class="sign-left">:</span>
+                        <div class="col-md-8">
+                            <input type="file" @change="imgChange" id="file" accept="image/*"/>
+                            <div id='pingZheng'></div>
+                        </div>
+                    </div>
+
+                     <div class="col-md-6 form-group clearfix">
+                        <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">详情图</label><span
+                            class="sign-left">:</span>
+                        <div class="col-md-8">
+                            <input type="file" id="infoImgFile" @change="infoImgChange" accept="image/*"/>
+                            <div id="infoImgOutDiv"></div>
+                        </div>
+                    </div>
+
+                     <div class="col-md-6 form-group clearfix">
+                        <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">参加人数</label><span
+                            class="sign-left">:</span>
+                        <div class="col-md-8">
+                           <input type="text" class="form-control" v-model="project.joinCount" placeholder="">
+                        </div>
+                    </div>
+
+
 
 					<div class="col-md-12 form-group clearfix">
 						<p class="tips">* 提示：图片尺寸640*400</p>
@@ -144,6 +170,7 @@
             return {
                 project: {
                     price: '',
+                    realPrice:'',
                     couName: "",
                     colId: '',
                     boutique: 0,
@@ -153,7 +180,8 @@
                     couLength: 0,
                     couExplain:'',
                     isGive:0,
-                    freeDate:this.moment('','YYYY-MM-DD HH:mm:ss')
+                    freeDate:this.moment('','YYYY-MM-DD HH:mm:ss'),
+                    joinCount:0
                 },
                 title: ''
             };
@@ -161,13 +189,16 @@
         methods: {
             // Initialization projcet’s content
             initData(param, project) {
-                $("#file").val("")
+                $("#file").val("");
+                $("#infoImgFile").val("");
                 $("#pingZhengDiv").remove();
+                $("#infoImgInnDiv").remove();
                 if (param == 'add') {
                     //console.log('Initialization project’s content, which adds project')
                     this.title = '新增'
                     this.project = {
                         price: '',
+                        realPrice:'',
                         couName: "",
                         colId: '',
                         boutique: 0,
@@ -177,7 +208,8 @@
                         couLength: 0,
                         couExplain:'',
                         isGive:0,
-                        freeDate:this.moment('','YYYY-MM-DD HH:mm:ss')
+                        freeDate:this.moment('','YYYY-MM-DD HH:mm:ss'),
+                        joinCount:0
                     }
                     this.$refs.counselorRef.setAtId(0);
                 } else if (param == 'modify') {
@@ -187,11 +219,18 @@
                     this.colId = project.colId;
                     this.$refs.counselorRef.setAtId(project.colId);
                     if (!this.isBlank(project.couImg)) {
-                        var dataUrl = this.url + project.couImg;
+                        var dataUrl = this.addTimesParam(this.url + project.couImg);
                         if ($("#pingZhengDiv").length <= 0) $("#pingZheng").html(
                             "<div id='pingZhengDiv' ><img class='my-img' src='#' style='width:100%' /></div>"
                         );
                         $(".my-img").attr("src", dataUrl);
+                    }
+                    if(!this.isBlank(project.infoImg)){
+                        var dataUrl = this.addTimesParam(this.url + project.infoImg);
+                        if ($("#infoImgInnDiv").length <= 0) $("#infoImgOutDiv").html(
+                            "<div id='infoImgInnDiv' ><img id='infoImg' src='#' style='width:100%' /></div>"
+                        );
+                        $("#infoImg").attr("src", dataUrl);
                     }
                 }
             },
@@ -208,7 +247,11 @@
                     return
                 }
                 if (this.isBlank(this.project.price) || this.project.price < 0) {
-                    alert("课时单价不能为空")
+                    alert("课时原价不能为空")
+                    return
+                }
+                if (this.isBlank(this.project.realPrice) || this.project.realPrice < 0) {
+                    alert("课时现价不能为空")
                     return
                 }
                 if (this.project.couLength <= 0) {
@@ -228,6 +271,7 @@
                 fd.append("couName", this.project.couName);
                 fd.append("colId", this.colId);
                 fd.append("price", this.project.price);
+                fd.append("realPrice", this.project.realPrice);
                 fd.append("couLength", this.project.couLength);
                 fd.append("boutique", this.project.boutique);
                 fd.append("isUse", this.project.isUse);
@@ -238,10 +282,14 @@
                 if(!this.isBlank(this.project.freeDate)){
                     fd.append("freeDate", this.project.freeDate)
                 }
-                fd.append("joinCount", 0)
+                fd.append("joinCount", this.project.joinCount)
                 var file = $("#file")[0].files[0];
                 if (file != null) {
                     fd.append("file", file);
+                }
+                var infoFile = $("#infoImgFile")[0].files[0];
+                if(!this.isBlank(infoFile)){
+                    fd.append("infoFile",infoFile);
                 }
 
                 this.$ajax({
@@ -269,7 +317,8 @@
             closeCurrentPage() {
                 $("#videoContent").modal("hide")
                 $("#pingZhengDiv").remove();
-                console.log('关闭添加课程界面')
+               $("#infoImgInnDiv").remove();
+                //console.log('关闭添加课程界面')
             },
             setAtData(atObj) {
                 //console.log("at" + atObj)
@@ -304,6 +353,32 @@
                             "<div id='pingZhengDiv' ><img class='my-img' src='#' style='width:100%' /></div>"
                         );
                         $(".my-img").attr("src", dataUrl);
+                    }
+                }
+            },
+            //预览图
+            infoImgChange() {
+                var file = $("#infoImgFile")[0].files[0]; //获取file对象
+                if (file == null || file == undefined) {
+                    $("#infoImgInnDiv").remove();
+                } else {
+                    //console.log("file:"+file)
+                    //检查文件类型
+                    var type = file.type.split("/");
+                    if (type[0] != "image") {
+                        alert("请选择图片");
+                        return false;
+                    }
+                    //新建fileReader对象
+                    var reader = new FileReader();
+                    reader.readAsDataURL(file);
+                    //图片加载事件style='width:350px;height:350px;overflow:hidden'
+                    reader.onloadend = function() {
+                        var dataUrl = reader.result;
+                        if ($("#infoImgInnDiv").length <= 0) $("#infoImgOutDiv").html(
+                            "<div id='infoImgInnDiv' ><img id='infoImg' src='#' style='width:100%' /></div>"
+                        );
+                        $("#infoImg").attr("src", dataUrl);
                     }
                 }
             }

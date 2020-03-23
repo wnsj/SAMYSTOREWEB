@@ -12,6 +12,7 @@ import newtree from '../components/MP/newtree.vue'
 import CourceManage from '../components/MP/CourceManage.vue'
 import PlayAV from '@/components/common/PlayAV.vue'
 import SignInImgManage from '../components/MP/SignInImgManage.vue'
+import EvaluationType from '../components/MP/EvaluationType.vue'
 
 
 Vue.use(Router)
@@ -77,7 +78,12 @@ export default new Router({
                     path: '/MP/SignInImgManage',
                     name: 'SignInImgManage',
                     component: SignInImgManage,
-                }
+                },
+				{
+				    path: '/MP/EvaluationType',
+				    name: 'EvaluationType',
+				    component: EvaluationType,
+				}
             ],
             redirect: '/MP/CourceManage'
         }

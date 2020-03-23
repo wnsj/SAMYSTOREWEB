@@ -16,6 +16,33 @@
                         </div>
                     </div>
                     <div class="col-md-6 form-group clearfix">
+                        <label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">是否免费</label><span
+                            class="sign-left">:</span>
+                        <div class="col-md-8">
+                            <select class="form-control" v-model="project.isFree">
+                                <option value="2">付费</option>
+                                <option value="0">免费</option>
+                                <!-- <option value="1">限时免费</option> -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 form-group clearfix">
+                        <label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">原价</label><span
+                            class="sign-left">:</span>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" v-model="project.price" placeholder="">
+                            <span class="pos-ab pos-tr">¥</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 form-group clearfix">
+                        <label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">现价</label><span
+                            class="sign-left">:</span>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" v-model="project.realPrice" placeholder="">
+                            <span class="pos-ab pos-tr">¥</span>
+                        </div>
+                    </div>
+                    <!-- <div class="col-md-6 form-group clearfix">
                         <label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">是否可试看</label><span
                             class="sign-left">:</span>
                         <div class="col-md-8">
@@ -24,7 +51,7 @@
                                 <option value="0">否</option>
                             </select>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="col-md-6 form-group clearfix">
                         <label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">序号</label><span
                             class="sign-left">:</span>
@@ -33,13 +60,20 @@
                         </div>
                     </div>
                     <div class="col-md-6 form-group clearfix">
+                        <label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">简介</label><span
+                            class="sign-left">:</span>
+                        <div class="col-md-8">
+                            <textarea class="form-control" v-model="project.ccExplain" />
+                            </div>
+                    </div>
+                    <div class="col-md-6 form-group clearfix">
                         <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">上传文件</label><span
                             class="sign-left">:</span>
                         <div class="col-md-8">
                             <input type="file" id="medFile" />
                         </div>
                     </div>
-					<!-- <div class="col-md-12 form-group clearfix">
+                    <!-- <div class="col-md-12 form-group clearfix">
 						<p class="tips">* 提示：图片尺寸572*314</p>
 					</div> -->
                     <div class="form-group clearfix">
@@ -69,6 +103,10 @@
                     isTry: 0,
                     ccSort: '',
                     couId: '',
+                    ccExplain:'',
+                    price:'',
+                    realPrice:'',
+                    isFree:2
                 },
                 title: '',
             };
@@ -84,6 +122,10 @@
                         isTry: 0,
                         ccSort: '',
                         couId: project,
+                        ccExplain:'',
+                        price:'',
+                        realPrice:'',
+                        isFree:2
                     }
                     //this.project.couId = project
                 } else if (param == 'modify') {
@@ -95,8 +137,16 @@
             certainAction() {
                 //console.log('the event of addtional button')
                 if (this.isBlank(this.project.title)) {
-                    alert("章节名不能为空")
+                    alert("章节名不能为空!")
                     return
+                }
+                if (this.isBlank(this.project.price) || this.project.price < 0) {
+                    alert("原价不能为空!")
+                    return
+                }
+                if (this.isBlank(this.project.realPrice) || this.project.realPrice < 0) {
+                     alert("现价不能为空!")
+                     return
                 }
                 if (this.isBlank(this.project.couId)) {
                     alert("请重新打开本页面!");
@@ -109,6 +159,10 @@
                 fd.append("isTry", this.project.isTry);
                 fd.append("ccSort", this.project.ccSort);
                 fd.append("couId", this.project.couId);
+                fd.append("price", this.project.price);
+                fd.append("realPrice", this.project.realPrice);
+                fd.append("ccExplain", this.project.ccExplain);
+                fd.append("isFree", this.project.isFree);
 
                 switch (this.title) {
                     case '新增':
@@ -125,7 +179,7 @@
                         if (!this.isBlank(file)) {
                             fd.append("file", file);
                         }
-                         fd.append("ccId", this.project.ccId);
+                        fd.append("ccId", this.project.ccId);
                         break;
                 }
 
