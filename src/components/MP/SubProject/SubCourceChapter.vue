@@ -199,5 +199,36 @@
 </script>
 
 <style>
-
+    .modal-content{
+        width:600px;
+        min-height:680px;
+    }
+    #playAVContent{
+        width:560px;
+        height:400px;
+        margin: 0 auto;
+    }
+    #playAVContent .modal-dialog{
+        width:100%;
+        height:80%;
+    }
+    #playAVContent .modal-dialog .modal-content{
+        width:100%;
+        height:100%;
+        min-height:100%;
+    }
+    #operCourceChapterContent{
+        width:560px;
+        height:640px;
+        margin:0 auto;
+    }
+    #operCourceChapterContent .modal-dialog{
+        width:100%;
+        height:90%;
+    }
+    #operCourceChapterContent .modal-dialog .modal-content{
+        width:100%;
+        height:100%;
+        min-height:100%;
+    }
 </style>
