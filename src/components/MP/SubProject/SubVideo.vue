@@ -15,13 +15,13 @@
                             <input type="text" class="form-control" v-model="project.couName" placeholder="">
                         </div>
                     </div>
-                    <div class="col-md-6 form-group clearfix">
+                    <!-- <div class="col-md-6 form-group clearfix">
                         <label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">咨询师</label><span
                             class="sign-left">:</span>
                         <div class="col-md-8">
                             <Counselor ref="counselorRef" @atChange="setAtData"></Counselor>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="col-md-6 form-group clearfix">
                         <label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">原价</label><span
                             class="sign-left">:</span>
@@ -242,10 +242,10 @@
                     alert("课程名称不能为空")
                     return
                 }
-                if (this.isBlank(this.colId)) {
-                    alert("咨询师不能为空")
-                    return
-                }
+//                 if (this.isBlank(this.colId)) {
+//                     alert("咨询师不能为空")
+//                     return
+//                 }
                 if (this.isBlank(this.project.price) || this.project.price < 0) {
                     alert("课时原价不能为空")
                     return

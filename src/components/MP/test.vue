@@ -57,8 +57,9 @@
                         <table class="table table-bordered table-hover user-table" id="datatable">
                             <thead class="datathead">
                             <tr>
-                                <th class="text-center">会员编码</th>
+                                <th class="text-center">编码</th>
                                 <th class="text-center">姓名</th>
+																<th class="text-center">会员号</th>
                                 <th class="text-center">访问状态</th>
                                 <th class="text-center">访问时间</th>
                                 <th class="text-center">诊断状态</th>
@@ -79,6 +80,7 @@
                             <tr v-for="(item,index) in memCostList" :key="index" v-on:dblclick="detailAction(item)">
                                 <td>00000001</td>
                                 <td>李三</td>
+																<td>202003242074130306</td>
                                 <td>初访/复访</td>
                                 <td>2020-03-24 00:00:00</td>
                                 <td>初诊/复诊/反诊</td>
