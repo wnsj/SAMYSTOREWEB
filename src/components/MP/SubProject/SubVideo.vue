@@ -320,14 +320,11 @@
                 var file = $("#file")[0].files[0];
                 if (file != null) {
                     fd.append("file", file);
-                }else{
-                    this.project.couImg = '';
                 }
+
                 var infoFile = $("#infoImgFile")[0].files[0];
                 if(!this.isBlank(infoFile)){
                     fd.append("infoFile",infoFile);
-                }else{
-                     this.project.infoImg = '';
                 }
 
                 this.$ajax({
