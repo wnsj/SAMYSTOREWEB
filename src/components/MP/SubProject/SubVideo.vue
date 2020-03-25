@@ -91,7 +91,7 @@
                     <div class="col-md-6 form-group clearfix">
                         <label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">到期时间</label><span
                             class="sign-left">:</span>
-                        <div class="col-md-8" style="padding: 0px;">
+                        <div class="col-md-8">
                             <dPicker v-model="project.freeDate" type="datetime" value-type="format" format="YYYY-MM-DD HH:mm:ss"></dPicker>
                         </div>
                     </div>
@@ -387,5 +387,7 @@
 </script>
 
 <style>
-
+    .mx-datepicker{
+        width:100%;
+    }
 </style>

@@ -201,7 +201,10 @@
 <style>
     .modal-content{
         width:600px;
-        min-height:680px;
+        min-height:660px;
+    }
+    #basic th{
+        line-height:34px;
     }
     #playAVContent{
         width:560px;
