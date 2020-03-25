@@ -91,7 +91,7 @@
                     <div class="col-md-6 form-group clearfix">
                         <label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">到期时间</label><span
                             class="sign-left">:</span>
-                        <div class="col-md-8">
+                        <div class="col-md-8" style="padding: 0px;">
                             <dPicker v-model="project.freeDate" type="datetime" value-type="format" format="YYYY-MM-DD HH:mm:ss"></dPicker>
                         </div>
                     </div>
@@ -211,13 +211,13 @@
                         freeDate:this.moment('','YYYY-MM-DD HH:mm:ss'),
                         joinCount:0
                     }
-                    this.$refs.counselorRef.setAtId(0);
+                    // this.$refs.counselorRef.setAtId(0);
                 } else if (param == 'modify') {
                     //console.log('Initialization project’s content, which modifies project')
                     this.title = '修改'
                     Object.assign(this.project, project)
                     this.colId = project.colId;
-                    this.$refs.counselorRef.setAtId(project.colId);
+                    // this.$refs.counselorRef.setAtId(project.colId);
                     if (!this.isBlank(project.couImg)) {
                         var dataUrl = this.addTimesParam(this.url + project.couImg);
                         if ($("#pingZhengDiv").length <= 0) $("#pingZheng").html(
