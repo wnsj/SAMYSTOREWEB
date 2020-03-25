@@ -15,13 +15,13 @@
                             <input type="text" class="form-control" v-model="project.couName" placeholder="">
                         </div>
                     </div>
-                    <div class="col-md-6 form-group clearfix">
+                    <!-- <div class="col-md-6 form-group clearfix">
                         <label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">咨询师</label><span
                             class="sign-left">:</span>
                         <div class="col-md-8">
                             <Counselor ref="counselorRef" @atChange="setAtData"></Counselor>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="col-md-6 form-group clearfix">
                         <label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">原价</label><span
                             class="sign-left">:</span>
@@ -171,8 +171,8 @@
                 project: {
                     price: '',
                     realPrice:'',
-                    couName: "",
-                    colId: '',
+                    couName: '',
+                    colId: '1',
                     boutique: 0,
                     isUse: 1,
                     isFree: 0,
@@ -199,8 +199,8 @@
                     this.project = {
                         price: '',
                         realPrice:'',
-                        couName: "",
-                        colId: '',
+                        couName: '',
+                        colId: '1',
                         boutique: 0,
                         isUse: 1,
                         isFree: 0,
@@ -211,13 +211,13 @@
                         freeDate:this.moment('','YYYY-MM-DD HH:mm:ss'),
                         joinCount:0
                     }
-                    this.$refs.counselorRef.setAtId(0);
+                    // this.$refs.counselorRef.setAtId(0);
                 } else if (param == 'modify') {
                     //console.log('Initialization project’s content, which modifies project')
                     this.title = '修改'
                     Object.assign(this.project, project)
                     this.colId = project.colId;
-                    this.$refs.counselorRef.setAtId(project.colId);
+                    // this.$refs.counselorRef.setAtId(project.colId);
                     if (!this.isBlank(project.couImg)) {
                         var dataUrl = this.addTimesParam(this.url + project.couImg);
                         if ($("#pingZhengDiv").length <= 0) $("#pingZheng").html(
@@ -242,10 +242,11 @@
                     alert("课程名称不能为空")
                     return
                 }
-                if (this.isBlank(this.colId)) {
-                    alert("咨询师不能为空")
-                    return
-                }
+				
+//                 if (this.isBlank(this.colId)) {
+//                     alert("咨询师不能为空")
+//                     return
+//                 }
                 if (this.isBlank(this.project.price) || this.project.price < 0) {
                     alert("课时原价不能为空")
                     return
@@ -269,7 +270,7 @@
                         break;
                 }
                 fd.append("couName", this.project.couName);
-                fd.append("colId", this.colId);
+                // fd.append("colId", this.colId);
                 fd.append("price", this.project.price);
                 fd.append("realPrice", this.project.realPrice);
                 fd.append("couLength", this.project.couLength);
@@ -387,5 +388,7 @@
 </script>
 
 <style>
-
+    .mx-datepicker{
+        width:100%;
+    }
 </style>

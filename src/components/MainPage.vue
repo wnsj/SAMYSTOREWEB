@@ -117,7 +117,7 @@
                                 <router-link to="/SummerNote"><i class="fa" aria-hidden="true">排版</i></router-link>
                             </dd>
                         </dl>
-						<dl v-bind:class="{h40:bool3}">
+						<dl v-bind:class="{h5:bool3}">
 						    <dt @click="onShow(2)" v-bind:class="{'li-active':bool3}">
 						        <i class="fa" v-bind:class="{'fa-folder-open':bool3,'fa-folder':!bool3}" aria-hidden="true">
 						            基础设置
@@ -145,7 +145,7 @@
 						        <router-link to="/MP/Project"><i class="fa" aria-hidden="true">课程管理</i></router-link>
 						    </dd> -->
 						</dl>
-                        <dl v-bind:class="{h10:bool5}">
+                        <dl v-bind:class="{h5:bool5}">
                             <dt @click="onShow(4)" v-bind:class="{'li-active':bool5}">
                                 <i class="fa" v-bind:class="{'fa-folder-open':bool5,'fa-folder':!bool5}" aria-hidden="true">
                                     测试
@@ -317,6 +317,10 @@
     #aside-menu dl.h40 {
         height: 400px;
     }
+	
+	#aside-menu dl.h5 {
+	    height: 100px;
+	}
 
     #aside-menu dl dt {
         height: 50px;
