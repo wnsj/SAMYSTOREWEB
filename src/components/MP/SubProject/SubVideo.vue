@@ -171,8 +171,8 @@
                 project: {
                     price: '',
                     realPrice:'',
-                    couName: "",
-                    colId: '',
+                    couName: '',
+                    colId: '1',
                     boutique: 0,
                     isUse: 1,
                     isFree: 0,
@@ -199,8 +199,8 @@
                     this.project = {
                         price: '',
                         realPrice:'',
-                        couName: "",
-                        colId: '',
+                        couName: '',
+                        colId: '1',
                         boutique: 0,
                         isUse: 1,
                         isFree: 0,
@@ -242,6 +242,7 @@
                     alert("课程名称不能为空")
                     return
                 }
+				
 //                 if (this.isBlank(this.colId)) {
 //                     alert("咨询师不能为空")
 //                     return
@@ -269,7 +270,7 @@
                         break;
                 }
                 fd.append("couName", this.project.couName);
-                fd.append("colId", this.colId);
+                // fd.append("colId", this.colId);
                 fd.append("price", this.project.price);
                 fd.append("realPrice", this.project.realPrice);
                 fd.append("couLength", this.project.couLength);

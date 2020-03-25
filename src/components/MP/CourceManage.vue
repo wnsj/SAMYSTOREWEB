@@ -114,7 +114,6 @@
                             <tr>
                                 <th class="text-center">ID</th>
                                 <th class="text-center">课程名称</th>
-                                <th class="text-center">咨询师</th>
                                 <th class="text-center">原价</th>
                                 <th class="text-center">现价</th>
                                 <th class="text-center">课程类型</th>
@@ -130,7 +129,6 @@
                             <tr v-for="(item,index) in projectList" :key="index" v-on:dblclick="selectRule('3',item)">
                                 <td class="text-center" style="line-height:33px;">{{item.couId}}</td>
                                 <td class="text-center" style="line-height:33px;">{{item.couName}}</td>
-                                <td class="text-center" style="line-height:33px;">{{item.colName}}</td>
                                 <td class="text-center" style="line-height:33px;">{{item.price}}</td>
                                 <td class="text-center" style="line-height:33px;">{{item.realPrice}}</td>
                                 <td class="text-center" style="line-height:33px;">{{item.couType == '1' ? '音频':'视频'}}</td>
