@@ -270,18 +270,81 @@
 //                     alert("咨询师不能为空")
 //                     return
 //                 }
-                if (this.isBlank(this.project.price) || this.project.price < 0) {
-                    alert("课时原价不能为空")
-                    return
+                 if(typeof(this.project.price) == 'string'){
+                     if (this.isBlank(this.project.price)){
+                         alert("课时原价不能为空!")
+                         return
+                     }
+                     if(isNaN(this.project.price)){
+                          alert("课时原价只能为数字!")
+                          return
+                     }else{
+                         if (this.project.price < 0) {
+                             alert("课时原价不能小于0!")
+                             return
+                         }
+                     }
+                 }else if(typeof(this.project.price) == 'number'){
+                     if(isNaN(this.project.price)){
+                          alert("课时原价只能为数字!")
+                          return
+                     }
+                     if (this.project.price < 0) {
+                         alert("课时原价不能小于0!")
+                         return
+                     }
+                 }
+
+                if(typeof(this.project.realPrice) == 'string'){
+                     if (this.isBlank(this.project.realPrice)){
+                        alert("课时现价不能为空")
+                        return
+                     }
+                     if(isNaN(this.project.realPrice)){
+                          alert("课时现价只能为数字!")
+                          return
+                     }else{
+                          if (this.project.realPrice < 0) {
+                              alert("课时现价不能小于0!")
+                              return
+                         }
+                     }
+                }else if(typeof(this.project.realPrice) == 'number'){
+                    if(isNaN(this.project.realPrice)){
+                         alert("课时现价只能为数字!")
+                         return
+                    }
+                    if (this.project.realPrice < 0) {
+                         alert("课时现价不能小于0!")
+                         return
+                    }
                 }
-                if (this.isBlank(this.project.realPrice) || this.project.realPrice < 0) {
-                    alert("课时现价不能为空")
-                    return
+                if(typeof(this.project.couLength) == 'string'){
+                    if (this.isBlank(this.project.couLength)){
+                       alert("课时不能为空")
+                       return
+                    }
+                    if(isNaN(this.project.couLength)){
+                         alert("课时只能为数字!")
+                         return
+                    }else{
+                        if (this.project.couLength < 1) {
+                             alert("课时不能小于1!")
+                             return
+                        }
+                    }
+                }else if(typeof(this.project.couLength) == 'number'){
+                    if(isNaN(this.project.couLength)){
+                         alert("课时只能为数字!")
+                         return
+                    }else{
+                        if (this.project.couLength < 1) {
+                             alert("课时不能小于1!")
+                             return
+                        }
+                    }
                 }
-                if (this.project.couLength <= 0) {
-                    alert("课时不能为空")
-                    return
-                }
+
                 if(this.project.isFree == 1 && this.isBlank(this.project.freeDate)){
                     alert("限时免费课程到期时间不能为空!");
                     return
