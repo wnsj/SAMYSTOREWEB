@@ -113,36 +113,42 @@
                         </div>
                     </div>
                     <div class="col-md-6 form-group clearfix">
-                        <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">课程图</label><span
-                            class="sign-left">:</span>
-                        <div class="col-md-8">
-                            <input type="file" @change="imgChange" id="file" accept="image/*"/>
-                            <div id='pingZheng'></div>
-                        </div>
-                    </div>
-
-                     <div class="col-md-6 form-group clearfix">
-                        <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">详情图</label><span
-                            class="sign-left">:</span>
-                        <div class="col-md-8">
-                            <input type="file" id="infoImgFile" @change="infoImgChange" accept="image/*"/>
-                            <div id="infoImgOutDiv"></div>
-                        </div>
-                    </div>
-
-                     <div class="col-md-6 form-group clearfix">
                         <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">参加人数</label><span
                             class="sign-left">:</span>
                         <div class="col-md-8">
                            <input type="text" class="form-control" v-model="project.joinCount" placeholder="">
                         </div>
                     </div>
+                    
+                    <div class="col-md-6 form-group clearfix">
+                        <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">课程图</label><span
+                            class="sign-left">:</span>
+                        <div class="col-md-8">
+                            <label class="a-upload">
+                                <input type="file" @change="imgChange" id="file" accept="image/*"/>选择文件
+                            </label>
+                            <div id='pingZheng'></div>
+                        </div>
+                        
+                    </div>
 
-
+                    <div class="col-md-6 form-group clearfix">
+                        <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">详情图</label><span
+                            class="sign-left">:</span>
+                        <div class="col-md-8">
+                            <label class="a-upload">
+                                <input type="file" id="infoImgFile" @change="infoImgChange" accept="image/*"/>选择文件
+                            </label>
+                            <div id="infoImgOutDiv"></div>
+                        </div>
+                        
+                    </div>
 
 					<div class="col-md-12 form-group clearfix">
-						<p class="tips">* 提示：图片尺寸640*400</p>
+						<p class="tips col-md-6" style="padding-left:0;">* 提示：图片尺寸640*400</p>
+                        <p class="tips col-md-6" style="padding-left:0;">* 提示：图片尺寸640*400</p>
 					</div>
+                    
 
                     <div class="form-group clearfix">
                         <div class="col-md-12">
@@ -389,5 +395,39 @@
 <style>
     .mx-datepicker{
         width:100%;
+    }
+    
+    label.a-upload {
+        display:block;
+        width:100%;
+        padding:0 15px;
+        height: 34px;
+        line-height: 34px;
+        position: relative;
+        cursor: pointer;
+        color: #888;
+        background: #fafafa;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        overflow: hidden;
+        display: inline-block;
+        *zoom: 1
+    }
+
+    .a-upload  input {
+        position: absolute;
+        font-size: 100px;
+        right: 0;
+        top: 0;
+        opacity: 0;
+        filter: alpha(opacity=0);
+        cursor: pointer
+    }
+
+    .a-upload:hover {
+        color: #444;
+        background: #eee;
+        border-color: #ccc;
+        text-decoration: none
     }
 </style>
