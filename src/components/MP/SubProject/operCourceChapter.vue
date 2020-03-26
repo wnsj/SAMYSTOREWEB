@@ -140,10 +140,10 @@
                     alert("章节名不能为空!")
                     return
                 }
-                if (this.isBlank(this.project.price) || this.project.price < 0) {
-                    alert("原价不能为空!")
-                    return
-                }
+//                 if (this.isBlank(this.project.price) || this.project.price < 0) {
+//                     alert("原价不能为空!")
+//                     return
+//                 }
                 if (this.isBlank(this.project.realPrice) || this.project.realPrice < 0) {
                      alert("现价不能为空!")
                      return
