@@ -199,6 +199,21 @@
 </script>
 
 <style>
+    .new-title{
+        position:relative;
+        height:34px;
+    }
+    .new-title h4{
+        height:34px;
+        line-height:34px;
+        font-size:16px;
+        font-weight:normal;
+    }
+    .new-title .btn{
+        position:absolute;
+        right:15px;
+        top:0px;
+    }
     .modal-content{
         width:600px;
         min-height:660px;
