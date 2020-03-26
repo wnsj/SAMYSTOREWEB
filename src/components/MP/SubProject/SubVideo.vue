@@ -212,7 +212,7 @@
                     isUse: 1,
                     isFree: 0,
                     couType: 1,
-                    couLength: 0,
+                    couLength: 3,
                     couExplain:'',
                     isGive:0,
                     freeDate:this.moment('','YYYY-MM-DD HH:mm:ss'),
@@ -226,6 +226,7 @@
         methods: {
             // Initialization projcet’s content
             initData(param, project) {
+				$('#videoContent').modal({backdrop: 'static', keyboard: false});
                 $("#file").val("");
                 $("#infoImgFile").val("");
                 $("#pingZhengDiv").remove();
@@ -242,7 +243,7 @@
                         isUse: 1,
                         isFree: 0,
                         couType: 1,
-                        couLength: 0,
+                        couLength: 3,
                         couExplain:'',
                         isGive:0,
                         freeDate:this.moment('','YYYY-MM-DD HH:mm:ss'),
