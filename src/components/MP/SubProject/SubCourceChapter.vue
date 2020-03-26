@@ -3,12 +3,14 @@
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" aria-hidden="true" class="close" v-on:click="closeCurrentPage()">×</button>
-            <h4 id="myModalLabel" class="modal-title">{{title}}课程章节管理</h4>
+             <h4 id="myModalLabel" class="modal-title">课程章节管理</h4>
         </div>
-
+        <div class="new-title">
+            <h4 id="myModalLabel" class="modal-title">{{title}}</h4>
+            <button type="button" class="btn btn-warning" @click="selectRule(1)">添加</button>
+        </div>
         <div class="modal-body  pos_r">
             <div class="tab-pane fade in active martop" id="basic">
-                <button type="button" class="btn btn-warning" @click="selectRule(1)">添加</button>
                 <!-- <button type="button" class="btn btn-warning" @click="selectRule(1)">批量上传</button> -->
                 <table class="table table-bordered table-hover" id="datatable">
                     <thead class="datathead">
@@ -74,7 +76,6 @@
     import dPicker from 'vue2-datepicker'
     import operCourceChapter from './operCourceChapter.vue'
     import PlayAV from '@/components/common/PlayAV.vue'
-
     export default {
         components: {
             dPicker,
@@ -84,7 +85,6 @@
         data() {
             return {
                 project: {
-
                 },
                 title: '',
                 couId: '',
@@ -94,6 +94,7 @@
         methods: {
             // Initialization projcet’s content
             initData(project) {
+				$('#courceChapter').modal({backdrop: 'static', keyboard: false});
                 //console.log("subc:"+project)
                 this.title = project.couName;
                 this.couId = project.couId;
@@ -124,7 +125,6 @@
                     console.log('课程信息请提交失败')
                 });
             },
-
             closeCurrentPage() {
                 $("#courceChapter").modal("hide")
             },
@@ -145,7 +145,6 @@
                 console.log(e.target.value)
                 console.log(e.target.files[0])
                 if (file == null || file == undefined) {
-
                 } else {
                     item.file = file;
                 }
