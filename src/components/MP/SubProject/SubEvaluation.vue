@@ -11,13 +11,13 @@
 					<div class="col-md-6 form-group clearfix">
 						<label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">测评标题</label><span class="sign-left">:</span>
 						<div class="col-md-8">
-							<input type="text" class="form-control" v-model="evaluation.title" placeholder="">
+							<input type="text" class="form-control" v-model="evaluation.title" placeholder="测评标题,限50个字">
 						</div>
 					</div>
 					<div class="col-md-6 form-group clearfix">
 						<label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">副标题</label><span class="sign-left">:</span>
 						<div class="col-md-8">
-							<input type="text" class="form-control" v-model="evaluation.subtitle" placeholder="">
+							<input type="text" class="form-control" v-model="evaluation.subtitle" placeholder="副标题,限50个字">
 						</div>
 					</div>
 					<div class="col-md-6 form-group clearfix">
@@ -29,46 +29,46 @@
 					<div class="col-md-6 form-group clearfix">
 						<label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">原价</label><span class="sign-left">:</span>
 						<div class="col-md-8">
-							<input type="text" class="form-control" v-model="evaluation.price" placeholder="">
+							<input type="text" class="form-control" v-model="evaluation.price" placeholder="数字,例 10.01">
 							<span class="pos-ab pos-tr">¥</span>
 						</div>
 					</div>
 					<div class="col-md-6 form-group clearfix">
 						<label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">现价</label><span class="sign-left">:</span>
 						<div class="col-md-8">
-							<input type="text" class="form-control" v-model="evaluation.newPrice" placeholder="">
+							<input type="text" class="form-control" v-model="evaluation.newPrice" placeholder="数字,例 10.01">
 							<span class="pos-ab pos-tr">¥</span>
 						</div>
 					</div>
 					<div class="col-md-6 form-group clearfix">
 						<label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">题数</label><span class="sign-left">:</span>
 						<div class="col-md-8">
-							<input type="text" class="form-control" v-model="evaluation.problemNum">
+							<input type="text" class="form-control" v-model="evaluation.problemNum" placeholder="数字,例 10">
 							<span class="pos-ab pos-tr">个</span>
 						</div>
 					</div>
 					<div class="col-md-6 form-group clearfix">
 						<label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">序号</label><span class="sign-left">:</span>
 						<div class="col-md-8">
-							<input type="text" class="form-control" v-model="evaluation.serialNumber">
+							<input type="text" class="form-control" v-model="evaluation.serialNumber" placeholder="数字,例 10">
 						</div>
 					</div>
 					<div class="col-md-6 form-group clearfix">
 						<label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">简介</label><span class="sign-left">:</span>
 						<div class="col-md-8">
-							<input type="text" class="form-control" v-model="evaluation.simpleIntroduce">
+							<input type="text" class="form-control" v-model="evaluation.simpleIntroduce" placeholder="限25个字">
 						</div>
 					</div>
 					<div class="col-md-6 form-group clearfix">
 						<label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">时长</label><span class="sign-left">:</span>
 						<div class="col-md-8">
-							<input type="text" class="form-control" v-model="evaluation.timeLength" placeholder="">
+							<input type="text" class="form-control" v-model="evaluation.timeLength"  placeholder="例:20~30分钟">
 						</div>
 					</div>
 					<div class="col-md-6 form-group clearfix">
 						<label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">已测试人数</label><span class="sign-left">:</span>
 						<div class="col-md-8">
-							<input type="text" class="form-control" v-model="evaluation.testNum" placeholder="">
+							<input type="text" class="form-control" v-model="evaluation.testNum" placeholder="数字,例 10">
 						</div>
 					</div>
 					<div class="col-md-6 form-group clearfix">
@@ -94,7 +94,7 @@
 					    <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">内容</label><span
 					        class="sign-left">:</span>
 					    <div class="col-md-8">
-					        <textarea style="height: 300px;width: 400px;" v-model="evaluation.introduce"></textarea>
+					        <textarea style="height: 300px;width: 400px;" v-model="evaluation.introduce" placeholder="内容简介"></textarea>
 					    </div>
 					</div>
 					<div class="form-group clearfix">
