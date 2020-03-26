@@ -94,6 +94,7 @@
         methods: {
             // Initialization projcet’s content
             initData(project) {
+				$('#courceChapter').modal({backdrop: 'static', keyboard: false});
                 //console.log("subc:"+project)
                 this.title = project.couName;
                 this.couId = project.couId;

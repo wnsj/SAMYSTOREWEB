@@ -114,6 +114,7 @@
         methods: {
             // Initialization projcet’s content
             initData(param, project) {
+				$('#operCourceChapterContent').modal({backdrop: 'static', keyboard: false});
                 $("#medFile").val('');
                 if (param == 'add') {
                     this.title = '新增'

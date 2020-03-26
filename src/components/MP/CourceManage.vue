@@ -313,6 +313,7 @@
             },
             openCourceChapter(item) {
                 //console.log("openCourceChapter" + item)
+				$('#courceChapter').modal({backdrop: 'static', keyboard: false});
                 $("#courceChapter").modal('show')
                 this.$refs.SubCourceChapterRef.initData(item)
             },
