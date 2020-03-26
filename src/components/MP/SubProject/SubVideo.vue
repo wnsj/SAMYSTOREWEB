@@ -287,10 +287,10 @@
 //                     return
 //                 }
                  if(typeof(this.project.price) == 'string'){
-                     if (this.isBlank(this.project.price)){
-                         alert("课时原价不能为空!")
-                         return
-                     }
+//                      if (this.isBlank(this.project.price)){
+//                          alert("课时原价不能为空!")
+//                          return
+//                      }
                      if(isNaN(this.project.price)){
                           alert("课时原价只能为数字!")
                           return
@@ -312,10 +312,10 @@
                  }
 
                 if(typeof(this.project.realPrice) == 'string'){
-                     if (this.isBlank(this.project.realPrice)){
-                        alert("课时现价不能为空")
-                        return
-                     }
+//                      if (this.isBlank(this.project.realPrice)){
+//                         alert("课时现价不能为空")
+//                         return
+//                      }
                      if(isNaN(this.project.realPrice)){
                           alert("课时现价只能为数字!")
                           return
