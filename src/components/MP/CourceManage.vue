@@ -99,6 +99,16 @@
                     </select>
                 </div>
             </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="padding: 0; line-height: 34px;">
+                    <p class="end-aline col-md-11 col-lg-11" style="padding-right:5px; padding-left:20px;">课程分类</p><span
+                        class="sign-left">:</span>
+                </div>
+                <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+                    <EvaluationType ref="EvaluationTypeRef" @etChange="etChange"></EvaluationType>
+                </div>
+            </div>
+
         </div>
         <div class="row" style="margin-top: 15px;padding-bottom:1.5%;">
             <button type="button" class="btn btn-warning pull-right m_r_10" style="margin-right:1.5%;" data-toggle="modal"
@@ -114,7 +124,6 @@
                             <tr>
                                 <th class="text-center">ID</th>
                                 <th class="text-center">课程名称</th>
-                                <th class="text-center">咨询师</th>
                                 <th class="text-center">原价</th>
                                 <th class="text-center">现价</th>
                                 <th class="text-center">课程类型</th>
@@ -130,7 +139,6 @@
                             <tr v-for="(item,index) in projectList" :key="index" v-on:dblclick="selectRule('3',item)">
                                 <td class="text-center" style="line-height:33px;">{{item.couId}}</td>
                                 <td class="text-center" style="line-height:33px;">{{item.couName}}</td>
-                                <td class="text-center" style="line-height:33px;">{{item.colName}}</td>
                                 <td class="text-center" style="line-height:33px;">{{item.price}}</td>
                                 <td class="text-center" style="line-height:33px;">{{item.realPrice}}</td>
                                 <td class="text-center" style="line-height:33px;">{{item.couType == '1' ? '音频':'视频'}}</td>
@@ -177,6 +185,7 @@
     import Counselor from '../common/Counselor.vue'
     import SubVideo from '../MP/SubProject/SubVideo.vue'
     import SubCourceChapter from '../MP/SubProject/SubCourceChapter.vue'
+    import EvaluationType from '@/components/common/EvaluationType.vue'
     import {
         init
     } from '@/../static/js/common.js'
@@ -186,7 +195,8 @@
             Counselor,
             SubVideo,
             Paging,
-            SubCourceChapter
+            SubCourceChapter,
+            EvaluationType
         },
         data() {
             return {
@@ -198,6 +208,7 @@
                 isFree: '',
                 couType: '',
                 isGive: '',
+                ttId: '',
                 //分页需要的数据
                 pages: '', //总页数
                 current: 1, //当前页码
@@ -248,6 +259,7 @@
                         isFree: this.isFree,
                         couType: this.couType,
                         isGive: this.isGive,
+                        ttId: this.ttId,
                         page: page.toString(),
                         pageSize: this.pageSize
                     },
@@ -304,6 +316,10 @@
                 //console.log("openCourceChapter" + item)
                 $("#courceChapter").modal('show')
                 this.$refs.SubCourceChapterRef.initData(item)
+            },
+            etChange(retObj) {
+                if (retObj == null) this.ttId = '';
+                else this.ttId = retObj.ttId;
             }
         },
         mounted() {

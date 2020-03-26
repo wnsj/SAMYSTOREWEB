@@ -27,11 +27,12 @@
 				this.$emit('etChange', this.etObj)
 			},
 			setEt: function(proId) {
-				this.proId = proId
+				this.ttId = proId
 			},
 			//添加前缀的部门名字兑换原来的名字
 			exchangeEtName: function(param) {
 				var et = {}
+                if(param == 0) return null;
 				for (var i = 0; i < this.etList.length; i++) {
 					et = this.etList[i];
 					if (et.ttId == param) {
@@ -55,9 +56,9 @@
 				}).then((response) => {
 					var res = response.data
 					if (res.retCode == '0000') {
-						
+
 						this.etList = res.retData
-						
+
 					} else {
 						alert(res.retMsg)
 					}
