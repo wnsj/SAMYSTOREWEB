@@ -63,8 +63,9 @@
                         <label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">简介</label><span
                             class="sign-left">:</span>
                     </div>
-                    <div class="col-md-12 form-group clearfix">
-                        <textarea class="form-control new-style" v-model="project.ccExplain" />
+                    <div class="col-md-12 form-group clearfix new-style-box">
+                        <textarea class="form-control new-style" maxlength="60" @input="descInput" v-model="project.ccExplain" />
+                        <h6><i>{{project.remnant}}</i>/60</h6>
                     </div>
                     <div class="col-md-6 form-group clearfix">
                         <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">上传文件</label><span
@@ -106,9 +107,10 @@
                     ccExplain:'',
                     price:'',
                     realPrice:'',
-                    isFree:2
+                    isFree:2,
+                    remnant:60
                 },
-                title: '',
+                title: ''
             };
         },
         methods: {
@@ -131,7 +133,13 @@
                 } else if (param == 'modify') {
                     this.title = '修改'
                     Object.assign(this.project, project)
+                    this.descInput();
                 }
+            },
+            descInput(){
+                console.log('键盘：111')
+                var txtVal = this.project.ccExplain.length;
+                this.project.remnant = txtVal;
             },
             //the event of addtional button
             certainAction() {
@@ -198,6 +206,7 @@
                     if (res.retCode == '0000') {
                         alert(res.retMsg)
                         this.$emit("retBack")
+                        
                     } else {
                         alert(res.retMsg)
                     }
@@ -209,13 +218,31 @@
                 $("#operCourceChapterContent").modal("hide")
                 //console.log('关闭添加课程界面')
             },
-        }
+            
+        },
+        created() {
+          
+        },
+       
+
     }
 </script>
 
 <style>
-    .new-style{
+    .new-style-box{
+        position:relative;
+        height:80px;
+    }
+    .new-style-box .new-style{
+        height:100%;
         resize: none;
 		outline:none;
+    }
+    .new-style-box h6{
+        position: absolute;
+		right: 20px;
+		bottom: 5px;
+		font-weight: normal;
+		color: #666;
     }
 </style>
