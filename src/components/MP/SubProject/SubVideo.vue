@@ -38,14 +38,14 @@
                             <span class="pos-ab pos-tr">¥</span>
                         </div>
                     </div>
-                    <div class="col-md-6 form-group clearfix">
+                    <!-- <div class="col-md-6 form-group clearfix">
                         <label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">课时</label><span
                             class="sign-left">:</span>
                         <div class="col-md-8">
                             <input type="text" class="form-control" v-model="project.couLength">
                             <span class="pos-ab pos-tr">H</span>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="col-md-6 form-group clearfix">
                         <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">课程类型</label><span
                             class="sign-left">:</span>
@@ -95,13 +95,13 @@
                             <dPicker v-model="project.freeDate" type="datetime" value-type="format" format="YYYY-MM-DD HH:mm:ss"></dPicker>
                         </div>
                     </div>
-                    <div class="col-md-6 form-group clearfix">
+                    <!-- <div class="col-md-6 form-group clearfix">
                         <label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">课程简介</label><span
                             class="sign-left">:</span>
                         <div class="col-md-8">
                             <textarea class="form-control" v-model="project.couExplain" />
                             </div>
-                    </div>
+                    </div> -->
                      <div class="col-md-6 form-group clearfix">
                         <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">签到赠送</label><span
                             class="sign-left">:</span>
@@ -113,13 +113,13 @@
                         </div>
                     </div>
 
-                     <div class="col-md-6 form-group clearfix">
+                     <!-- <div class="col-md-6 form-group clearfix">
                         <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">参加人数</label><span
                             class="sign-left">:</span>
                         <div class="col-md-8">
                            <input type="text" class="form-control" v-model="project.joinCount" placeholder="">
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="col-md-6 form-group clearfix">
                         <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">课程分类</label><span
@@ -286,18 +286,81 @@
 //                     alert("咨询师不能为空")
 //                     return
 //                 }
-                if (this.isBlank(this.project.price) || this.project.price < 0) {
-                    alert("课时原价不能为空")
-                    return
+                 if(typeof(this.project.price) == 'string'){
+                     if (this.isBlank(this.project.price)){
+                         alert("课时原价不能为空!")
+                         return
+                     }
+                     if(isNaN(this.project.price)){
+                          alert("课时原价只能为数字!")
+                          return
+                     }else{
+                         if (this.project.price < 0) {
+                             alert("课时原价不能小于0!")
+                             return
+                         }
+                     }
+                 }else if(typeof(this.project.price) == 'number'){
+                     if(isNaN(this.project.price)){
+                          alert("课时原价只能为数字!")
+                          return
+                     }
+                     if (this.project.price < 0) {
+                         alert("课时原价不能小于0!")
+                         return
+                     }
+                 }
+
+                if(typeof(this.project.realPrice) == 'string'){
+                     if (this.isBlank(this.project.realPrice)){
+                        alert("课时现价不能为空")
+                        return
+                     }
+                     if(isNaN(this.project.realPrice)){
+                          alert("课时现价只能为数字!")
+                          return
+                     }else{
+                          if (this.project.realPrice < 0) {
+                              alert("课时现价不能小于0!")
+                              return
+                         }
+                     }
+                }else if(typeof(this.project.realPrice) == 'number'){
+                    if(isNaN(this.project.realPrice)){
+                         alert("课时现价只能为数字!")
+                         return
+                    }
+                    if (this.project.realPrice < 0) {
+                         alert("课时现价不能小于0!")
+                         return
+                    }
                 }
-                if (this.isBlank(this.project.realPrice) || this.project.realPrice < 0) {
-                    alert("课时现价不能为空")
-                    return
+                if(typeof(this.project.couLength) == 'string'){
+                    if (this.isBlank(this.project.couLength)){
+                       alert("课时不能为空")
+                       return
+                    }
+                    if(isNaN(this.project.couLength)){
+                         alert("课时只能为数字!")
+                         return
+                    }else{
+                        if (this.project.couLength < 1) {
+                             alert("课时不能小于1!")
+                             return
+                        }
+                    }
+                }else if(typeof(this.project.couLength) == 'number'){
+                    if(isNaN(this.project.couLength)){
+                         alert("课时只能为数字!")
+                         return
+                    }else{
+                        if (this.project.couLength < 1) {
+                             alert("课时不能小于1!")
+                             return
+                        }
+                    }
                 }
-                if (this.project.couLength <= 0) {
-                    alert("课时不能为空")
-                    return
-                }
+
                 if(this.project.isFree == 1 && this.isBlank(this.project.freeDate)){
                     alert("限时免费课程到期时间不能为空!");
                     return
@@ -443,7 +506,7 @@
 
 <style>
     .mx-datepicker{
-        width:100%;
+        width:100% !important;
     }
     
     label.a-upload {
