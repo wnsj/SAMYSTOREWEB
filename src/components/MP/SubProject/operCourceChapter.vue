@@ -52,19 +52,19 @@
                             </select>
                         </div>
                     </div> -->
-                    <div class="col-md-6 form-group clearfix">
+                    <div class="col-md-6 form-group clearfix" style="margin-right:50%;">
                         <label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">序号</label><span
                             class="sign-left">:</span>
                         <div class="col-md-8">
                             <input type="text" class="form-control" v-model="project.ccSort" placeholder="">
                         </div>
                     </div>
-                    <div class="col-md-6 form-group clearfix">
+                    <div class="col-md-6 form-group clearfix" style="margin-bottom:0;">
                         <label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">简介</label><span
                             class="sign-left">:</span>
-                        <div class="col-md-8">
-                            <textarea class="form-control" v-model="project.ccExplain" />
-                            </div>
+                    </div>
+                    <div class="col-md-12 form-group clearfix">
+                        <textarea class="form-control new-style" v-model="project.ccExplain" />
                     </div>
                     <div class="col-md-6 form-group clearfix">
                         <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">上传文件</label><span
@@ -214,5 +214,8 @@
 </script>
 
 <style>
-
+    .new-style{
+        resize: none;
+		outline:none;
+    }
 </style>
