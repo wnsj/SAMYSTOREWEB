@@ -215,7 +215,7 @@
     .new-title .btn{
         position:absolute;
         right:15px;
-        top:0;
+        top:0px;
     }
     .modal-content{
         width:600px;
