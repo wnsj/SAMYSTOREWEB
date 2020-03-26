@@ -112,6 +112,32 @@
                             </select>
                         </div>
                     </div>
+
+                     <div class="col-md-6 form-group clearfix">
+                        <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">参加人数</label><span
+                            class="sign-left">:</span>
+                        <div class="col-md-8">
+                           <input type="text" class="form-control" v-model="project.joinCount" placeholder="">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 form-group clearfix">
+                        <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">课程分类</label><span
+                            class="sign-left">:</span>
+                        <div class="col-md-8">
+                           <EvaluationType ref="EvaluationTypeRef" @etChange="etChange"></EvaluationType>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 form-group clearfix">
+                        <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">排序</label><span
+                            class="sign-left">:</span>
+                        <div class="col-md-8">
+                           <input type="text" class="form-control" v-model="project.sort" placeholder="">
+                        </div>
+                    </div>
+
+
                     <div class="col-md-6 form-group clearfix">
                         <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">课程图</label><span
                             class="sign-left">:</span>
@@ -129,15 +155,6 @@
                             <div id="infoImgOutDiv"></div>
                         </div>
                     </div>
-
-                     <div class="col-md-6 form-group clearfix">
-                        <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">参加人数</label><span
-                            class="sign-left">:</span>
-                        <div class="col-md-8">
-                           <input type="text" class="form-control" v-model="project.joinCount" placeholder="">
-                        </div>
-                    </div>
-
 
 
 					<div class="col-md-12 form-group clearfix">
@@ -161,10 +178,12 @@
 <script>
     import dPicker from 'vue2-datepicker'
     import Counselor from '@/components/common/Counselor.vue'
+    import EvaluationType from '@/components/common/EvaluationType.vue'
     export default {
         components: {
             dPicker,
             Counselor,
+            EvaluationType
         },
         data() {
             return {
@@ -181,7 +200,9 @@
                     couExplain:'',
                     isGive:0,
                     freeDate:this.moment('','YYYY-MM-DD HH:mm:ss'),
-                    joinCount:0
+                    joinCount:0,
+                    ttId:'',
+                    sort:0,
                 },
                 title: ''
             };
@@ -209,15 +230,17 @@
                         couExplain:'',
                         isGive:0,
                         freeDate:this.moment('','YYYY-MM-DD HH:mm:ss'),
-                        joinCount:0
+                        joinCount:0,
+                        ttId:'',
+                        sort:0,
                     }
-                    // this.$refs.counselorRef.setAtId(0);
+                     this.$refs.EvaluationTypeRef.setEt(0);
                 } else if (param == 'modify') {
                     //console.log('Initialization project’s content, which modifies project')
                     this.title = '修改'
                     Object.assign(this.project, project)
                     this.colId = project.colId;
-                    // this.$refs.counselorRef.setAtId(project.colId);
+                    this.$refs.EvaluationTypeRef.setEt(this.project.ttId);
                     if (!this.isBlank(project.couImg)) {
                         var dataUrl = this.addTimesParam(this.url + project.couImg);
                         if ($("#pingZhengDiv").length <= 0) $("#pingZheng").html(
@@ -242,7 +265,7 @@
                     alert("课程名称不能为空")
                     return
                 }
-				
+
 //                 if (this.isBlank(this.colId)) {
 //                     alert("咨询师不能为空")
 //                     return
@@ -257,6 +280,14 @@
                 }
                 if (this.project.couLength <= 0) {
                     alert("课时不能为空")
+                    return
+                }
+                if(this.project.isFree == 1 && this.isBlank(this.project.freeDate)){
+                    alert("限时免费课程到期时间不能为空!");
+                    return
+                }
+                if(this.isBlank(this.project.ttId)){
+                    alert("课程分类不能为空!")
                     return
                 }
                 var fd = new FormData();
@@ -280,6 +311,8 @@
                 fd.append("couType", this.project.couType);
                 fd.append("couExplain",this.project.couExplain);
                 fd.append("isGive",this.project.isGive);
+                fd.append("sort",this.project.sort);
+                fd.append("ttId",this.project.ttId);
                 if(!this.isBlank(this.project.freeDate)){
                     fd.append("freeDate", this.project.freeDate)
                 }
@@ -288,6 +321,7 @@
                 if (file != null) {
                     fd.append("file", file);
                 }
+
                 var infoFile = $("#infoImgFile")[0].files[0];
                 if(!this.isBlank(infoFile)){
                     fd.append("infoFile",infoFile);
@@ -382,6 +416,10 @@
                         $("#infoImg").attr("src", dataUrl);
                     }
                 }
+            },
+            etChange(retObj){
+                if(retObj == null)this.project.ttId = '';
+                else this.project.ttId = retObj.ttId;
             }
         }
     }
