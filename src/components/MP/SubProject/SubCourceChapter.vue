@@ -3,14 +3,12 @@
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" aria-hidden="true" class="close" v-on:click="closeCurrentPage()">×</button>
-             <h4 id="myModalLabel" class="modal-title">课程章节管理</h4>
+            <h4 id="myModalLabel" class="modal-title">{{title}}课程章节管理</h4>
         </div>
-        <div class="new-title">
-            <h4 id="myModalLabel" class="modal-title">{{title}}</h4>
-            <button type="button" class="btn btn-warning" @click="selectRule(1)">添加</button>
-        </div>
+
         <div class="modal-body  pos_r">
             <div class="tab-pane fade in active martop" id="basic">
+                <button type="button" class="btn btn-warning" @click="selectRule(1)">添加</button>
                 <!-- <button type="button" class="btn btn-warning" @click="selectRule(1)">批量上传</button> -->
                 <table class="table table-bordered table-hover" id="datatable">
                     <thead class="datathead">
@@ -96,7 +94,6 @@
         methods: {
             // Initialization projcet’s content
             initData(project) {
-				$('#courceChapter').modal({backdrop: 'static', keyboard: false});
                 //console.log("subc:"+project)
                 this.title = project.couName;
                 this.couId = project.couId;
@@ -202,21 +199,6 @@
 </script>
 
 <style>
-    .new-title{
-        position:relative;
-        height:34px;
-    }
-    .new-title h4{
-        height:34px;
-        line-height:34px;
-        font-size:16px;
-        font-weight:normal;
-    }
-    .new-title .btn{
-        position:absolute;
-        right:15px;
-        top:0;
-    }
     .modal-content{
         width:600px;
         min-height:660px;
