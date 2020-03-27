@@ -369,14 +369,20 @@
         background:#f9f9f9;
     }
     .page{
-        display:flex;
-        justify-content:space-between;
+		position:relative;
+		width:100%;
         margin-top:15px;
-     }
-     .page .tips{
-         min-width:200px;
-         margin-top:0;
-         height:36px;
-         line-height:36px;
-     }
+    }
+    .page .tips{
+		position:absolute;
+		left:0;
+		top:0;
+		display:inline;
+        height:36px;
+        line-height:36px;
+        margin-top:0;
+    }
+    #app .page-bar ul{
+        min-width:auto;
+    }
 </style>

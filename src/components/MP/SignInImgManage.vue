@@ -5,7 +5,7 @@
         <div class="col-md-12 col-lg-12 main-title">
             <h1 class="titleCss">签到图片管理</h1>
         </div>
-        <div class="row" style="margin-top: 40px;">
+        <div class="row newRow">
             <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
                 <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="padding: 0; line-height: 34px;">
                     <p class="end-aline col-md-11 col-lg-11" style="padding-right:5px; padding-left:20px;">开始时间</p><span
@@ -28,7 +28,7 @@
             </div>
 
         </div>
-        <div class="row" style="margin-top: 15px;padding-bottom:1.5%;">
+        <div class="row  newRow" style="padding-bottom:15px;">
             <button type="button" class="btn btn-warning pull-right m_r_10" style="margin-right:1.5%;" data-toggle="modal"
                 v-on:click="selectRule('1')">添加</button>
             <button type="button" class="btn btn-primary pull-right m_r_10" style="margin-right:1.5%;" data-toggle="modal"
@@ -61,12 +61,10 @@
                 </div>
                 <!--分页插件-->
                 <div class="page">
+                    <p class="tips">* 双击单行，可对当前数据进行修改</p>
                     <!--这里时通过props传值到子级，并有一个回调change的函数，来获取自己传值到父级的值-->
                     <paging ref="paging" @change="pageChange"></paging>
                 </div>
-            </div>
-            <div class="col-md-12 col-lg-12 posAb">
-                <p class="tips">* 双击单行，可对当前数据进行修改</p>
             </div>
         </div>
         <div class="row row_edit">
@@ -338,5 +336,30 @@
         #fHeader {
             display: none
         }
+    }
+    .newRow{
+        margin-top:15px;
+        margin-left:0;
+        margin-right:0;
+    }
+    .table-bg{
+        background:#f9f9f9;
+    }
+    .page{
+		position:relative;
+		width:100%;
+        margin-top:15px;
+    }
+    .page .tips{
+		position:absolute;
+		left:0;
+		top:0;
+		display:inline;
+        height:36px;
+        line-height:36px;
+		margin-top:0;
+    }
+    #app .page .ul{
+        min-width:auto;
     }
 </style>
