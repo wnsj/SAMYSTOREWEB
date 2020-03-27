@@ -76,7 +76,6 @@
     import dPicker from 'vue2-datepicker'
     import operCourceChapter from './operCourceChapter.vue'
     import PlayAV from '@/components/common/PlayAV.vue'
-
     export default {
         components: {
             dPicker,
@@ -86,7 +85,6 @@
         data() {
             return {
                 project: {
-
                 },
                 title: '',
                 couId: '',
@@ -127,7 +125,6 @@
                     console.log('课程信息请提交失败')
                 });
             },
-
             closeCurrentPage() {
                 $("#courceChapter").modal("hide")
             },
@@ -148,7 +145,6 @@
                 console.log(e.target.value)
                 console.log(e.target.files[0])
                 if (file == null || file == undefined) {
-
                 } else {
                     item.file = file;
                 }

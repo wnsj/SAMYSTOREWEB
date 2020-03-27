@@ -12,7 +12,7 @@
                         <label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">课程名称</label><span
                             class="sign-left">:</span>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" v-model="project.couName" placeholder="">
+                            <input type="text" class="form-control" v-model="project.couName" placeholder="字符,限制20个汉字">
                         </div>
                     </div>
                     <!-- <div class="col-md-6 form-group clearfix">
@@ -26,7 +26,7 @@
                         <label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">原价</label><span
                             class="sign-left">:</span>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" v-model="project.price" placeholder="">
+                            <input type="text" class="form-control" v-model="project.price" placeholder="数字,例 10.01">
                             <span class="pos-ab pos-tr">¥</span>
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                         <label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">现价</label><span
                             class="sign-left">:</span>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" v-model="project.realPrice" placeholder="">
+                            <input type="text" class="form-control" v-model="project.realPrice" placeholder="数字,例 10.01">
                             <span class="pos-ab pos-tr">¥</span>
                         </div>
                     </div>
@@ -133,7 +133,7 @@
                         <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">排序</label><span
                             class="sign-left">:</span>
                         <div class="col-md-8">
-                           <input type="text" class="form-control" v-model="project.sort" placeholder="">
+                           <input type="text" class="form-control" v-model="project.sort" placeholder="整数,例:1">
                         </div>
                     </div>
 
@@ -142,7 +142,7 @@
                         <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">参加人数</label><span
                             class="sign-left">:</span>
                         <div class="col-md-8">
-                           <input type="text" class="form-control" v-model="project.joinCount" placeholder="">
+                           <input type="text" class="form-control" v-model="project.joinCount" placeholder="整数,例:1">
                         </div>
                     </div>
                     
