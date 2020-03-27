@@ -45,6 +45,7 @@
                                 <th class="text-center">作者</th>
                                 <th class="text-center">内容</th>
                                 <th class="text-center">创建时间</th>
+								<th class="text-center">修改</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -52,10 +53,10 @@
                                 <td class="text-center" style="line-height:33px;">{{item.artId}}</td>
                                 <td class="text-center" style="line-height:33px;">{{item.title}}</td>
                                 <td class="text-center" style="line-height:33px;">{{item.author}}</td>
-                                <td class="text-center" style="line-height:33px;">{{item.content}}</td>
+                                <td class="text-center" style="line-height:33px;"></td>
                                 <td class="text-center" style="line-height:33px;">{{item.createDate}}</td>
-                                <!-- <td class="text-center" style="line-height:33px;"><button type="button" class="btn btn-warning"
-                                        v-on:click="selectRule('3',item)">修改</button></td> -->
+                                <td class="text-center" style="line-height:33px;"><button type="button" class="btn btn-warning"
+                                        v-on:click="selectRule('3',item)">修改</button></td>
                             </tr>
                         </tbody>
                     </table>

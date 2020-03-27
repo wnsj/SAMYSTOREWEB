@@ -85,7 +85,7 @@
                                 <router-link to="/MP/Project"><i class="fa" aria-hidden="true">课程管理</i></router-link>
                             </dd>
                         </dl> -->
-                        <dl v-bind:class="{h25:bool4}">
+                        <dl v-bind:class="{h10:bool4}">
                             <dt @click="onShow(3)" v-bind:class="{'li-active':bool4}">
                                 <i class="fa" v-bind:class="{'fa-folder-open':bool4,'fa-folder':!bool4}" aria-hidden="true">
                                     编辑管理
@@ -113,9 +113,9 @@
                             <dd @click="addCheck('SignInImgManage')" v-bind:class="{'li-active':onString=='SignInImgManage'}">
                                 <router-link to="/MP/SignInImgManage"><i class="fa" aria-hidden="true">签到图片管理</i></router-link>
                             </dd>
-                            <dd @click="addCheck('SummerNote')" v-bind:class="{'li-active':onString=='SummerNote'}">
+                            <!-- <dd @click="addCheck('SummerNote')" v-bind:class="{'li-active':onString=='SummerNote'}">
                                 <router-link to="/SummerNote"><i class="fa" aria-hidden="true">排版</i></router-link>
-                            </dd>
+                            </dd> -->
                         </dl>
 						<dl v-bind:class="{h5:bool3}">
 						    <dt @click="onShow(2)" v-bind:class="{'li-active':bool3}">
@@ -145,7 +145,7 @@
 						        <router-link to="/MP/Project"><i class="fa" aria-hidden="true">课程管理</i></router-link>
 						    </dd> -->
 						</dl>
-                        <dl v-bind:class="{h5:bool5}">
+                        <!-- <dl v-bind:class="{h5:bool5}">
                             <dt @click="onShow(4)" v-bind:class="{'li-active':bool5}">
                                 <i class="fa" v-bind:class="{'fa-folder-open':bool5,'fa-folder':!bool5}" aria-hidden="true">
                                     测试
@@ -154,7 +154,7 @@
                             <dd @click="addCheck('test')" v-bind:class="{'li-active':onString=='test'}">
                                 <router-link to="/MP/test"><i class="fa" aria-hidden="true">测试文本编辑</i></router-link>
                             </dd>
-                        </dl>
+                        </dl> -->
 
                         <!-- <dl>
                             <dt v-on:click="selectRule('newtree')" v-bind:class="{'li-active':onString == 'newtree'}">

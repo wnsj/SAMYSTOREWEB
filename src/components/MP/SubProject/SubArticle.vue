@@ -31,14 +31,6 @@
 					</div>
                     -->
 
-
-                    <div class="col-md-6 form-group clearfix">
-                        <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">内容</label><span
-                            class="sign-left">:</span>
-                        <div class="col-md-8">
-                           <textarea v-model="project.content"></textarea>
-                        </div>
-                    </div>
                     <div class="col-md-6 form-group clearfix">
                         <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">图片</label><span
                             class="sign-left">:</span>
@@ -47,7 +39,14 @@
                             <div id="artImgOutDiv"></div>
                         </div>
                     </div>
-
+					<div class="col-md-12 form-group clearfix">
+					    <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">内容</label><span
+					        class="sign-left">:</span>
+					</div>
+					<div class="col-md-12 form-group clearfix">
+					    <SummerNote ref="sn"></SummerNote>
+					</div>
+					
                     <div class="form-group clearfix">
                         <div class="col-md-12">
                             <button type="button" class="btn btn-warning pull-right m_r_10" style="margin-right:1.5%;"
@@ -96,7 +95,7 @@
         methods: {
             // Initialization projcet’s content
             initData(param, project) {
-                //this.$refs.SummerNoteRef.resetData();
+                $('#articleContent').modal({backdrop: 'static', keyboard: false});
                 this.project = {
                     artId: '',
                     atId: '',
@@ -122,6 +121,7 @@
                     this.title = '修改文章'
                     Object.assign(this.project, project)
                     this.$refs.atRef.setAtId(project.atId);
+					this.$refs.sn.setData(project.content);
                     if (!this.isBlank(project.artImg)) {
                         var dataUrl = this.addTimesParam(this.url + project.artImg);
                         //console.log("dataUrl:" + dataUrl)
@@ -135,7 +135,7 @@
             //the event of addtional button
             certainAction() {
                 //console.log('the event of addtional button')
-
+				this.project.content = this.$refs.sn.getData()
                 if (this.isBlank(this.project.title)) {
                     alert("标题不能为空!")
                     return
@@ -144,6 +144,11 @@
                     alert("分类不能为空")
                     return
                 }
+				if(this.isBlank(this.project.content)){
+					alert("文章内容不能为空")
+					return
+				}
+				
                 var fd = new FormData();
                 var file = $("#artImgFile")[0].files[0];
                 fd.append("title", this.project.title);
