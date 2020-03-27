@@ -16,11 +16,11 @@ function boxheight() {
 	document.getElementById("Odiv").style.height = winHeight + "px";
 	document.getElementById("Adiv").style.height = winHeight + "px";
 	
-	var aWraper = document.getElementsByClassName("wraper");
-	var len = aWraper.length;
-	for (var i=0;i<len;i++){
-		aWraper[i].style.height = winHeight*590/767 + "px";
-	} 
+	var aWraper = document.getElementsByClassName("wraper")[0];
+	aWraper.style.height = winHeight*600/789 + "px";
+	var oTabel = document.getElementsByClassName("pre-scrollable")[0];
+	oTabel.style.maxHeight = (winHeight*600/789 - 240)+'px';
+
 }
 
 function setClick() {
