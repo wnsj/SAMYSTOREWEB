@@ -5,7 +5,7 @@
         <div class="col-md-12 col-lg-12 main-title">
             <h1 class="titleCss">文章管理</h1>
         </div>
-        <div class="row" style="margin-top: 40px;">
+        <div class="row newRow">
 
             <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
                 <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="padding: 0; line-height: 34px;">
@@ -27,7 +27,7 @@
                 </div>
             </div>
         </div>
-        <div class="row" style="margin-top: 15px;padding-bottom:1.5%;">
+        <div class="row newRow" style="padding-bottom:15px;">
             <button type="button" class="btn btn-warning pull-right m_r_10" style="margin-right:1.5%;" data-toggle="modal"
                 v-on:click="selectRule('1')">添加</button>
             <button type="button" class="btn btn-primary pull-right m_r_10" style="margin-right:1.5%;" data-toggle="modal"
@@ -35,7 +35,7 @@
         </div>
         <div class="">
             <div class="col-md-12 col-lg-12">
-                <div class="table-responsive pre-scrollable">
+                <div class="table-responsive pre-scrollable table-bg">
                     <table class="table table-bordered table-hover" id="datatable">
 
                         <thead class="datathead">
@@ -63,12 +63,10 @@
                 </div>
                 <!--分页插件-->
                 <div class="page">
+                    <p class="tips">* 双击单行，可对当前数据进行修改</p>
                     <!--这里时通过props传值到子级，并有一个回调change的函数，来获取自己传值到父级的值-->
                     <paging ref="paging" @change="pageChange"></paging>
                 </div>
-            </div>
-            <div class="col-md-12 col-lg-12 posAb">
-                <p class="tips">* 双击单行，可对当前数据进行修改</p>
             </div>
         </div>
         <div class="row row_edit">
