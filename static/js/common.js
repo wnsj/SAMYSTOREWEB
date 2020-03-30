@@ -19,7 +19,8 @@ function boxheight() {
 	var aWraper = document.getElementsByClassName("wraper")[0];
 	aWraper.style.height = winHeight*600/789 + "px";
 	var oTabel = document.getElementsByClassName("pre-scrollable")[0];
-	oTabel.style.maxHeight = (winHeight*600/789 - 240)+'px';
+	var len = document.getElementsByClassName("newRow").length;
+	oTabel.style.maxHeight = (winHeight*600/789 - 100-50*len)+'px';
 
 }
 

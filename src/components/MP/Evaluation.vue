@@ -5,7 +5,7 @@
 		<div class="col-md-12 col-lg-12 main-title">
 			<h1 class="titleCss">测评管理</h1>
 		</div>
-		<div class="row newRow">
+		<div class="row newRow" style="padding-bottom:15px;">
 			<!-- <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" v-show="accountType==true">
 				<div class="col-md-5 col-lg-5 text-right" style="padding: 0; line-height: 34px;">
 					<p class="end-aline col-md-11 col-lg-11" style="padding-right:5px; padding-left:20px;">门店</p><span class="sign-left">:</span>
@@ -40,8 +40,6 @@
 					</select>
 				</div>
 			</div> -->
-		</div>
-		<div class="row newRow" style="padding-bottom:15px;">
 			<button type="button" class="btn btn-warning pull-right m_r_10" style="margin-right:1.5%;" data-toggle="modal"
 			 v-on:click="selectRule('1')">添加</button>
 			<button type="button" class="btn btn-primary pull-right m_r_10" style="margin-right:1.5%;" data-toggle="modal"
