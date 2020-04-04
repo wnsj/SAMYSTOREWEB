@@ -145,7 +145,7 @@
 						        <router-link to="/MP/Project"><i class="fa" aria-hidden="true">课程管理</i></router-link>
 						    </dd> -->
 						</dl>
-                        <!-- <dl v-bind:class="{h5:bool5}">
+                        <dl v-bind:class="{h5:bool5}">
                             <dt @click="onShow(4)" v-bind:class="{'li-active':bool5}">
                                 <i class="fa" v-bind:class="{'fa-folder-open':bool5,'fa-folder':!bool5}" aria-hidden="true">
                                     测试
@@ -154,7 +154,7 @@
                             <dd @click="addCheck('test')" v-bind:class="{'li-active':onString=='test'}">
                                 <router-link to="/MP/test"><i class="fa" aria-hidden="true">测试文本编辑</i></router-link>
                             </dd>
-                        </dl> -->
+                        </dl>
 
                         <!-- <dl>
                             <dt v-on:click="selectRule('newtree')" v-bind:class="{'li-active':onString == 'newtree'}">
