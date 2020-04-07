@@ -16,6 +16,7 @@ import SignInImgManage from '../components/MP/SignInImgManage.vue'
 import EvaluationType from '../components/MP/EvaluationType.vue'
 import SummerNote from '@/components/common/SummerNote.vue'
 
+import ArticleTheme from '../components/MP/ArticleTheme.vue'
 
 Vue.use(Router)
 
@@ -90,6 +91,11 @@ export default new Router({
                     path: '/SummerNote',
                     name: 'SummerNote',
                     component: SummerNote,
+                },
+                {
+                    path: '/ArticleTheme',
+                    name: 'ArticleTheme',
+                    component: ArticleTheme,
                 }
             ],
             redirect: '/MP/CourceManage'
