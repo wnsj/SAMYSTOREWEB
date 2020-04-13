@@ -154,9 +154,9 @@
                                     测试
                                 </i>
                             </dt>
-                            <dd @click="addCheck('test')" v-bind:class="{'li-active':onString=='test'}">
+                            <!-- <dd @click="addCheck('test')" v-bind:class="{'li-active':onString=='test'}">
                                 <router-link to="/MP/test"><i class="fa" aria-hidden="true">测试文本编辑</i></router-link>
-                            </dd>
+                            </dd> -->
                         </dl>
 
                         <!-- <dl>

@@ -7,7 +7,7 @@ import Audio from '../components/MP/Audio.vue'
 import Article from '../components/MP/Article.vue'
 import Evaluation from '../components/MP/Evaluation.vue'
 import Video from '../components/MP/Video.vue'
-import test from '../components/MP/test.vue'
+// import test from '../components/MP/test.vue'
 import newtree from '../components/MP/newtree.vue'
 import CourceManage from '../components/MP/CourceManage.vue'
 import PlayAV from '@/components/common/PlayAV.vue'
@@ -62,11 +62,11 @@ export default new Router({
                     name: 'CourceManage',
                     component: CourceManage,
                 },
-                {
-                    path: '/MP/test',
-                    name: 'test',
-                    component: test,
-                },
+//                 {
+//                     path: '/MP/test',
+//                     name: 'test',
+//                     component: test,
+//                 },
                 {
                     path: '/MP/newtree',
                     name: 'newtree',

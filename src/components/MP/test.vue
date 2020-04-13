@@ -238,12 +238,34 @@
                     console.log('会员账目查询失败')
                 });
             },
+			conditionCheck1: function() {
+			    
+			
+			    var url = 'http://api.map.baidu.com/place/v2/search?query=学校&location=39.1439299,117.21081309&radius=2000&output=json&ak=w0PqRZaf0812BvdqcDKHZWpT''
+			    this.$ajax({
+			        method: 'GET',
+			        url: url,
+			        headers: {
+			            'Content-Type': this.contentType,
+			            'Access-Token': this.accessToken
+			        },
+			        data: {},
+			        dataType: 'json',
+			    }).then((response) => {
+			        var res = response.data
+			        console.log(res)
+			        
+			    }).catch((error) => {
+			        console.log('CESHI')
+			    });
+			},
         },
         mounted() {
             init();
         },
         created() {
             this.conditionCheck(1);
+			this.conditionCheck1();
 
         },
 
