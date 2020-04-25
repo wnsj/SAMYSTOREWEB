@@ -6,6 +6,8 @@ import MainPage from '@/components/MainPage.vue'
 import Audio from '../components/MP/Audio.vue'
 import Article from '../components/MP/Article.vue'
 import Evaluation from '../components/MP/Evaluation.vue'
+import Counselor from '../components/MP/Counselor.vue'
+import CounselorType from '../components/MP/CounselorType.vue'
 import Video from '../components/MP/Video.vue'
 // import test from '../components/MP/test.vue'
 import newtree from '../components/MP/newtree.vue'
@@ -62,6 +64,16 @@ export default new Router({
                     name: 'CourceManage',
                     component: CourceManage,
                 },
+				{
+				    path: '/MP/Counselor',
+				    name: 'Counselor',
+				    component: Counselor,
+				},
+				{
+				    path: '/MP/CounselorType',
+				    name: 'CounselorType',
+				    component: CounselorType,
+				},
 //                 {
 //                     path: '/MP/test',
 //                     name: 'test',

@@ -107,6 +107,9 @@
                             <dd @click="addCheck('Article')" v-bind:class="{'li-active':onString=='Article'}">
                                 <router-link to="/MP/Article"><i class="fa" aria-hidden="true">文章管理</i></router-link>
                             </dd>
+							<dd @click="addCheck('Counselor')" v-bind:class="{'li-active':onString=='Counselor'}">
+							    <router-link to="/MP/Counselor"><i class="fa" aria-hidden="true">咨询师管理</i></router-link>
+							</dd>
                             <!-- <dd @click="addCheck('PlayAV')" v-bind:class="{'li-active':onString=='PlayAV'}">
                                 <router-link to="/PlayAV"><i class="fa" aria-hidden="true">音视频播放</i></router-link>
                             </dd> -->
@@ -117,7 +120,7 @@
                                 <router-link to="/SummerNote"><i class="fa" aria-hidden="true">排版</i></router-link>
                             </dd> -->
                         </dl>
-						<dl v-bind:class="{h2:bool3}">
+						<dl v-bind:class="{h3:bool3}">
 						    <dt @click="onShow(2)" v-bind:class="{'li-active':bool3}">
 						        <i class="fa" v-bind:class="{'fa-folder-open':bool3,'fa-folder':!bool3}" aria-hidden="true">
 						            基础设置
@@ -128,6 +131,9 @@
 						    </dd>
 							<dd @click="addCheck('ArticleTheme')" v-bind:class="{'li-active':onString=='ArticleTheme'}">
 							    <router-link to="/ArticleTheme"><i class="fa" aria-hidden="true">主题分类管理</i></router-link>
+							</dd>
+							<dd @click="addCheck('CounselorType')" v-bind:class="{'li-active':onString=='CounselorType'}">
+							    <router-link to="/MP/CounselorType"><i class="fa" aria-hidden="true">咨询师分类管理</i></router-link>
 							</dd>
 						    <!-- <dd @click="addCheck('ScheduleEmp')" v-bind:class="{'li-active':onString=='ScheduleEmp'}">
 						        <router-link to="/MP/ScheduleEmp"><i class="fa" aria-hidden="true">排班管理</i></router-link>
@@ -314,6 +320,10 @@
 		margin-top: 0px;
         height: 150px;
     }
+	#aside-menu dl.h3 {
+		margin-top: 0px;
+	    height: 200px;
+	}
 	
 	#aside-menu dl.h1 {
 		margin-top: 0px;
