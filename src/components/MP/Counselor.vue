@@ -86,16 +86,16 @@
 								<td class="text-center" style="line-height:33px;" v-show="item.askType==2">电话</td>
 								<td class="text-center" style="line-height:33px;" v-show="item.askType==3">面对面/电话</td>
 								<td class="text-center" style="line-height:33px;">{{item.ccName}}</td>
-								<td class="text-center" style="line-height:33px;">{{item.professional}}</td>
-								<td class="text-center" style="line-height:33px;">{{item.receiveTraining}}</td>
+								<td class="text-center" style="line-height:33px;">擅长方向</td>
+								<td class="text-center" style="line-height:33px;">受训经历</td>
 								<td class="text-center" style="line-height:33px;">{{item.isRt}}</td>
-								<td class="text-center" style="line-height:33px;">{{item.curriculumVitae}}</td>
+								<td class="text-center" style="line-height:33px;">职业履历</td>
 								<td class="text-center" style="line-height:33px;">{{item.isCv}}</td>
-								<td class="text-center" style="line-height:33px;">{{item.sinplyIntroduce}}</td>
+								<td class="text-center" style="line-height:33px;">简单介绍</td>
 								<td class="text-center" style="line-height:33px;">{{item.label1}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.label2}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.label3}}</td>
-								<td class="text-center" style="line-height:33px;">{{item.introduceContent}}</td>
+								<td class="text-center" style="line-height:33px;">介绍</td>
 								<td class="text-center" style="line-height:33px;"><button type="button" class="btn btn-warning" v-on:click="selectRule('3',item)">修改</button></td>
 							</tr>
 						</tbody>

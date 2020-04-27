@@ -110,6 +110,9 @@
 							<dd @click="addCheck('Counselor')" v-bind:class="{'li-active':onString=='Counselor'}">
 							    <router-link to="/MP/Counselor"><i class="fa" aria-hidden="true">咨询师管理</i></router-link>
 							</dd>
+							<dd @click="addCheck('PreApporint')" v-bind:class="{'li-active':onString=='PreApporint'}">
+							    <router-link to="/MP/PreApporint"><i class="fa" aria-hidden="true">咨询师预约付费</i></router-link>
+							</dd>
                             <!-- <dd @click="addCheck('PlayAV')" v-bind:class="{'li-active':onString=='PlayAV'}">
                                 <router-link to="/PlayAV"><i class="fa" aria-hidden="true">音视频播放</i></router-link>
                             </dd> -->
@@ -313,7 +316,7 @@
 
     #aside-menu dl.h4 {
 		margin-top: 0px;
-        height: 250px;
+        height: 300px;
     }
 
     #aside-menu dl.h2 {

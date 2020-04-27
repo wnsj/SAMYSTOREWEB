@@ -16,6 +16,7 @@ import PlayAV from '@/components/common/PlayAV.vue'
 import SignInImgManage from '../components/MP/SignInImgManage.vue'
 
 import EvaluationType from '../components/MP/EvaluationType.vue'
+import PreApporint from '../components/MP/PreApporint.vue'
 import SummerNote from '@/components/common/SummerNote.vue'
 
 import ArticleTheme from '../components/MP/ArticleTheme.vue'
@@ -73,6 +74,11 @@ export default new Router({
 				    path: '/MP/CounselorType',
 				    name: 'CounselorType',
 				    component: CounselorType,
+				},
+				{
+				    path: '/MP/PreApporint',
+				    name: 'PreApporint',
+				    component: PreApporint,
 				},
 //                 {
 //                     path: '/MP/test',
