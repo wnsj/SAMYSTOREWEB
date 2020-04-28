@@ -72,20 +72,21 @@
 					        <ct></ct>
 					    </div>
 					</div>
-					<div class="col-md-6 form-group clearfix">
-					    <label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">擅长方向</label><span
+					<div class="col-md-12 form-group clearfix" style="margin-bottom:0;">
+					    <label for="cyname" class="col-md-2 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">擅长方向</label><span
 					        class="sign-left">:</span>
-					    <div class="col-md-8">
-					        <textarea v-model="counselor.professional"></textarea>
-					    </div>
 					</div>
-                    <div class="col-md-6 form-group clearfix">
-                        <label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">受训经历</label><span
-                            class="sign-left">:</span>
-                        <div class="col-md-8">
-                            <textarea v-model="counselor.receiveTraining"></textarea>
-                        </div>
-                    </div>
+					<div class="col-md-12 form-group clearfix new-style-box">
+					    <textarea class="form-control new-style"  v-model="counselor.professional" />
+					</div>
+					<div class="col-md-12 form-group clearfix" style="margin-bottom:0;">
+					    <label for="cyname" class="col-md-2 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">受训经历</label><span
+					        class="sign-left">:</span>
+					</div>
+					<div class="col-md-12 form-group clearfix new-style-box">
+					    <textarea class="form-control new-style"  v-model="counselor.receiveTraining" />
+					</div>
+                    
 					<div class="col-md-6 form-group clearfix">
 					    <label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">受训通过</label><span
 					        class="sign-left">:</span>
@@ -96,13 +97,13 @@
 					        </select>
 					    </div>
 					</div>
-                    <div class="col-md-6 form-group clearfix">
-                        <label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">职业履历</label><span
-                            class="sign-left">:</span>
-                        <div class="col-md-8">
-                            <textarea v-model="counselor.curriculumVitae"></textarea>
-                        </div>
-                    </div>
+					<div class="col-md-12 form-group clearfix" style="margin-bottom:0;">
+					    <label for="cyname" class="col-md-2 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">职业履历</label><span
+					        class="sign-left">:</span>
+					</div>
+					<div class="col-md-12 form-group clearfix new-style-box">
+					    <textarea class="form-control new-style"  v-model="counselor.curriculumVitae" />
+					</div>
 					<div class="col-md-6 form-group clearfix">
 					    <label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">其他分类</label><span
 					        class="sign-left">:</span>
@@ -238,24 +239,24 @@
         methods: {
             // Initialization projcet’s content
             initData(param, counselor) {
-				$('#operCourceChapterContent').modal({backdrop: 'static', keyboard: false});
+				$('#scContent').modal({backdrop: 'static', keyboard: false});
                 $("#medFile").val('');
                 if (param == 'add') {
                     this.title = '新增'
                     this.counselor = {
-                        colName: '撒大放送',
+                        colName: '',
 						ccId:'1',
-                        professional: "阿斯顿发",
-                        quotation:"阿斯顿发",
-                        price:"10",
-						empId:"10",
-                        firstPrice:'10',
-                        practiseTimeNum: '12',
-                        introduceContent:'阿斯蒂芬的',
-                        sinplyIntroduce:'阿斯顿发',
-                        receiveTraining:'sadf',
-                        curriculumVitae:'士大夫撒地方',
-                        prePrice:'12',
+                        professional: "",
+                        quotation:"",
+                        price:"",
+						empId:"",
+                        firstPrice:'',
+                        practiseTimeNum: '',
+                        introduceContent:'',
+                        sinplyIntroduce:'',
+                        receiveTraining:'',
+                        curriculumVitae:'',
+                        prePrice:'',
 						askType:'1',
 						othersType:'1',
 						isCv:'1',
