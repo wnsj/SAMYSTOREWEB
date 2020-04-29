@@ -241,33 +241,33 @@
             initData(param, counselor) {
 				$('#scContent').modal({backdrop: 'static', keyboard: false});
                 $("#medFile").val('');
+				this.counselor = {
+				    colName: '',
+					ccId:'1',
+				    professional: "",
+				    quotation:"",
+				    price:"",
+					empId:"",
+				    firstPrice:'',
+				    practiseTimeNum: '',
+				    introduceContent:'',
+				    sinplyIntroduce:'',
+				    receiveTraining:'',
+				    curriculumVitae:'',
+				    prePrice:'',
+					askType:'1',
+					othersType:'1',
+					isCv:'1',
+					isRt:'1',
+					label1:'',
+					label2:'',
+					label3:'',
+				}
                 if (param == 'add') {
                     this.title = '新增'
-                    this.counselor = {
-                        colName: '',
-						ccId:'1',
-                        professional: "",
-                        quotation:"",
-                        price:"",
-						empId:"",
-                        firstPrice:'',
-                        practiseTimeNum: '',
-                        introduceContent:'',
-                        sinplyIntroduce:'',
-                        receiveTraining:'',
-                        curriculumVitae:'',
-                        prePrice:'',
-						askType:'1',
-						othersType:'1',
-						isCv:'1',
-						isRt:'1',
-						label1:'',
-						label2:'',
-						label3:'',
-                    }
-                    
                 } else if (param == 'modify') {
                     this.title = '修改'
+					console.log(JSON.stringify(counselor))
                     Object.assign(this.counselor, counselor)
                     
                 }

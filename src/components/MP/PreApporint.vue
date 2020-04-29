@@ -22,6 +22,18 @@
 					<input class="form-control" type="text" v-model="name">
 				</div>
 			</div>
+			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+				<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="padding: 0; line-height: 34px;">
+					<p class="end-aline col-md-11 col-lg-11" style="padding-right:5px; padding-left:20px;">协调时间</p><span class="sign-left">:</span>
+				</div>
+				<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+				    <select class="form-control" v-model="coordinate">
+				        <option value="">全部</option>
+				        <option value="1">需要</option>
+				        <option value="0">不需要</option>
+				    </select>
+				</div>
+			</div>
 			<button type="button" class="btn btn-primary pull-right m_r_10" style="margin-right:1.5%;" data-toggle="modal"
 			 v-on:click="checkEvaluationType()">查询</button>
 		</div>
@@ -38,6 +50,10 @@
 								<th class="text-center">咨询师姓名</th>
 								<th class="text-center">订单号</th>
 								<th class="text-center">时间</th>
+								<th class="text-center">接受调换</th>
+								<th class="text-center">咨询方式</th>
+								<th class="text-center">协调时间</th>
+								<th class="text-center">备注</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -48,6 +64,10 @@
 								<td class="text-center" style="line-height:33px;">{{item.colName}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.tradeNum}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.createDate  | dateFormatFilter('YYYY-MM-DD HH:MM')}}</td>
+								<td class="text-center" style="line-height:33px;">{{item.isReceive=='1' ? '是' : '否'}}</td>
+								<td class="text-center" style="line-height:33px;">{{item.askType=='1' ? '面对面' :'电话'}}</td>
+								<td class="text-center" style="line-height:33px;">{{item.coordinate=='1' ? '需要' :'不需要'}}</td>
+								<td class="text-center" style="line-height:33px;">{{item.remark}}</td>
 							</tr>
 						</tbody>
 					</table>
@@ -82,6 +102,7 @@
 				title:'',
 				name:'',
 				colId:'',
+				coordinate:'1',
 				//分页需要的数据
 // 				pages: '', //总页数
 // 				current: 1, //当前页码
@@ -122,6 +143,7 @@
 					data: {
 						colId: "",
 						name:this.ttName,
+						coordinate:this.coordinate,
 
 // 						page: page.toString(),
 // 						pageSize: this.pageSize.toString(),

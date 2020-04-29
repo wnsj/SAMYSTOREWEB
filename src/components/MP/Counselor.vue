@@ -60,16 +60,16 @@
 								<th class="text-center">咨询经验</th>
 								<th class="text-center">咨询方式</th>
 								<th class="text-center">咨询分类</th>
-								<th class="text-center">擅长方向</th>
-								<th class="text-center">受训经历</th>
-								<th class="text-center">受训经历</th>
-								<th class="text-center">职业履历</th>
+								<!-- <th class="text-center">擅长方向</th> -->
+								<!-- <th class="text-center">受训经历</th> -->
+								<th class="text-center">受训通过</th>
+								<!-- <th class="text-center">职业履历</th> -->
 								<th class="text-center">履历通过</th>
-								<th class="text-center">简单介绍</th>
+								<!-- <th class="text-center">简单介绍</th> -->
 								<th class="text-center">标签1</th>
 								<th class="text-center">标签2</th>
 								<th class="text-center">标签3</th>
-								<th class="text-center">简介</th>
+								<!-- <th class="text-center">简介</th> -->
 								<!-- <th class="text-center">关联咨询师</th> -->
 								<th class="text-center">修改</th>
 							</tr>
@@ -86,16 +86,16 @@
 								<td class="text-center" style="line-height:33px;" v-show="item.askType==2">电话</td>
 								<td class="text-center" style="line-height:33px;" v-show="item.askType==3">面对面/电话</td>
 								<td class="text-center" style="line-height:33px;">{{item.ccName}}</td>
-								<td class="text-center" style="line-height:33px;">擅长方向</td>
-								<td class="text-center" style="line-height:33px;">受训经历</td>
-								<td class="text-center" style="line-height:33px;">{{item.isRt}}</td>
-								<td class="text-center" style="line-height:33px;">职业履历</td>
-								<td class="text-center" style="line-height:33px;">{{item.isCv}}</td>
-								<td class="text-center" style="line-height:33px;">简单介绍</td>
+								<!-- <td class="text-center" style="line-height:33px;">擅长方向</td> -->
+								<!-- <td class="text-center" style="line-height:33px;">受训经历</td> -->
+								<td class="text-center" style="line-height:33px;">{{item.isRt==1 ? '通过' :'未通过'}}</td>
+								<!-- <td class="text-center" style="line-height:33px;">职业履历</td> -->
+								<td class="text-center" style="line-height:33px;">{{item.isCv==1 ? '通过' : '未通过'}}</td>
+								<!-- <td class="text-center" style="line-height:33px;">简单介绍</td> -->
 								<td class="text-center" style="line-height:33px;">{{item.label1}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.label2}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.label3}}</td>
-								<td class="text-center" style="line-height:33px;">介绍</td>
+								<!-- <td class="text-center" style="line-height:33px;">介绍</td> -->
 								<td class="text-center" style="line-height:33px;"><button type="button" class="btn btn-warning" v-on:click="selectRule('3',item)">修改</button></td>
 							</tr>
 						</tbody>
