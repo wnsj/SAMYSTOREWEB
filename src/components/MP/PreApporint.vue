@@ -11,7 +11,7 @@
 					<p class="end-aline col-md-11 col-lg-11" style="padding-right:5px; padding-left:20px;">咨询师</p><span class="sign-left">:</span>
 				</div>
 				<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
-					<input class="form-control" type="text" v-model="colId">
+					<cou v-model="colId" @atChange="feedbadk"></cou>
 				</div>
 			</div>
 			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
@@ -94,9 +94,11 @@
 	import {
 		init
 	} from '@/../static/js/common.js'
+	import cou from '../common/Counselor.vue'
 	// import Paging from '../common/paging'
 	export default {
 		components: {
+			cou,
 		},
 		data() {
 			return {
@@ -118,7 +120,13 @@
 // 				this.current = page
 // 				this.checkEvaluation(page);
 // 			},
-			
+			feedbadk(param){
+				if(this.isBlank(param)){
+					this.colId=""
+				}else{
+					this.colId=param.colId
+				}
+			},
 			
 
 			// check the adding and modifying rule of account
@@ -143,7 +151,7 @@
 						'Access-Token': this.accessToken
 					},
 					data: {
-						colId: "",
+						colId: this.colId,
 						name:this.ttName,
 						coordinate:this.coordinate,
 
