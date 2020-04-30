@@ -47,6 +47,7 @@
 								<th class="text-center">ID</th>
 								<th class="text-center">姓名</th>
 								<th class="text-center">手机号</th>
+								<th class="text-center">性别</th>
 								<th class="text-center">咨询师姓名</th>
 								<th class="text-center">订单号</th>
 								<th class="text-center">时间</th>
@@ -61,11 +62,12 @@
 								<td class="text-center" style="line-height:33px;">{{item.paId}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.name}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.phone}}</td>
+								<td class="text-center" style="line-height:33px;">{{item.sex=='1' ? '男' : '女'}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.colName}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.tradeNum}}</td>
-								<td class="text-center" style="line-height:33px;">{{item.createDate  | dateFormatFilter('YYYY-MM-DD HH:MM')}}</td>
+								<td class="text-center" style="line-height:33px;">{{item.createDate  | dateFormatFilter('YYYY-MM-DD HH:mm:ss')}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.isReceive=='1' ? '是' : '否'}}</td>
-								<td class="text-center" style="line-height:33px;">{{item.askType=='1' ? '面对面' :'电话'}}</td>
+								<td class="text-center" style="line-height:33px;">{{item.askType=='1' ? '电话' :'面对面'}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.coordinate=='1' ? '需要' :'不需要'}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.remark}}</td>
 							</tr>

@@ -69,7 +69,7 @@
 					    <label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">咨询分类</label><span
 					        class="sign-left">:</span>
 					    <div class="col-md-8">
-					        <ct></ct>
+					        <input type="text" class="form-control" v-model="counselor.ccContent" placeholder="">
 					    </div>
 					</div>
 					<div class="col-md-12 form-group clearfix" style="margin-bottom:0;">
@@ -218,6 +218,7 @@
                     professional: '',
                     quotation:'',
 					price:'',
+					ccContent:'',
 					firstPrice:'',
                     practiseTimeNum: '',
                     introduceContent:'',
@@ -256,6 +257,7 @@
 				    curriculumVitae:'',
 				    prePrice:'',
 					askType:'1',
+					ccContent:'',
 					othersType:'1',
 					isCv:'1',
 					isRt:'1',

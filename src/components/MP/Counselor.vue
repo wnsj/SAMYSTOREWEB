@@ -59,7 +59,7 @@
 								<th class="text-center">预约定金</th>
 								<th class="text-center">咨询经验</th>
 								<th class="text-center">咨询方式</th>
-								<th class="text-center">咨询分类</th>
+								<!-- <th class="text-center">咨询分类</th> -->
 								<!-- <th class="text-center">擅长方向</th> -->
 								<!-- <th class="text-center">受训经历</th> -->
 								<th class="text-center">受训通过</th>
@@ -85,7 +85,7 @@
 								<td class="text-center" style="line-height:33px;" v-show="item.askType==1">面对面</td>
 								<td class="text-center" style="line-height:33px;" v-show="item.askType==2">电话</td>
 								<td class="text-center" style="line-height:33px;" v-show="item.askType==3">面对面/电话</td>
-								<td class="text-center" style="line-height:33px;">{{item.ccName}}</td>
+								<!-- <td class="text-center" style="line-height:33px;">{{item.ccContent}}</td> -->
 								<!-- <td class="text-center" style="line-height:33px;">擅长方向</td> -->
 								<!-- <td class="text-center" style="line-height:33px;">受训经历</td> -->
 								<td class="text-center" style="line-height:33px;">{{item.isRt==1 ? '通过' :'未通过'}}</td>
