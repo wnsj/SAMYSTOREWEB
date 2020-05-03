@@ -180,6 +180,7 @@
 					        <input type="file" id="detailFile" multiple="multiple" />
 					    </div>
 					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-left"><p style="margin-left:1.5%; color:red ;">注：头图160*160，详情三个图185*130</p></div>
 					<div class="col-md-6 form-group clearfix">
 					    <label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">关联咨询师</label><span
 					        class="sign-left">:</span>
