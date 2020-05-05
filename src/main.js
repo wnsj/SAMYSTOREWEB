@@ -25,6 +25,7 @@ import {
 Vue.use(vueBeauty)
 Vue.prototype.$ajax = axios
 Vue.prototype.url = process.env.API_HOST
+Vue.prototype.urlSamy = process.env.API_HOST_SAMY
 
 
 Vue.config.productionTip = false
