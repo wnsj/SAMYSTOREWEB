@@ -22,18 +22,6 @@
 					<input class="form-control" type="text" v-model="name">
 				</div>
 			</div>
-			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-				<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="padding: 0; line-height: 34px;">
-					<p class="end-aline col-md-11 col-lg-11" style="padding-right:5px; padding-left:20px;">协调时间</p><span class="sign-left">:</span>
-				</div>
-				<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
-					<select class="form-control" v-model="coordinate">
-						<option value="">全部</option>
-						<option value="1">需要</option>
-						<option value="0">不需要</option>
-					</select>
-				</div>
-			</div>
 			<button type="button" class="btn btn-primary pull-right m_r_10" style="margin-right:1.5%;" data-toggle="modal"
 			 v-on:click="checkEvaluationType()">查询</button>
 		</div>
@@ -108,7 +96,6 @@
 				title: '',
 				name: '',
 				colId: '',
-				coordinate: '1',
 				phoneNoX:'',
 				extension:'',
 				endDate:'',
@@ -186,6 +173,8 @@
 						'Access-Token': this.accessToken
 					},
 					data: {
+						name:this.name,
+						colId:this.colId,
 					},
 					dataType: 'json',
 				}).then((response) => {

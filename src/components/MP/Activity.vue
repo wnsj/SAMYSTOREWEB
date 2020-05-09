@@ -21,11 +21,23 @@
 				<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
 					<input class="form-control" type="text" v-model="title">
 				</div>
-			</div><!-- 
+			</div>
 			<div class="col-md-3">
-				<label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">测评类型</label><span class="sign-left">:</span>
+				<label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">活动时间</label><span class="sign-left">:</span>
 				<div class="col-md-8">
-					<et ref='et' @etChange='etChange'></et>
+					<dPicker v-model="dateArr" type="date" value-type="format" format="YYYY-MM-DD" range>
+						<template v-slot:header="{ emit }">
+							<div style="text-align: left">
+							</div>
+						</template>
+					</dPicker>
+				</div>
+			</div>
+			<!-- <div class="col-md-6 form-group clearfix">
+				<label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">活动时间</label><span
+				 class="sign-left">:</span>
+				<div class="col-md-8">
+					<dPicker v-model="object.acDate" type="date" value-type="format" format="YYYY-MM-DD"></dPicker>
 				</div>
 			</div> -->
 			<!-- <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
@@ -99,7 +111,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="modal fade" id="phoneContent">
+		<!-- <div class="modal fade" id="phoneContent">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -108,7 +120,43 @@
 					</div>
 					<div class="modal-body  pos_r">
 						<div class="tab-pane fade in active martop" id="basic">
-							<form action="" class="clearfix">
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> -->
+		<div class="modal fade" id="prePurchase">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" aria-hidden="true" class="close" v-on:click="closeQueryPrePurchaseList()">×</button>
+						<h4 id="myModalLabel" class="modal-title">预购列表</h4>
+					</div>
+					<div class="modal-body  pos_r">
+						<div class="tab-pane fade in active martop" id="basic">
+							
+							<div class="table-responsive pre-scrollable table-bg">
+								<table class="table table-bordered table-hover" id="datatable">
+							
+									<thead class="datathead">
+										<tr>
+											<th class="text-center">ID</th>
+											<th class="text-center">姓名</th>
+											<th class="text-center">查询手机号</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr v-for="(item,index) in preObjectList" :key="index">
+											<td class="text-center" style="line-height:33px;">{{item.paId}}</td>
+											<td class="text-center" style="line-height:33px;">{{item.name}}</td>
+											<td class="text-center" style="line-height:33px;"><button type="button" class="btn btn-warning" v-on:click="bindPhone(item)">查询手机号</button></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						
+							<div class="col-md-12  clearfix" style="padding-top: 15px;">
 								<div class="col-md-12 form-group clearfix">
 									<label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">电话号</label><span
 									 class="sign-left">:</span>
@@ -127,50 +175,15 @@
 									<label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">失效时间</label><span
 									 class="sign-left">:</span>
 									<div class="col-md-8">
-										<label class="form-control">{{endDate}}</label>
+										<label class="form-control">{{cancelDate}}</label>
 									</div>
 								</div>
 								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-left">
 									<p style="margin-left:1.5%; color:red ;">注：拨打手机号，听到提示后输入分机号，按#号结束。</p>
 									<p style="margin-left:1.5%; color:red ;"> 过了失效时间，通过这个手机号将无法联系到客户。</p>
 								</div>
-		
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="modal fade" id="prePurchase">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" aria-hidden="true" class="close" v-on:click="closeQueryPrePurchaseList()">×</button>
-						<h4 id="myModalLabel" class="modal-title">预购列表</h4>
-					</div>
-					<div class="modal-body  pos_r">
-						<div class="tab-pane fade in active martop" id="basic">
-							<form action="" class="clearfix">
-								<div class="table-responsive pre-scrollable table-bg">
-									<table class="table table-bordered table-hover" id="datatable">
-								
-										<thead class="datathead">
-											<tr>
-												<th class="text-center">ID</th>
-												<th class="text-center">姓名</th>
-												<th class="text-center">查询手机号</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr v-for="(item,index) in preObjectList" :key="index">
-												<td class="text-center" style="line-height:33px;">{{item.paId}}</td>
-												<td class="text-center" style="line-height:33px;">{{item.name}}</td>
-												<td class="text-center" style="line-height:33px;"><button type="button" class="btn btn-warning" v-on:click="bindPhone(item)">查询手机号</button></td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</form>
+									
+							</div>
 						</div>
 					</div>
 				</div>
@@ -182,9 +195,8 @@
 
 
 <script>
-// 	import store from '../common/Store.vue'
-// 	import et from '../common/EvaluationType.vue'
-// 	import emp from '../common/Employee.vue'
+
+	import dPicker from 'vue2-datepicker'
 	import sa from '../MP/SubActivity/SubActivity.vue'
 	import {
 		init
@@ -194,6 +206,7 @@
 		components: {
 			sa,
 			Paging,
+			dPicker,
 		},
 		data() {
 			return {
@@ -203,6 +216,9 @@
 				testType:'',
 				phoneNoX:'',
 				extension:'',
+				cancelDate:'',
+				dateArr:'',
+				begDate:'',
 				endDate:'',
 				
 				//分页需要的数据
@@ -246,6 +262,13 @@
 			},
 			//check the list of position
 			checkEvaluation(page) {
+				if(this.dateArr.length>0 && !this.isBlank(this.dateArr[0]) && !this.isBlank(this.dateArr[1])){
+					this.begDate = this.moment(this.dateArr[0],'YYYY-MM-DD 00:00:00.000')
+					this.endDate = this.moment(this.dateArr[1],'YYYY-MM-DD 59:59:59.000')
+				}else{
+					this.begDate = ''
+					this.endDate = ''
+				}
 				var url = this.url + '/activity/queryActivityList'
 				this.$ajax({
 					method: 'POST',
@@ -255,9 +278,9 @@
 						'Access-Token': this.accessToken
 					},
 					data: {
-						tpbId: "",
 						title:this.title,
-						testType:this.testType,
+						begDate:this.begDate,
+						endDate:this.endDate,
 						
 						page: page.toString(),
 						pageSize: this.pageSize.toString(),
@@ -309,36 +332,35 @@
 				});
 			},
 			bindPhone: function(item) {
-				console.log(item.toString())
-// 				var url = this.urlSamy+'/bindPhoneAction/bindPhone'
-// 				console.log(this.accountId())
-// 				this.$ajax({
-// 					method: 'POST',
-// 					url: url,
-// 					headers: {
-// 						'Content-Type': this.contentType,
-// 						'Access-Token': this.accessToken
-// 					},
-// 					data: {
-// 						accId:'1',
-// 						projectType:'1',
-// 						phonea: item.phone,
-// 						storeId: item.storeId,
-// 					},
-// 					dataType: 'json',
-// 				}).then((response) => {
-// 					var res = response.data
-// 					if (res.retCode == '0000') {
-// 						this.phoneNoX = res.retData.phoneNoX
-// 						this.extension = res.retData.extension
-// 						this.endDate = res.retData.endDate
-// 						$("#phoneContent").modal('show')
-// 					} else {
-// 						alert(res.retMsg)
-// 					}
-// 				}).catch((error) => {
-// 					console.log('测评类型请求失败处理')
-// 				});
+				var url = this.urlSamy+'/bindPhoneAction/bindPhone'
+				console.log(this.accountId())
+				this.$ajax({
+					method: 'POST',
+					url: url,
+					headers: {
+						'Content-Type': this.contentType,
+						'Access-Token': this.accessToken
+					},
+					data: {
+						accId:'1',
+						projectType:'1',
+						phonea: item.phone,
+						storeId: item.storeId,
+					},
+					dataType: 'json',
+				}).then((response) => {
+					var res = response.data
+					if (res.retCode == '0000') {
+						this.phoneNoX = res.retData.phoneNoX
+						this.extension = res.retData.extension
+						this.cancelDate = res.retData.endDate
+						$("#phoneContent").modal('show')
+					} else {
+						alert(res.retMsg)
+					}
+				}).catch((error) => {
+					console.log('测评类型请求失败处理')
+				});
 			},
 			closeBindPhone(){
 				$("#phoneContent").modal('hide')
