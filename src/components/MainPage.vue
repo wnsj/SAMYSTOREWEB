@@ -110,9 +110,11 @@
 							<dd @click="addCheck('Counselor')" v-bind:class="{'li-active':onString=='Counselor'}">
 							    <router-link to="/MP/Counselor"><i class="fa" aria-hidden="true">咨询师管理</i></router-link>
 							</dd>
-							<dd @click="addCheck('PreApporint')" v-bind:class="{'li-active':onString=='PreApporint'}">
-							    <router-link to="/MP/PreApporint"><i class="fa" aria-hidden="true">咨询师预约付费</i></router-link>
+							<dd @click="addCheck('Activity')" v-bind:class="{'li-active':onString=='Activity'}">
+							    <router-link to="/MP/Activity"><i class="fa" aria-hidden="true">热门沙龙</i></router-link>
 							</dd>
+							
+							
                             <!-- <dd @click="addCheck('PlayAV')" v-bind:class="{'li-active':onString=='PlayAV'}">
                                 <router-link to="/PlayAV"><i class="fa" aria-hidden="true">音视频播放</i></router-link>
                             </dd> -->
@@ -138,34 +140,19 @@
 							<dd @click="addCheck('CounselorType')" v-bind:class="{'li-active':onString=='CounselorType'}">
 							    <router-link to="/MP/CounselorType"><i class="fa" aria-hidden="true">咨询师分类管理</i></router-link>
 							</dd>
-						    <!-- <dd @click="addCheck('ScheduleEmp')" v-bind:class="{'li-active':onString=='ScheduleEmp'}">
-						        <router-link to="/MP/ScheduleEmp"><i class="fa" aria-hidden="true">排班管理</i></router-link>
-						    </dd>
-						    <dd @click="addCheck('Position')" v-bind:class="{'li-active':onString=='Position'}">
-						        <router-link to="/MP/Position"><i class="fa" aria-hidden="true">岗位管理</i></router-link>
-						    </dd>
-						    <dd @click="addCheck('Store')" v-bind:class="{'li-active':onString=='Store'}">
-						        <router-link to="/MP/Store"><i class="fa" aria-hidden="true">门店管理</i></router-link>
-						    </dd>
-						    <dd @click="addCheck('RuleManager')" v-bind:class="{'li-active':onString=='RuleManager'}">
-						        <router-link to="/MP/RuleManager"><i class="fa" aria-hidden="true">权限管理</i></router-link>
-						    </dd>
-						    <dd @click="addCheck('Royalty')" v-bind:class="{'li-active':onString=='Royalty'}">
-						        <router-link to="/MP/Royalty"><i class="fa" aria-hidden="true">提成规则管理</i></router-link>
-						    </dd>
-						    <dd @click="addCheck('Project')" v-bind:class="{'li-active':onString=='Project'}">
-						        <router-link to="/MP/Project"><i class="fa" aria-hidden="true">课程管理</i></router-link>
-						    </dd> -->
 						</dl>
-                        <dl v-bind:class="{h1:bool5}">
+                        <dl v-bind:class="{h2:bool5}">
                             <dt @click="onShow(4)" v-bind:class="{'li-active':bool5}">
                                 <i class="fa" v-bind:class="{'fa-folder-open':bool5,'fa-folder':!bool5}" aria-hidden="true">
-                                    测试
+                                    消费查询
                                 </i>
                             </dt>
-                            <!-- <dd @click="addCheck('test')" v-bind:class="{'li-active':onString=='test'}">
-                                <router-link to="/MP/test"><i class="fa" aria-hidden="true">测试文本编辑</i></router-link>
-                            </dd> -->
+                            <dd @click="addCheck('PreApporint')" v-bind:class="{'li-active':onString=='PreApporint'}">
+                                <router-link to="/MP/PreApporint"><i class="fa" aria-hidden="true">咨询师预约付费</i></router-link>
+                            </dd>
+							<dd @click="addCheck('PreActivity')" v-bind:class="{'li-active':onString=='PreActivity'}">
+							    <router-link to="/MP/PreActivity"><i class="fa" aria-hidden="true">沙龙活动付费</i></router-link>
+							</dd>
                         </dl>
 
                         <!-- <dl>

@@ -31,8 +31,14 @@
                 }
             },
             setAtId: function(atId) {
-                this.atId = atId
-                this.getProject()
+				if(""==atId){
+					this.atId = '0'
+					this.getProject()
+				}else{
+					this.atId = atId
+					this.getProject()
+				}
+                
             },
             async getProject() {
                 var url = this.url + '/counselor/queryCounselorList'

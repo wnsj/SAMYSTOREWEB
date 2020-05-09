@@ -20,6 +20,8 @@ import PreApporint from '../components/MP/PreApporint.vue'
 import SummerNote from '@/components/common/SummerNote.vue'
 
 import ArticleTheme from '../components/MP/ArticleTheme.vue'
+import Activity from '../components/MP/Activity.vue'
+import PreActivity from '../components/MP/PreActivity.vue'
 
 Vue.use(Router)
 
@@ -46,10 +48,20 @@ export default new Router({
                     component: Audio,
                 },
                 {
-                    path: '/MP/Article',
-                    name: 'Article',
-                    component: Article,
+                    path: '/MP/Activity',
+                    name: 'Activity',
+                    component: Activity,
                 },
+				{
+				    path: '/MP/PreActivity',
+				    name: 'PreActivity',
+				    component: PreActivity,
+				},
+				{
+				    path: '/MP/Article',
+				    name: 'Article',
+				    component: Article,
+				},
                 {
                     path: '/MP/Evaluation',
                     name: 'Evaluation',

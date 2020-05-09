@@ -47,21 +47,29 @@
 								<th class="text-center">ID</th>
 								<th class="text-center">姓名</th>
 								<!-- <th class="text-center">手机号</th> -->
+								<th class="text-center">性别</th>
 								<th class="text-center">咨询师姓名</th>
 								<th class="text-center">订单号</th>
 								<th class="text-center">时间</th>
+								<th class="text-center">接受调换</th>
+								<th class="text-center">咨询方式</th>
+								<th class="text-center">协调时间</th>
 								<th class="text-center">备注</th>
 								<th class="text-center">查询电话</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr v-for="(item,index) in etList" :key="index" v-on:dblclick="selectRule('3',item)">
+							<tr v-for="(item,index) in objectList" :key="index" v-on:dblclick="selectRule('3',item)">
 								<td class="text-center" style="line-height:33px;">{{item.paId}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.name}}</td>
 								<!-- <td class="text-center" style="line-height:33px;">{{item.phone}}</td> -->
+								<td class="text-center" style="line-height:33px;">{{item.sex=='1' ? '男' : '女'}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.colName}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.tradeNum}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.createDate | dateFormatFilter('YYYY-MM-DD HH:mm:ss')}}</td>
+								<td class="text-center" style="line-height:33px;">{{item.isReceive=='1' ? '是' : '否'}}</td>
+								<td class="text-center" style="line-height:33px;">{{item.askType=='1' ? '电话' :'面对面'}}</td>
+								<td class="text-center" style="line-height:33px;">{{item.coordinate=='1' ? '需要' :'不需要'}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.remark}}</td>
 								<td class="text-center" style="line-height:33px;"><button type="button" class="btn btn-warning" v-on:click="bindPhone(item)">查看手机号</button></td>
 							</tr>
@@ -78,48 +86,6 @@
 				<p class="tips">* 双击单行，可对当前数据进行修改</p>
 			</div> -->
 
-		</div>
-
-		<div class="modal fade" id="phoneContent">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h4 id="myModalLabel" class="modal-title">联系电话</h4>
-					</div>
-					<div class="modal-body  pos_r">
-						<div class="tab-pane fade in active martop" id="basic">
-							<form action="" class="clearfix">
-								<div class="col-md-12 form-group clearfix">
-									<label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">电话号</label><span
-									 class="sign-left">:</span>
-									<div class="col-md-8">
-										<label class="form-control">{{phoneNoX}}</label>
-									</div>
-								</div>
-								<div class="col-md-12 form-group clearfix">
-									<label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">分机号</label><span
-									 class="sign-left">:</span>
-									<div class="col-md-8">
-										<label class="form-control">{{extension}}</label>
-									</div>
-								</div>
-								<div class="col-md-12 form-group clearfix">
-									<label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">失效时间</label><span
-									 class="sign-left">:</span>
-									<div class="col-md-8">
-										<label class="form-control">{{endDate}}</label>
-									</div>
-								</div>
-								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-left">
-									<p style="margin-left:1.5%; color:red ;">注：拨打手机号，听到提示后输入分机号，按#号结束。</p>
-									<p style="margin-left:1.5%; color:red ;"> 过了失效时间，通过这个手机号将无法联系到客户。</p>
-								</div>
-
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
 		</div>
 	</div>
 
@@ -138,14 +104,14 @@
 		},
 		data() {
 			return {
-				etList: [],
+				objectList: [],
 				title: '',
 				name: '',
 				colId: '',
 				coordinate: '1',
-				phoneNoX: '',
-				extension: '',
-				endDate: '',
+				phoneNoX:'',
+				extension:'',
+				endDate:'',
 				//分页需要的数据
 				// 				pages: '', //总页数
 				// 				current: 1, //当前页码
@@ -167,7 +133,7 @@
 				}
 			},
 			bindPhone: function(item) {
-				var url = this.urlSamy + '/bindPhoneAction/bindPhone'
+				var url = this.urlSamy+'/bindPhoneAction/bindPhone'
 				console.log(this.accountId())
 				this.$ajax({
 					method: 'POST',
@@ -177,8 +143,8 @@
 						'Access-Token': this.accessToken
 					},
 					data: {
-						accId: '1',
-						projectType: '1',
+						accId:'1',
+						projectType:'1',
 						phonea: item.phone,
 						storeId: item.storeId,
 					},
@@ -210,8 +176,8 @@
 
 			},
 			//check the list of position
-			checkEvaluationType() {
-				var url = this.url + '/preApporint/queryPreApporintList'
+			checkEvaluationType(item) {
+				var url = this.url + '/preActivity/queryPreActivitytList'
 				this.$ajax({
 					method: 'POST',
 					url: url,
@@ -220,28 +186,17 @@
 						'Access-Token': this.accessToken
 					},
 					data: {
-						colId: this.colId,
-						name: this.ttName,
-						coordinate: this.coordinate,
-
-						// 						page: page.toString(),
-						// 						pageSize: this.pageSize.toString(),
 					},
 					dataType: 'json',
 				}).then((response) => {
 					var res = response.data
 					if (res.retCode == '0000') {
-						// 						this.pages = res.retData.pages //总页数
-						// 						this.current = res.retData.current //当前页码
-						// 						this.pageSize = res.retData.size //一页显示的数量  必须是奇数
-						// 						this.total = res.retData.total //数据的数量
-						// 						this.$refs.paging.setParam(this.pages, this.current, this.total)
-						this.etList = res.retData
+						this.objectList = res.retData
 					} else {
 						alert(res.retMsg)
 					}
 				}).catch((error) => {
-					console.log('测评类型请求失败处理')
+					console.log('活动购买支付列表请求失败处理')
 				});
 			},
 		},
