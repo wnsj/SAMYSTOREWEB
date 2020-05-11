@@ -80,7 +80,7 @@
 						 class="sign-left">:</span>
 						<div class="col-md-8">
 							<input type="file" id="headerImgFile" @change="imgChange" />
-							<div id="artImgOutDiv"></div>
+							<div id="headerFile"></div>
 						</div>
 					</div>
 					<div class="col-md-6 form-group clearfix">
@@ -88,7 +88,7 @@
 						 class="sign-left">:</span>
 						<div class="col-md-8">
 							<input type="file" id="detailImgFile" @change="imgChange" />
-							<div id="artImgOutDiv"></div>
+							<div id="detailFile"></div>
 						</div>
 					</div>
 					<div class="col-md-12 form-group clearfix">
@@ -163,11 +163,30 @@
 				if (param == 'add') {
 					this.title = '新增'
 					this.$refs.cou.setAtId(this.object.colId)
+					// $("#headerImgFile").remove();
+					$("#headerImgFile").val("");
+					// $("#detailImgFile").remove();
+					$("#detailImgFile").val("");
 				} else if (param == 'modify') {
 					//console.log('Initialization project’s content, which modifies project')
 					this.title = '修改'
 					this.$refs.cou.setAtId(obj.colId)
 					Object.assign(this.object, obj)
+					
+					if (!this.isBlank(this.object.headImg)) {
+					    var dataUrl = this.addTimesParam('sc.tjmyjk.com/upload/activity/' + this.object.headImg);
+					    if ($("#headerImgFile").length <= 0) $("#pingZheng").html(
+					        "<div id='headerImgFile' ><img class='head-img' src='#' style='width:100%' /></div>"
+					    );
+					    $(".head-img").attr("src", dataUrl);
+					}
+					if (!this.isBlank(this.object.detailImg)) {
+					    var dataUrl = this.addTimesParam('sc.tjmyjk.com/upload/activity/' + this.object.detailImg);
+					    if ($("#detailImgFile").length <= 0) $("#pingZheng").html(
+					        "<div id='detailImgFile' ><img class='detail-img' src='#' style='width:100%' /></div>"
+					    );
+					    $(".detail-img").attr("src", dataUrl);
+					}
 				}
 			},
 			couChange(atObj) {

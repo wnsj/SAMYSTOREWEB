@@ -67,7 +67,7 @@
 								<th class="text-center">标题</th>
 								<th class="text-center">副标题</th>
 								<th class="text-center">咨询师姓名</th>
-								<th class="text-center">商铺</th>
+								<th class="text-center">门店</th>
 								<th class="text-center">标签</th>
 								<th class="text-center">参加人数</th>
 								<th class="text-center">价格(¥)</th>
@@ -111,21 +111,6 @@
 				</div>
 			</div>
 		</div>
-		<!-- <div class="modal fade" id="phoneContent">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" aria-hidden="true" class="close" v-on:click="closeBindPhone()">×</button>
-						<h4 id="myModalLabel" class="modal-title">联系电话</h4>
-					</div>
-					<div class="modal-body  pos_r">
-						<div class="tab-pane fade in active martop" id="basic">
-							
-						</div>
-					</div>
-				</div>
-			</div>
-		</div> -->
 		<div class="modal fade" id="prePurchase">
 			<div class="modal-dialog">
 				<div class="modal-content">
