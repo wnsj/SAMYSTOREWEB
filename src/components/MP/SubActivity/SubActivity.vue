@@ -79,7 +79,9 @@
 						<label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">头图</label><span
 						 class="sign-left">:</span>
 						<div class="col-md-8">
-							<input type="file" id="headerImgFile" @change="imgChange" />
+							<label class="a-upload">
+								<input type="file" id="headerImgFile" @change="headerChange" accept="image/*" />选择文件
+							</label>
 							<div id="headerFile"></div>
 						</div>
 					</div>
@@ -87,16 +89,18 @@
 						<label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">详情图</label><span
 						 class="sign-left">:</span>
 						<div class="col-md-8">
-							<input type="file" id="detailImgFile" @change="imgChange" />
+							<label class="a-upload">
+								<input type="file" id="detailImgFile" @change="detailChange" accept="image/*" />选择文件
+							</label>
 							<div id="detailFile"></div>
 						</div>
 					</div>
 					<div class="col-md-12 form-group clearfix">
-					    <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">内容</label><span
-					        class="sign-left">:</span>
-					    <div class="col-md-12">
-					        <textarea style="height: 300px;width: 500px;" v-model="object.detailContent"  placeholder="内容简介"></textarea>
-					    </div>
+						<label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">内容</label><span
+						 class="sign-left">:</span>
+						<div class="col-md-12">
+							<textarea style="height: 300px;width: 500px;" v-model="object.detailContent" placeholder="内容简介"></textarea>
+						</div>
 					</div>
 					<div class="form-group clearfix">
 						<div class="col-md-12">
@@ -136,8 +140,8 @@
 					limitNum: '',
 					colId: '0',
 					isUse: '1',
-					detailContent:'',
-					price:'',
+					detailContent: '',
+					price: '',
 
 				},
 				title: '',
@@ -157,38 +161,40 @@
 					limitNum: '',
 					colId: '0',
 					isUse: '1',
-					detailContent:'',
-					price:'',
+					detailContent: '',
+					price: '',
 				}
 				if (param == 'add') {
 					this.title = '新增'
 					this.$refs.cou.setAtId(this.object.colId)
-					// $("#headerImgFile").remove();
+					$("#headerFile").remove();
 					$("#headerImgFile").val("");
-					// $("#detailImgFile").remove();
+					$("#detailFile").remove();
 					$("#detailImgFile").val("");
 				} else if (param == 'modify') {
 					//console.log('Initialization project’s content, which modifies project')
 					this.title = '修改'
 					this.$refs.cou.setAtId(obj.colId)
 					Object.assign(this.object, obj)
-					
+
+
 					if (!this.isBlank(this.object.headImg)) {
-					    var dataUrl = this.addTimesParam('sc.tjmyjk.com/upload/activity/' + this.object.headImg);
-					    if ($("#headerImgFile").length <= 0) $("#pingZheng").html(
-					        "<div id='headerImgFile' ><img class='head-img' src='#' style='width:100%' /></div>"
-					    );
-					    $(".head-img").attr("src", dataUrl);
+						var dataUrl = this.addTimesParam(this.storeUrl+this.object.headImg);
+						if ($("#headerFileOutImg").length <= 0) $("#headerFile").html(
+							"<div id='headerFileOutImg' ><img id='header-img' src='#' style='width:100%' /></div>"
+						);
+						$("#header-img").attr("src", dataUrl);
 					}
 					if (!this.isBlank(this.object.detailImg)) {
-					    var dataUrl = this.addTimesParam('sc.tjmyjk.com/upload/activity/' + this.object.detailImg);
-					    if ($("#detailImgFile").length <= 0) $("#pingZheng").html(
-					        "<div id='detailImgFile' ><img class='detail-img' src='#' style='width:100%' /></div>"
-					    );
-					    $(".detail-img").attr("src", dataUrl);
+						var dataUrl = this.addTimesParam(this.storeUrl+this.object.detailImg);
+						if ($("#detailFileOutImg").length <= 0) $("#detailFile").html(
+							"<div id='detailFileOutImg' ><img id='detail-img' src='#' style='width:100%' /></div>"
+						);
+						$("#detail-img").attr("src", dataUrl);
 					}
 				}
 			},
+
 			couChange(atObj) {
 				// console.log(JSON.stringify(atObj))
 				if (atObj == null) {
@@ -271,42 +277,62 @@
 				$("#saContent").modal("hide")
 				//console.log('关闭界面')
 			},
-			//接收文章分类子组件数据
-			// 			setAtData(atObj) {
-			// 				//console.log("at" + atObj)
-			// 				if (atObj == null) {
-			// 					this.project.atId = '';
-			// 				} else {
-			// 					//var id = atObj.atId;
-			// 					//console.log("at" + atObj.atId)
-			// 					this.project.atId = atObj.atId
-			// 				}
-			// 			},
 			//预览图
-			imgChange() {
-				// 				var file = $("#artImgFile")[0].files[0]; //获取file对象
-				// 				if (file == null || file == undefined) {
-				// 					$("#signInImgInnDiv").remove();
-				// 				} else {
-				// 					//console.log("file:"+file)
-				// 					//检查文件类型
-				// 					var type = file.type.split("/");
-				// 					if (type[0] != "image") {
-				// 						alert("请选择图片");
-				// 						return false;
-				// 					}
-				// 					//新建fileReader对象
-				// 					var reader = new FileReader();
-				// 					reader.readAsDataURL(file);
-				// 					//图片加载事件style='width:350px;height:350px;overflow:hidden'
-				// 					reader.onloadend = function() {
-				// 						var dataUrl = reader.result;
-				// 						if ($("#artImgInnDiv").length <= 0) $("#artImgOutDiv").html(
-				// 							"<div id='artImgInnDiv' ><img id='artImg' src='#' style='width:100%' /></div>"
-				// 						);
-				// 						$("#artImg").attr("src", dataUrl);
-				// 					}
-				// 				}
+			headerChange() {
+				var file = $("#headerImgFile")[0].files[0]; //获取file对象
+				if (file == null || file == undefined) {
+					$("#headerFile").remove();
+				} else {
+					//console.log("file:"+file)
+					//检查文件类型
+					var type = file.type.split("/");
+					if (type[0] != "image") {
+						alert("请选择图片");
+						return false;
+					}
+					//新建fileReader对象
+					var reader = new FileReader();
+					reader.readAsDataURL(file);
+					//图片加载事件style='width:350px;height:350px;overflow:hidden'
+					reader.onloadend = function() {
+						var dataUrl = reader.result;
+						if ($("#headerFileInImg").length <= 0) $("#headerFile").html(
+							"<div id='headerFileInImg' ><img id='header-img' src='#' style='width:100%' /></div>"
+						);
+						$("#header-img").attr("src", dataUrl);
+					}
+				}
+			},
+			//预览图
+			detailChange() {
+				var file = $("#detailImgFile")[0].files[0]; //获取file对象
+				if (file == null || file == undefined) {
+					$("#detailFileInImg").remove();
+				} else {
+					//console.log("file:"+file)
+					//检查文件类型
+					var type = file.type.split("/");
+					if (type[0] != "image") {
+						alert("请选择图片");
+						return false;
+					}
+					//新建fileReader对象
+					var reader = new FileReader();
+					reader.readAsDataURL(file);
+					//图片加载事件style='width:350px;height:350px;overflow:hidden'
+					reader.onloadend = function() {
+						var dataUrl = reader.result;
+						if ($("#detailFileInImg").length <= 0) $("#detailFile").html(
+							"<div id='detailFileInImg' ><img id='detail-img' src='#' style='width:100%' /></div>"
+						);
+						$("#detail-img").attr("src", dataUrl);
+					}
+				}
+			}
+		},
+		mounted() {
+			if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
+				window.applicationCache.update();
 			}
 		}
 	}

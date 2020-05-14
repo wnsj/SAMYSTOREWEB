@@ -38,7 +38,8 @@
 								<th class="text-center">咨询师姓名</th>
 								<th class="text-center">订单号</th>
 								<th class="text-center">时间</th>
-								<th class="text-center">备注</th>
+								<!-- <th class="text-center">备注</th> -->
+								<th class="text-center">退费</th>
 								<th class="text-center">查询电话</th>
 							</tr>
 						</thead>
@@ -50,7 +51,10 @@
 								<td class="text-center" style="line-height:33px;">{{item.colName}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.tradeNum}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.createDate | dateFormatFilter('YYYY-MM-DD HH:mm:ss')}}</td>
-								<td class="text-center" style="line-height:33px;">{{item.remark}}</td>
+								<!-- <td class="text-center" style="line-height:33px;">{{item.remark}}</td> -->
+								<td class="text-center" v-show="item.state=='1'" style="line-height:33px;"><button type="button" class="btn btn-primary" v-on:click="reFund(item)">退款</button></td>
+								<td class="text-center" v-show="item.state=='2'" style="line-height:33px;"><button type="button" class="btn btn-warning" v-on:click="reFund(item)">退款中</button></td>
+								<td class="text-center" v-show="item.state=='3'" tyle="line-height:33px;"><button type="button" class="btn btn-success" v-on:click="reFund(item)">已退款</button></td>
 								<td class="text-center" style="line-height:33px;"><button type="button" class="btn btn-warning" v-on:click="bindPhone(item)">查看手机号</button></td>
 							</tr>
 						</tbody>
@@ -142,7 +146,39 @@
 					console.log('测评类型请求失败处理')
 				});
 			},
-
+			reFund(item){
+				if(!this.isBlank(item.state) && "3"==item.state){
+					alert('已退款不能重复退款')
+					return 
+				}else if(!this.isBlank(item.state) && "2"==item.state){
+					alert('退款中，请不要重复点击')
+					return 
+				}
+				var url = this.urlSamy+'/bindPhoneAction/bindPhone'
+				console.log(this.accountId())
+				this.$ajax({
+					method: 'POST',
+					url: url,
+					headers: {
+						'Content-Type': this.contentType,
+						'Access-Token': this.accessToken
+					},
+					data: {
+						paId:item.paId,
+					},
+					dataType: 'json',
+				}).then((response) => {
+					var res = response.data
+					if (res.retCode == '0000') {
+						this.checkEvaluationType()
+						alert(res.retMsg)
+					} else {
+						alert(res.retMsg)
+					}
+				}).catch((error) => {
+					console.log('退款功能请求失败')
+				});
+			},
 			// check the adding and modifying rule of account
 			selectRule(param, item) {
 				if (param == "1") {

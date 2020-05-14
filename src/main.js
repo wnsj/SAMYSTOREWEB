@@ -125,8 +125,16 @@ Vue.prototype.getSecTimestamp = function() {
 }
 //为链接添加时间戳参数
 Vue.prototype.addTimesParam = function(url) {
-    return ''.concat(url).concat("&t=").concat(this.getSecTimestamp())
+	if(!this.isBlank(url) && url.indexOf("?")!=-1){
+		return ''.concat(url).concat("&t=").concat(this.getSecTimestamp())
+	}else{
+		return ''.concat(url).concat("?t=").concat(this.getSecTimestamp())
+	}
+    
 }
+
+//商城活动url
+Vue.prototype.storeUrl = 'http://sc.tjmyjk.com/upload/activity/'
 // Vue.prototype.endDate = function(beginDate,index){
 //
 // 	return utilDate.calculateEndDate(beginDate,index);
@@ -179,6 +187,7 @@ Vue.prototype.phoneNum = function(phoneNum) {
 Vue.prototype.ipAddress = function() {
     return constant.ipAddress();
 }
+
 
 
 /*
