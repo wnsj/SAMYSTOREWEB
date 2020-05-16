@@ -22,6 +22,18 @@
 					<input class="form-control" type="text" v-model="name">
 				</div>
 			</div>
+			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+				<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="padding: 0; line-height: 34px;">
+					<p class="end-aline col-md-11 col-lg-11" style="padding-right:5px; padding-left:20px;">付款状态</p><span class="sign-left">:</span>
+				</div>
+				<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+					<select class="form-control" v-model="state">
+						<option value="1">已付款</option>
+						<option value="2">退款中</option>
+						<option value="3">已退款</option>
+					</select>
+				</div>
+			</div>
 			<button type="button" class="btn btn-primary pull-right m_r_10" style="margin-right:1.5%;" data-toggle="modal"
 			 v-on:click="checkEvaluationType()">查询</button>
 		</div>
@@ -95,6 +107,7 @@
 				phoneNoX:'',
 				extension:'',
 				endDate:'',
+				state:'1',
 				//分页需要的数据
 				// 				pages: '', //总页数
 				// 				current: 1, //当前页码
@@ -151,10 +164,11 @@
 					alert('已退款不能重复退款')
 					return 
 				}else if(!this.isBlank(item.state) && "2"==item.state){
+					this.checkEvaluationType()
 					alert('退款中，请不要重复点击')
 					return 
 				}
-				var url = this.urlSamy+'/bindPhoneAction/bindPhone'
+				var url = this.url+'/preActivity/applyWxPayRefund'
 				console.log(this.accountId())
 				this.$ajax({
 					method: 'POST',
@@ -203,6 +217,7 @@
 					data: {
 						name:this.name,
 						colId:this.colId,
+						state:this.state,
 					},
 					dataType: 'json',
 				}).then((response) => {
