@@ -268,6 +268,8 @@
 					if (res.retCode == '0000') {
 						alert(res.retMsg)
 						this.$emit('certainAction')
+					}else{
+						alert(res.retMsg)
 					}
 				}).catch((error) => {
 					console.log('提交失败')
@@ -331,9 +333,9 @@
 			}
 		},
 		mounted() {
-			if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
-				window.applicationCache.update();
-			}
+// 			if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
+// 				window.applicationCache.update();
+// 			}
 		}
 	}
 </script>

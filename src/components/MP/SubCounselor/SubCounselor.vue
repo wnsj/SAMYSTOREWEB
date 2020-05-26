@@ -16,6 +16,16 @@
                         </div>
                     </div>
 					<div class="col-md-6 form-group clearfix">
+					    <label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">是否推广</label><span
+					        class="sign-left">:</span>
+					    <div class="col-md-8">
+					        <select class="form-control" v-model="counselor.isExtent">
+					            <option value="1">推广</option>
+					            <option value="0">不推广</option>
+					        </select>
+					    </div>
+					</div>
+					<div class="col-md-6 form-group clearfix">
 					    <label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">语录</label><span
 					        class="sign-left">:</span>
 					    <div class="col-md-8">
@@ -215,6 +225,7 @@
                 counselor: {
                     colName: '',
 					ccId:'1',
+					isExtent:'1',
 					ccName:'',
                     professional: '',
                     quotation:'',
@@ -248,6 +259,7 @@
 					ccId:'1',
 				    professional: "",
 				    quotation:"",
+					isExtent:'1',
 				    price:"",
 					empId:"",
 				    firstPrice:'',
@@ -270,7 +282,7 @@
                     this.title = '新增'
                 } else if (param == 'modify') {
                     this.title = '修改'
-					console.log(JSON.stringify(counselor))
+					// console.log(JSON.stringify(counselor))
                     Object.assign(this.counselor, counselor)
                     
                 }

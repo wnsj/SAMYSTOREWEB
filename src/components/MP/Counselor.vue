@@ -22,6 +22,18 @@
 					<input class="form-control" type="text" v-model="title">
 				</div>
 			</div>
+			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+				<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="padding: 0; line-height: 34px;">
+					<p class="end-aline col-md-11 col-lg-11" style="padding-right:5px; padding-left:20px;">是否推广</p><span class="sign-left">:</span>
+				</div>
+				<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+					<select class="form-control" v-model="isExtent">
+						<option value="">--未选择--</option>
+						<option value="1">推广</option>
+						<option value="0">不推广</option>
+					</select>
+				</div>
+			</div>
 			<!-- <div class="col-md-3">
 				<label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">测评类型</label><span class="sign-left">:</span>
 				<div class="col-md-8">
@@ -65,7 +77,7 @@
 								<th class="text-center">受训通过</th>
 								<!-- <th class="text-center">职业履历</th> -->
 								<th class="text-center">履历通过</th>
-								<!-- <th class="text-center">简单介绍</th> -->
+								<th class="text-center">是否推广</th>
 								<th class="text-center">标签1</th>
 								<th class="text-center">标签2</th>
 								<th class="text-center">标签3</th>
@@ -91,7 +103,7 @@
 								<td class="text-center" style="line-height:33px;">{{item.isRt==1 ? '通过' :'未通过'}}</td>
 								<!-- <td class="text-center" style="line-height:33px;">职业履历</td> -->
 								<td class="text-center" style="line-height:33px;">{{item.isCv==1 ? '通过' : '未通过'}}</td>
-								<!-- <td class="text-center" style="line-height:33px;">简单介绍</td> -->
+								<td class="text-center" style="line-height:33px;">{{item.isExtent==1 ? '推广' : '不推广'}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.label1}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.label2}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.label3}}</td>
@@ -142,6 +154,7 @@
 			return {
 				counselorList: [],
 				title:'',
+				isExtent:'1',
 				testType:'',
 				
 				//分页需要的数据
@@ -193,6 +206,7 @@
 						'Access-Token': this.accessToken
 					},
 					data: {
+						isExtent:this.isExtent,
 						othersTypeList:[],
 						dateArr:[],
 					},

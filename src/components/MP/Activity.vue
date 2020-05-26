@@ -136,9 +136,9 @@
 										<tr v-for="(item,index) in preObjectList" :key="index">
 											<td class="text-center" style="line-height:33px;">{{item.paId}}</td>
 											<td class="text-center" style="line-height:33px;">{{item.name}}</td>
-											<td class="text-center" v-show="item.state=='1'" style="line-height:33px;">已付款</td>
-											<td class="text-center" v-show="item.state=='2'" style="line-height:33px;">退款中</td>
-											<td class="text-center" v-show="item.state=='3'" tyle="line-height:33px;">已退款</td>
+											<td class="text-center" v-show="item.state=='1'" style="line-height:33px;">{{"已付款"}}</td>
+											<td class="text-center" v-show="item.state=='2'" style="line-height:33px;">{{"退款中"}}</td>
+											<td class="text-center" v-show="item.state=='3'" tyle="line-height:33px;">{{"已退款"}}</td>
 											<td class="text-center" style="line-height:33px;"><button type="button" class="btn btn-warning" v-on:click="bindPhone(item)">查询手机号</button></td>
 										</tr>
 									</tbody>

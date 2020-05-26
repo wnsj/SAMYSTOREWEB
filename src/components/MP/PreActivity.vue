@@ -48,6 +48,7 @@
 								<th class="text-center">姓名</th>
 								<!-- <th class="text-center">手机号</th> -->
 								<th class="text-center">咨询师姓名</th>
+								<th class="text-center">标题</th>
 								<th class="text-center">订单号</th>
 								<th class="text-center">时间</th>
 								<!-- <th class="text-center">备注</th> -->
@@ -61,6 +62,7 @@
 								<td class="text-center" style="line-height:33px;">{{item.name}}</td>
 								<!-- <td class="text-center" style="line-height:33px;">{{item.phone}}</td> -->
 								<td class="text-center" style="line-height:33px;">{{item.colName}}</td>
+								<td class="text-center" style="line-height:33px;">{{item.title}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.tradeNum}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.createDate | dateFormatFilter('YYYY-MM-DD HH:mm:ss')}}</td>
 								<!-- <td class="text-center" style="line-height:33px;">{{item.remark}}</td> -->
@@ -82,6 +84,47 @@
 				<p class="tips">* 双击单行，可对当前数据进行修改</p>
 			</div> -->
 
+		</div>
+		<div class="modal fade" id="paHhoneContent">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 id="myModalLabel" class="modal-title">联系电话</h4>
+					</div>
+					<div class="modal-body  pos_r">
+						<div class="tab-pane fade in active martop" id="basic">
+							<form action="" class="clearfix">
+								<div class="col-md-12 form-group clearfix">
+									<label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">电话号</label><span
+									 class="sign-left">:</span>
+									<div class="col-md-8">
+										<label class="form-control">{{phoneNoX}}</label>
+									</div>
+								</div>
+								<div class="col-md-12 form-group clearfix">
+									<label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">分机号</label><span
+									 class="sign-left">:</span>
+									<div class="col-md-8">
+										<label class="form-control">{{extension}}</label>
+									</div>
+								</div>
+								<div class="col-md-12 form-group clearfix">
+									<label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">失效时间</label><span
+									 class="sign-left">:</span>
+									<div class="col-md-8">
+										<label class="form-control">{{endDate}}</label>
+									</div>
+								</div>
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-left">
+									<p style="margin-left:1.5%; color:red ;">注：拨打手机号，听到提示后输入分机号，按#号结束。</p>
+									<p style="margin-left:1.5%; color:red ;"> 过了失效时间，通过这个手机号将无法联系到客户。</p>
+								</div>
+		
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 
@@ -151,7 +194,7 @@
 						this.phoneNoX = res.retData.phoneNoX
 						this.extension = res.retData.extension
 						this.endDate = res.retData.endDate
-						$("#phoneContent").modal('show')
+						$("#paHhoneContent").modal('show')
 					} else {
 						alert(res.retMsg)
 					}
