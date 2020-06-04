@@ -75,6 +75,18 @@
 							</select>
 						</div>
 					</div>
+					<div class="col-md-12 form-group clearfix">
+						<div class="col-md-6"style="margin: 0px;padding: 0px 15px 0px 0px;">
+							<label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">是否置顶</label><span
+							 class="sign-left">:</span>
+							<div class="col-md-8">
+								<select class="form-control" v-model="object.isTop">
+									<option value="0">否</option>
+									<option value="1">是</option>
+								</select>
+							</div>
+						</div>
+					</div>
 					<div class="col-md-6 form-group clearfix">
 						<label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">头图</label><span
 						 class="sign-left">:</span>
@@ -95,6 +107,10 @@
 							<div id="detailFile"></div>
 						</div>
 					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-left">
+						<p style="margin-left:1.5%; color:red ; font-size: 14px;">注：头图大小640*340</p>
+					</div>
+
 					<div class="col-md-12 form-group clearfix">
 						<label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">内容</label><span
 						 class="sign-left">:</span>
@@ -142,7 +158,7 @@
 					isUse: '1',
 					detailContent: '',
 					price: '',
-
+					isTop: 1,
 				},
 				title: '',
 			};
@@ -161,6 +177,7 @@
 					limitNum: '',
 					colId: '0',
 					isUse: '1',
+					isTop: 1,
 					detailContent: '',
 					price: '',
 				}
@@ -179,14 +196,14 @@
 
 
 					if (!this.isBlank(this.object.headImg)) {
-						var dataUrl = this.addTimesParam(this.storeUrl+this.object.headImg);
+						var dataUrl = this.addTimesParam(this.storeUrl + this.object.headImg);
 						if ($("#headerFileOutImg").length <= 0) $("#headerFile").html(
 							"<div id='headerFileOutImg' ><img id='header-img' src='#' style='width:100%' /></div>"
 						);
 						$("#header-img").attr("src", dataUrl);
 					}
 					if (!this.isBlank(this.object.detailImg)) {
-						var dataUrl = this.addTimesParam(this.storeUrl+this.object.detailImg);
+						var dataUrl = this.addTimesParam(this.storeUrl + this.object.detailImg);
 						if ($("#detailFileOutImg").length <= 0) $("#detailFile").html(
 							"<div id='detailFileOutImg' ><img id='detail-img' src='#' style='width:100%' /></div>"
 						);
@@ -268,7 +285,7 @@
 					if (res.retCode == '0000') {
 						alert(res.retMsg)
 						this.$emit('certainAction')
-					}else{
+					} else {
 						alert(res.retMsg)
 					}
 				}).catch((error) => {
@@ -333,9 +350,9 @@
 			}
 		},
 		mounted() {
-// 			if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
-// 				window.applicationCache.update();
-// 			}
+			// 			if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
+			// 				window.applicationCache.update();
+			// 			}
 		}
 	}
 </script>

@@ -73,6 +73,7 @@
 								<th class="text-center">价格(¥)</th>
 								<th class="text-center">购买人数</th>
 								<th class="text-center">是否在用</th>
+								<th class="text-center">是否置顶</th>
 								<th class="text-center">活动时间</th>
 								<th class="text-center">查询预购列表</th>
 								<th class="text-center">修改</th>
@@ -89,6 +90,7 @@
 								<td class="text-center" style="line-height:33px;">{{item.price}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.preNum}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.isUse=='1'? "是" : "否"}}</td>
+								<td class="text-center" style="line-height:33px;">{{item.isTop=='1'? "是" : "否"}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.acDate | dateFormatFilter('YYYY-MM-DD')}}</td>
 								<td class="text-center" style="line-height:33px;"><button type="button" class="btn btn-warning" v-on:click="queryPrePurchaseList(item)">查询预购列表</button></td>
 								<td class="text-center" style="line-height:33px;"><button type="button" class="btn btn-warning" v-on:click="selectRule('3',item)">修改</button></td>
@@ -191,11 +193,13 @@
 		init
 	} from '@/../static/js/common.js'
 	import Paging from '../common/paging'
+	import emp from '../common/Employee.vue'
 	export default {
 		components: {
 			sa,
 			Paging,
 			dPicker,
+			emp,
 		},
 		data() {
 			return {
