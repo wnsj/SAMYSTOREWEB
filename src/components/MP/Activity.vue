@@ -40,18 +40,18 @@
 					<dPicker v-model="object.acDate" type="date" value-type="format" format="YYYY-MM-DD"></dPicker>
 				</div>
 			</div> -->
-			<!-- <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 				<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="padding: 0; line-height: 34px;">
 					<p class="end-aline col-md-11 col-lg-11" style="padding-right:5px; padding-left:20px;">是否在用</p><span class="sign-left">:</span>
 				</div>
 				<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
-					<select class="form-control" v-model="isuse">
+					<select class="form-control" v-model="isUse">
 						<option value="">全部</option>
 						<option value="1">在用</option>
 						<option value="0">停用</option>
 					</select>
 				</div>
-			</div> -->
+			</div>
 			<button type="button" class="btn btn-warning pull-right m_r_10" style="margin-right:1.5%;" data-toggle="modal"
 			 v-on:click="selectRule('1')">添加</button>
 			<button type="button" class="btn btn-primary pull-right m_r_10" style="margin-right:1.5%;" data-toggle="modal"
@@ -206,6 +206,7 @@
 				objectList: [],
 				preObjectList:[],
 				title:'',
+				isUse:'1',
 				testType:'',
 				phoneNoX:'',
 				extension:'',
@@ -213,6 +214,7 @@
 				dateArr:'',
 				begDate:'',
 				endDate:'',
+				
 				
 				//分页需要的数据
 				pages: '', //总页数
@@ -274,6 +276,7 @@
 						title:this.title,
 						begDate:this.begDate,
 						endDate:this.endDate,
+						isUse:this.isUse,
 						
 						page: page.toString(),
 						pageSize: this.pageSize.toString(),
