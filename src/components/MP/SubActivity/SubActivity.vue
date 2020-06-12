@@ -169,6 +169,8 @@
 					backdrop: 'static',
 					keyboard: false
 				});
+				$("#headerImgFile").val("");
+				$("#detailImgFile").val("");
 				this.object = {
 					title: '',
 					subTitle: '',
@@ -257,7 +259,7 @@
 				if (!this.isBlank(headerImgFile)) {
 					fd.append("headFile", headerImgFile);
 				}
-				if (!this.isBlank(headerImgFile)) {
+				if (!this.isBlank(detailImgFile)) {
 					fd.append("detialFile", detailImgFile);
 				}
 
@@ -284,7 +286,7 @@
 					//console.log(res)
 					if (res.retCode == '0000') {
 						alert(res.retMsg)
-						this.$emit('certainAction')
+						this.closeCurrentPage()
 					} else {
 						alert(res.retMsg)
 					}
@@ -293,7 +295,8 @@
 				});
 			},
 			closeCurrentPage() {
-				$("#saContent").modal("hide")
+				//$("#saContent").modal("hide")
+				this.$emit('certainAction')
 				//console.log('关闭界面')
 			},
 			//预览图

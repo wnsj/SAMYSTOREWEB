@@ -28,6 +28,7 @@
 				</div>
 				<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
 					<select class="form-control" v-model="state">
+						<option value="0">未付款</option>
 						<option value="1">已付款</option>
 						<option value="2">退款中</option>
 						<option value="3">已退款</option>
@@ -66,6 +67,7 @@
 								<td class="text-center" style="line-height:33px;">{{item.tradeNum}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.createDate | dateFormatFilter('YYYY-MM-DD HH:mm:ss')}}</td>
 								<!-- <td class="text-center" style="line-height:33px;">{{item.remark}}</td> -->
+								<td class="text-center" v-show="item.state=='0'" style="line-height:33px;">未付款</td>
 								<td class="text-center" v-show="item.state=='1'" style="line-height:33px;"><button type="button" class="btn btn-primary" v-on:click="reFund(item)">退款</button></td>
 								<td class="text-center" v-show="item.state=='2'" style="line-height:33px;"><button type="button" class="btn btn-warning" v-on:click="reFund(item)">退款中</button></td>
 								<td class="text-center" v-show="item.state=='3'" tyle="line-height:33px;"><button type="button" class="btn btn-success" v-on:click="reFund(item)">已退款</button></td>
