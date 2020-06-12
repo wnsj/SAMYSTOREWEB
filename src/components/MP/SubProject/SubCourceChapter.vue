@@ -115,7 +115,7 @@
                     dataType: 'json',
                 }).then((response) => {
                     var res = response.data
-                    if (res.retCode == '0000') {
+                    if (res.retCode === '0000') {
                         //console.log("chenggong"+res.retData)
                         this.chapterList = res.retData;
                     } else {

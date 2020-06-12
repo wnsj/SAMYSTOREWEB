@@ -8,13 +8,19 @@ import moment from 'moment'
 import Cookies from 'js-cookie'
 import constant from '../src/assets/js/constant'
 import vueBeauty from 'vue-beauty'
-
+// 孙云龙添加
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+// end
 // 富文本编辑----------------------------------
 import QuillEditor from 'vue-quill-editor'
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.bubble.css'
 import 'quill/dist/quill.snow.css'
 Vue.use(QuillEditor)
+// 孙云龙添加
+Vue.use(ElementUI)
+// end
 // ----------------------------------------------
 
 // import utilDate from '../src/assets/js/utilDate'
@@ -130,7 +136,7 @@ Vue.prototype.addTimesParam = function(url) {
 	}else{
 		return ''.concat(url).concat("?t=").concat(this.getSecTimestamp())
 	}
-    
+
 }
 
 //商城活动url
@@ -188,6 +194,26 @@ Vue.prototype.ipAddress = function() {
     return constant.ipAddress();
 }
 
+// 孙云龙添加
+//http request拦截器
+var ip = sessionStorage.getItem("IP")
+axios.interceptors.request.use(
+
+    config =>{
+        if(ip){//设置公共的请求参数
+            let test = config.data;
+            if(test){
+                config.data['ip']= ip;
+            }
+        }
+
+        return config;
+    },
+    err =>{
+        return Promise.reject(err);
+    }
+)
+// end
 
 
 /*

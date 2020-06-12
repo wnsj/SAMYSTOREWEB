@@ -36,10 +36,11 @@
 			};
 		},
 		methods: {
-			
+
 			login() {
 				this.btnText = '登录中...';
-				var url = this.url + "/systemAccount/login";
+				// var url = this.url + "/systemAccount/login";
+				var url = this.url + "/SysAccountController/login";
 				axios({
 					method: "post",
 					url: url,
@@ -50,6 +51,9 @@
 					data: {
 						"account": this.accountName,
 						"Pwd": this.accountPwd,
+                        // 孙云龙添加
+                        "ip": sessionStorage.getItem("IP")
+                        // end
 						// "ipaddress":returnCitySN.cip,
 					},
 					dataType: "json"
@@ -62,6 +66,9 @@
 							Cookies.set('accessToken', this.accountData.accessToken,"30MIN");
 							Cookies.set('accountData', this.accountData.accountData, "30MIN");
 						}
+						// 孙云龙添加
+                        sessionStorage.setItem("menuList", JSON.stringify(this.accountData.menuData))
+                        // end
 						this.$parent.setRouter("/MainPage");
 					} else {
 						this.btnText = '登录';

@@ -85,75 +85,75 @@
                                 <router-link to="/MP/Project"><i class="fa" aria-hidden="true">课程管理</i></router-link>
                             </dd>
                         </dl> -->
-                        <dl v-bind:class="{h4:bool4}">
-                            <dt @click="onShow(3)" v-bind:class="{'li-active':bool4}">
-                                <i class="fa" v-bind:class="{'fa-folder-open':bool4,'fa-folder':!bool4}" aria-hidden="true">
-                                    编辑管理
-                                </i>
-                            </dt>
-                            <!--  <dd @click="addCheck('Audio')" v-bind:class="{'li-active':onString=='Audio'}">
-                                <router-link to="/MP/Audio"><i class="fa" aria-hidden="true">音频管理</i></router-link>
-                            </dd> -->
-                            <dd @click="addCheck('CourceManage')" v-bind:class="{'li-active':onString=='CourceManage'}">
-                                <router-link to="/MP/CourceManage"><i class="fa" aria-hidden="true">课程管理</i></router-link>
-                            </dd>
-                            <!--  <dd @click="addCheck('Video')" v-bind:class="{'li-active':onString=='Video'}">
-                                <router-link to="/MP/Video"><i class="fa" aria-hidden="true">视频管理</i></router-link>
-                            </dd> -->
+<!--                        <dl v-bind:class="{h4:bool4}">-->
+<!--                            <dt @click="onShow(3)" v-bind:class="{'li-active':bool4}">-->
+<!--                                <i class="fa" v-bind:class="{'fa-folder-open':bool4,'fa-folder':!bool4}" aria-hidden="true">-->
+<!--                                    编辑管理-->
+<!--                                </i>-->
+<!--                            </dt>-->
+<!--                            &lt;!&ndash;  <dd @click="addCheck('Audio')" v-bind:class="{'li-active':onString=='Audio'}">-->
+<!--                                <router-link to="/MP/Audio"><i class="fa" aria-hidden="true">音频管理</i></router-link>-->
+<!--                            </dd> &ndash;&gt;-->
+<!--                            <dd @click="addCheck('CourceManage')" v-bind:class="{'li-active':onString=='CourceManage'}">-->
+<!--                                <router-link to="/MP/CourceManage"><i class="fa" aria-hidden="true">课程管理</i></router-link>-->
+<!--                            </dd>-->
+<!--                            &lt;!&ndash;  <dd @click="addCheck('Video')" v-bind:class="{'li-active':onString=='Video'}">-->
+<!--                                <router-link to="/MP/Video"><i class="fa" aria-hidden="true">视频管理</i></router-link>-->
+<!--                            </dd> &ndash;&gt;-->
 
-                            <dd @click="addCheck('Evaluation')" v-bind:class="{'li-active':onString=='Evaluation'}">
-                                <router-link to="/MP/Evaluation"><i class="fa" aria-hidden="true">测评管理</i></router-link>
-                            </dd>
-                            <dd @click="addCheck('Article')" v-bind:class="{'li-active':onString=='Article'}">
-                                <router-link to="/MP/Article"><i class="fa" aria-hidden="true">文章管理</i></router-link>
-                            </dd>
-							<dd @click="addCheck('Counselor')" v-bind:class="{'li-active':onString=='Counselor'}">
-							    <router-link to="/MP/Counselor"><i class="fa" aria-hidden="true">咨询师管理</i></router-link>
-							</dd>
-							<dd @click="addCheck('Activity')" v-bind:class="{'li-active':onString=='Activity'}">
-							    <router-link to="/MP/Activity"><i class="fa" aria-hidden="true">热门沙龙</i></router-link>
-							</dd>
-							
-							
-                            <!-- <dd @click="addCheck('PlayAV')" v-bind:class="{'li-active':onString=='PlayAV'}">
-                                <router-link to="/PlayAV"><i class="fa" aria-hidden="true">音视频播放</i></router-link>
-                            </dd> -->
-                            <dd @click="addCheck('SignInImgManage')" v-bind:class="{'li-active':onString=='SignInImgManage'}">
-                                <router-link to="/MP/SignInImgManage"><i class="fa" aria-hidden="true">签到图片管理</i></router-link>
-                            </dd>
-                            <!-- <dd @click="addCheck('SummerNote')" v-bind:class="{'li-active':onString=='SummerNote'}">
-                                <router-link to="/SummerNote"><i class="fa" aria-hidden="true">排版</i></router-link>
-                            </dd> -->
-                        </dl>
-						<dl v-bind:class="{h3:bool3}">
-						    <dt @click="onShow(2)" v-bind:class="{'li-active':bool3}">
-						        <i class="fa" v-bind:class="{'fa-folder-open':bool3,'fa-folder':!bool3}" aria-hidden="true">
-						            基础设置
-						        </i>
-						    </dt>
-						    <dd @click="addCheck('EvaluationType')" v-bind:class="{'li-active':onString=='EvaluationType'}">
-						        <router-link to="/MP/EvaluationType"><i class="fa" aria-hidden="true">测评类型管理</i></router-link>
-						    </dd>
-							<dd @click="addCheck('ArticleTheme')" v-bind:class="{'li-active':onString=='ArticleTheme'}">
-							    <router-link to="/ArticleTheme"><i class="fa" aria-hidden="true">主题分类管理</i></router-link>
-							</dd>
-							<dd @click="addCheck('CounselorType')" v-bind:class="{'li-active':onString=='CounselorType'}">
-							    <router-link to="/MP/CounselorType"><i class="fa" aria-hidden="true">咨询师分类管理</i></router-link>
-							</dd>
-						</dl>
-                        <dl v-bind:class="{h2:bool5}">
-                            <dt @click="onShow(4)" v-bind:class="{'li-active':bool5}">
-                                <i class="fa" v-bind:class="{'fa-folder-open':bool5,'fa-folder':!bool5}" aria-hidden="true">
-                                    消费查询
-                                </i>
-                            </dt>
-                            <dd @click="addCheck('PreApporint')" v-bind:class="{'li-active':onString=='PreApporint'}">
-                                <router-link to="/MP/PreApporint"><i class="fa" aria-hidden="true">咨询师预约付费</i></router-link>
-                            </dd>
-							<dd @click="addCheck('PreActivity')" v-bind:class="{'li-active':onString=='PreActivity'}">
-							    <router-link to="/MP/PreActivity"><i class="fa" aria-hidden="true">沙龙活动付费</i></router-link>
-							</dd>
-                        </dl>
+<!--                            <dd @click="addCheck('Evaluation')" v-bind:class="{'li-active':onString=='Evaluation'}">-->
+<!--                                <router-link to="/MP/Evaluation"><i class="fa" aria-hidden="true">测评管理</i></router-link>-->
+<!--                            </dd>-->
+<!--                            <dd @click="addCheck('Article')" v-bind:class="{'li-active':onString=='Article'}">-->
+<!--                                <router-link to="/MP/Article"><i class="fa" aria-hidden="true">文章管理</i></router-link>-->
+<!--                            </dd>-->
+<!--							<dd @click="addCheck('Counselor')" v-bind:class="{'li-active':onString=='Counselor'}">-->
+<!--							    <router-link to="/MP/Counselor"><i class="fa" aria-hidden="true">咨询师管理</i></router-link>-->
+<!--							</dd>-->
+<!--							<dd @click="addCheck('Activity')" v-bind:class="{'li-active':onString=='Activity'}">-->
+<!--							    <router-link to="/MP/Activity"><i class="fa" aria-hidden="true">热门沙龙</i></router-link>-->
+<!--							</dd>-->
+<!--							-->
+<!--							-->
+<!--                            &lt;!&ndash; <dd @click="addCheck('PlayAV')" v-bind:class="{'li-active':onString=='PlayAV'}">-->
+<!--                                <router-link to="/PlayAV"><i class="fa" aria-hidden="true">音视频播放</i></router-link>-->
+<!--                            </dd> &ndash;&gt;-->
+<!--                            <dd @click="addCheck('SignInImgManage')" v-bind:class="{'li-active':onString=='SignInImgManage'}">-->
+<!--                                <router-link to="/MP/SignInImgManage"><i class="fa" aria-hidden="true">签到图片管理</i></router-link>-->
+<!--                            </dd>-->
+<!--                            &lt;!&ndash; <dd @click="addCheck('SummerNote')" v-bind:class="{'li-active':onString=='SummerNote'}">-->
+<!--                                <router-link to="/SummerNote"><i class="fa" aria-hidden="true">排版</i></router-link>-->
+<!--                            </dd> &ndash;&gt;-->
+<!--                        </dl>-->
+<!--						<dl v-bind:class="{h3:bool3}">-->
+<!--						    <dt @click="onShow(2)" v-bind:class="{'li-active':bool3}">-->
+<!--						        <i class="fa" v-bind:class="{'fa-folder-open':bool3,'fa-folder':!bool3}" aria-hidden="true">-->
+<!--						            基础设置-->
+<!--						        </i>-->
+<!--						    </dt>-->
+<!--						    <dd @click="addCheck('EvaluationType')" v-bind:class="{'li-active':onString=='EvaluationType'}">-->
+<!--						        <router-link to="/MP/EvaluationType"><i class="fa" aria-hidden="true">测评类型管理</i></router-link>-->
+<!--						    </dd>-->
+<!--							<dd @click="addCheck('ArticleTheme')" v-bind:class="{'li-active':onString=='ArticleTheme'}">-->
+<!--							    <router-link to="/ArticleTheme"><i class="fa" aria-hidden="true">主题分类管理</i></router-link>-->
+<!--							</dd>-->
+<!--							<dd @click="addCheck('CounselorType')" v-bind:class="{'li-active':onString=='CounselorType'}">-->
+<!--							    <router-link to="/MP/CounselorType"><i class="fa" aria-hidden="true">咨询师分类管理</i></router-link>-->
+<!--							</dd>-->
+<!--						</dl>-->
+<!--                        <dl v-bind:class="{h2:bool5}">-->
+<!--                            <dt @click="onShow(4)" v-bind:class="{'li-active':bool5}">-->
+<!--                                <i class="fa" v-bind:class="{'fa-folder-open':bool5,'fa-folder':!bool5}" aria-hidden="true">-->
+<!--                                    消费查询-->
+<!--                                </i>-->
+<!--                            </dt>-->
+<!--                            <dd @click="addCheck('PreApporint')" v-bind:class="{'li-active':onString=='PreApporint'}">-->
+<!--                                <router-link to="/MP/PreApporint"><i class="fa" aria-hidden="true">咨询师预约付费</i></router-link>-->
+<!--                            </dd>-->
+<!--							<dd @click="addCheck('PreActivity')" v-bind:class="{'li-active':onString=='PreActivity'}">-->
+<!--							    <router-link to="/MP/PreActivity"><i class="fa" aria-hidden="true">沙龙活动付费</i></router-link>-->
+<!--							</dd>-->
+<!--                        </dl>-->
 
                         <!-- <dl>
                             <dt v-on:click="selectRule('newtree')" v-bind:class="{'li-active':onString == 'newtree'}">
@@ -163,6 +163,45 @@
                             </dt>
                         </dl> -->
                         <!-- <router-link to="/MP/PatientStype"><i class="fa fa-table" aria-hidden="false" v-on:click="titleChange('患者类型')">　患者类型</i></router-link> -->
+<!--                        孙云龙修改-->
+                        <el-row class="tac">
+                            <el-col :span="24">
+                                <el-menu :unique-opened="true"
+                                         :router="true"
+                                         text-color="#795548"
+                                         background-color="#E6E6E6"
+                                         active-text-color="#F2AD4E"
+                                         default-active="/MP/BuildingControl/BuildingControl"
+                                         class="el-menu-vertical-demo">
+                                    <template v-for="item in menuList">
+                                        <el-submenu :index="item.menuPath" :key="item.menuPath">
+                                            <template slot="title">
+                                                <i class="el-icon-menu"></i>
+                                                <span style="font-size: 20px;font-weight: normal">{{item.menuName}}</span>
+                                            </template>
+                                            <template v-for="itemChild in item.menuBeanList">
+                                                <!--三级菜单-->
+                                                <el-submenu
+                                                    v-if="itemChild.menuBeanList && itemChild.menuBeanList.length"
+                                                    :index="itemChild.menuPath" :key="itemChild.menuPath">
+                                                    <template slot="title"><span style="font-size: 20px;font-weight: normal">{{itemChild.menuName}}</span>
+                                                    </template>
+                                                    <el-menu-item v-for="itemChildChild in itemChild.menuBeanList"
+                                                                  :index="itemChildChild.menuPath"
+                                                                  :key="itemChildChild.menuPath">
+                                                        <span slot="title" style="font-size: 20px;font-weight: normal">{{itemChildChild.menuName}}</span>
+                                                    </el-menu-item>
+                                                </el-submenu>
+                                                <!--二级菜单-->
+                                                <el-menu-item v-else :index="itemChild.menuPath" :key="itemChild.menuPath">
+                                                    <span slot="title" style="font-size: 20px;font-weight: normal">{{itemChild.menuName}}</span></el-menu-item>
+                                            </template>
+                                        </el-submenu>
+                                    </template>
+                                </el-menu>
+                            </el-col>
+                        </el-row>
+<!--                        end-->
                     </div>
                 </div>
                 <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 embed-responsive embed-responsive-16by9" style="overflow: inherit; background-color:">
@@ -186,6 +225,9 @@
         data() {
             return {
                 accountName:this.accountName(),
+                // 孙云龙添加
+                menuList: [],
+                // end
                 itemList:[],
                 bool1:true,
                 bool2:false,
@@ -266,6 +308,10 @@
             },
         },
         mounted() {
+            // 孙云龙添加
+            var menu = JSON.parse(sessionStorage.getItem("menuList"));
+            this.menuList = menu.menuBeanList
+            // end
             init();
 
         },
@@ -314,7 +360,7 @@
 		margin-top: 0px;
 	    height: 200px;
 	}
-	
+
 	#aside-menu dl.h1 {
 		margin-top: 0px;
 	    height: 100px;
