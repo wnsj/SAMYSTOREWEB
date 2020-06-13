@@ -128,6 +128,10 @@
                     this.$refs.accountDialog.initData('add')
                     $("#accountDialog").modal('show')
                 } else if (param === "3") {
+                    if (!this.has('Account:modify')) {
+                        alert("您没有该访问权限！")
+                        return
+                    }
                     this.$refs.accountDialog.initData('modify', item)
                     $("#accountDialog").modal('show')
                 }
