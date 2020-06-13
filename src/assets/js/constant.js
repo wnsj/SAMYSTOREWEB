@@ -32,7 +32,9 @@ constant.has = function(param) {
 	//未传值
 	if (this.isBlank(param)) return false;
 	var jsonString = sessionStorage.getItem("btnData");
-	//未登录
+
+    // console.log('数据' + jsonString);
+    //未登录
 	// if (this.isBlank(jsonString)){
 	// 	alert("您还没有任何权限，请联系管理员添加权限")
 	// 	return false;
@@ -42,7 +44,7 @@ constant.has = function(param) {
         var itemRuleList=JSON.parse(jsonString);
         for (var i=0; i < itemRuleList.length;i++){
             var item = itemRuleList[i];
-            if(item.urlName == param){
+            if(item == param){
                 return true;
             }
         }

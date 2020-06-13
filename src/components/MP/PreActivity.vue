@@ -35,7 +35,10 @@
 					</select>
 				</div>
 			</div>
-			<button type="button" class="btn btn-primary pull-right m_r_10" style="margin-right:1.5%;" data-toggle="modal"
+			<button type="button"
+                    class="btn btn-primary pull-right m_r_10"
+                    style="margin-right:1.5%;" data-toggle="modal"
+                    v-has="'PreActivity:get'"
 			 v-on:click="checkEvaluationType()">查询</button>
 		</div>
 		<div class="">
@@ -53,8 +56,8 @@
 								<th class="text-center">订单号</th>
 								<th class="text-center">时间</th>
 								<!-- <th class="text-center">备注</th> -->
-								<th class="text-center">退费</th>
-								<th class="text-center">查询电话</th>
+								<th class="text-center" v-has="'PreActivity:refund'">退费</th>
+								<th class="text-center" v-has="'PreActivity:getPhone'">查询电话</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -67,11 +70,11 @@
 								<td class="text-center" style="line-height:33px;">{{item.tradeNum}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.createDate | dateFormatFilter('YYYY-MM-DD HH:mm:ss')}}</td>
 								<!-- <td class="text-center" style="line-height:33px;">{{item.remark}}</td> -->
-								<td class="text-center" v-show="item.state=='0'" style="line-height:33px;">未付款</td>
-								<td class="text-center" v-show="item.state=='1'" style="line-height:33px;"><button type="button" class="btn btn-primary" v-on:click="reFund(item)">退款</button></td>
-								<td class="text-center" v-show="item.state=='2'" style="line-height:33px;"><button type="button" class="btn btn-warning" v-on:click="reFund(item)">退款中</button></td>
-								<td class="text-center" v-show="item.state=='3'" tyle="line-height:33px;"><button type="button" class="btn btn-success" v-on:click="reFund(item)">已退款</button></td>
-								<td class="text-center" style="line-height:33px;"><button type="button" class="btn btn-warning" v-on:click="bindPhone(item)">查看手机号</button></td>
+								<td class="text-center" v-show="item.state=='0'" style="line-height:33px;" v-has="'PreActivity:refund'">未付款</td>
+								<td class="text-center" v-show="item.state=='1'" style="line-height:33px;" v-has="'PreActivity:refund'"><button type="button" class="btn btn-primary" v-on:click="reFund(item)">退款</button></td>
+								<td class="text-center" v-show="item.state=='2'" style="line-height:33px;" v-has="'PreActivity:refund'"><button type="button" class="btn btn-warning" v-on:click="reFund(item)" >退款中</button></td>
+								<td class="text-center" v-show="item.state=='3'" tyle="line-height:33px;" v-has="'PreActivity:refund'"><button type="button" class="btn btn-success" v-on:click="reFund(item)" >已退款</button></td>
+								<td class="text-center" style="line-height:33px;" v-has="'PreActivity:getPhone'"><button type="button" class="btn btn-warning" v-on:click="bindPhone(item)" >查看手机号</button></td>
 							</tr>
 						</tbody>
 					</table>
@@ -121,7 +124,7 @@
 									<p style="margin-left:1.5%; color:red ;">注：拨打手机号，听到提示后输入分机号，按#号结束。</p>
 									<p style="margin-left:1.5%; color:red ;"> 过了失效时间，通过这个手机号将无法联系到客户。</p>
 								</div>
-		
+
 							</form>
 						</div>
 					</div>
@@ -207,11 +210,11 @@
 			reFund(item){
 				if(!this.isBlank(item.state) && "3"==item.state){
 					alert('已退款不能重复退款')
-					return 
+					return
 				}else if(!this.isBlank(item.state) && "2"==item.state){
 					this.checkEvaluationType()
 					alert('退款中，请不要重复点击')
-					return 
+					return
 				}
 				var url = this.url+'/preActivity/applyWxPayRefund'
 				console.log(this.accountId())

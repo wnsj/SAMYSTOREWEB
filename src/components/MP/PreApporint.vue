@@ -34,7 +34,10 @@
 					</select>
 				</div>
 			</div>
-			<button type="button" class="btn btn-primary pull-right m_r_10" style="margin-right:1.5%;" data-toggle="modal"
+			<button type="button"
+                    class="btn btn-primary pull-right m_r_10"
+                    style="margin-right:1.5%;" data-toggle="modal"
+                    v-has="'PreApporint:get'"
 			 v-on:click="checkEvaluationType()">查询</button>
 		</div>
 		<div class="">
@@ -55,12 +58,12 @@
 								<th class="text-center">咨询方式</th>
 								<th class="text-center">协调时间</th>
 								<th class="text-center">备注</th>
-								<th class="text-center">查询电话</th>
+								<th class="text-center" v-has="'PreApporint:getPhone'">查询电话</th>
 							</tr>
-							
+
 						</thead>
 						<tbody>
-							<tr v-for="(item,index) in etList" :key="index" v-on:dblclick="selectRule('3',item)">
+							<tr v-for="(item,index) in etList" :key="index">
 								<td class="text-center" style="line-height:33px;">{{item.paId}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.name}}</td>
 								<!-- <td class="text-center" style="line-height:33px;">{{item.phone}}</td> -->
@@ -72,9 +75,9 @@
 								<td class="text-center" style="line-height:33px;">{{item.askType=='1' ? '电话' :'面对面'}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.coordinate=='1' ? '需要' :'不需要'}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.remark}}</td>
-								<td class="text-center" style="line-height:33px;"><button type="button" class="btn btn-warning" v-on:click="bindPhone(item)">查看手机号</button></td>
+								<td class="text-center" style="line-height:33px;" v-has="'PreApporint:getPhone'"><button type="button" class="btn btn-warning" v-on:click="bindPhone(item)">查看手机号</button></td>
 							</tr>
-							
+
 						</tbody>
 					</table>
 				</div>
