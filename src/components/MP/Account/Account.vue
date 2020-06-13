@@ -39,7 +39,7 @@
                         </thead>
                         <tbody>
                         <tr v-for="(item,index) in tableData" :key="index" v-on:dblclick="selectRule('3',item)">
-                            <td class="text-center" style="line-height:33px;">{{item.name}}</td>
+                            <td class="text-center" style="line-height:33px;">{{item.account}}</td>
                             <td class="text-center" style="line-height:33px;">{{item.roleName}}</td>
                             <td class="text-center" style="line-height:33px;" v-has="'Account:delete'"><button type="button" :class="'btn btn-warning'" data-toggle="modal"
                                                                                       v-on:click="deleteAccById(item)">删除</button></td>
@@ -147,7 +147,7 @@
                 if (!confirm("确定删除" + item.account + "用户?")) {
                     return;
                 }
-                var url = this.url + '/account/deleteAcc'
+                var url = this.url + '/SysAccountController/deleteAcc'
                 this.$ajax({
                     method: 'POST',
                     url: url,

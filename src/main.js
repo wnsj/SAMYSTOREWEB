@@ -8,9 +8,13 @@ import moment from 'moment'
 import Cookies from 'js-cookie'
 import constant from '../src/assets/js/constant'
 import vueBeauty from 'vue-beauty'
+
+
+
 // 孙云龙添加
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+
 // end
 // 富文本编辑----------------------------------
 import QuillEditor from 'vue-quill-editor'

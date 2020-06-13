@@ -10,6 +10,7 @@
             </div>
             <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 text-right">
                 <p style="color: #1b4fa3;">欢迎<span style="color: #d58512;"> {{accountName}} </span>来到，商城管理系统</p>
+                <button class="btn btn-default m_r_10" style="margin-top: 40px;margin-right: 20px" v-on:click="modifyPassWord()">修改密码</button>
                 <button class="btn btn-default m_r_10" style="margin-top: 40px;" v-on:click="loginOut()">退出</button>
             </div>
         </div>
@@ -209,6 +210,32 @@
                 </div>
             </div>
         </div>
+        <el-dialog
+            :visible.sync="modifyPwbDialogVisible"
+            width="35%"
+            top="25vh"
+            center
+            class="updatePwd">
+            <template slot="title">
+                <el-row style="border-bottom: 1px solid #f2f2f2;padding-bottom: 10px;">修改密码</el-row>
+            </template>
+            <el-row style="padding-left: 80px;padding-right: 80px;">
+                <el-form label-position="right" label-width="80px" size="small" class="formClass">
+                    <el-form-item label="用户名">
+                        <el-input v-model="accountName" disabled style="width: 90%"></el-input>
+                    </el-form-item>
+                    <el-form-item label="新密码">
+                        <el-input v-model="pwd" placeholder="请输入新设置密码" style="width: 90%"></el-input>
+                    </el-form-item>
+                    <el-form-item label="确认密码">
+                        <el-input v-model="confirmPwb" placeholder="请输入确认密码" style="width: 90%"></el-input>
+                    </el-form-item>
+                </el-form>
+            </el-row>
+            <span slot="footer" class="dialog-footer">
+                      <el-button type="primary" @click="modifyPwb" size="small" style="border-radius: 5px;width: 100px;">保存</el-button>
+                    </span>
+        </el-dialog>
     </div>
 
 </template>
@@ -216,6 +243,7 @@
 <script type="module">
     import axios from 'axios'
     import Cookies from 'js-cookie'
+    import { Message } from 'element-ui'
     import {
         init
     } from '@/../static/js/common.js'
@@ -227,6 +255,10 @@
                 accountName:this.accountName(),
                 // 孙云龙添加
                 menuList: [],
+                accountData:{},
+                pwd: '',
+                confirmPwb: '',
+                modifyPwbDialogVisible:false,
                 // end
                 itemList:[],
                 bool1:true,
@@ -306,11 +338,63 @@
                     this.accountId = '';
                 }
             },
+            modifyPwb() {
+                if (this.isBlank(this.pwd)) {
+                    Message.warning('请输入新密码')
+                    return
+                }
+                if (this.isBlank(this.confirmPwb)) {
+                    Message.warning('请输入确认密码')
+                    return;
+                }
+                if (this.pwd != this.confirmPwb) {
+                    Message.error('新密码与确认密码不一致')
+                    return;
+                }
+                var url = this.url + "/SysAccountController/patchAccount";
+                axios({
+                    method: "post",
+                    url: url,
+                    headers: {
+                        "Content-Type": this.contentType,
+                        "Access-Token": this.accessToken
+                    },
+                    data: {
+                        "account": this.accountName,
+                        "saId": this.accountData.saId,
+                        "pwd": this.pwd,
+                    },
+                    dataType: "json"
+                }).then((response) => {
+                    if (response.data.retCode == '0000') {
+                        Message.success('修改成功,请重新登录')
+                        setTimeout(() => {
+                            //删除cookie
+                            Cookies.remove("accountData");
+                            Cookies.remove("accessToken");
+                            this.$parent.setRouter("/login");
+                            this.accountId = '';
+                        }, 2000)
+
+                    } else {
+                        Message.warning('修改密码失败')
+                    }
+
+                }).catch((error) => {
+                        console.log("请求失败处理");
+                    }
+                );
+            },
+            modifyPassWord() {
+                this.modifyPwbDialogVisible = true
+            }
         },
         mounted() {
             // 孙云龙添加
             var menu = JSON.parse(sessionStorage.getItem("menuList"));
             this.menuList = menu.menuBeanList
+            this.accountData = JSON.parse(sessionStorage.getItem("account"));
+            this.accountName = this.accountData.account
             // end
             init();
 

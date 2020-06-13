@@ -84,6 +84,12 @@
 
 
             certainAction() {
+
+                if (this.param.roleIdList == null || this.param.roleIdList.length === 0) {
+                    alert("请给用户绑定角色")
+                    return
+                }
+
                 this.isDisable = true
                 setTimeout(() => {
                     this.isDisable = false
