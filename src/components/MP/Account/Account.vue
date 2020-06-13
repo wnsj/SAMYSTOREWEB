@@ -12,10 +12,16 @@
                     <input type="text" class="form-control" v-model="account"/>
                 </div>
             </div>
-            <button type="button" class="btn btn-warning pull-right m_r_10" style="margin-right:1.5%;" data-toggle="modal"
+            <button type="button"
+                    class="btn btn-warning pull-right m_r_10"
+                    style="margin-right:1.5%;" data-toggle="modal"
+                    v-has="'Account:add'"
                     v-on:click="selectRule('1')">添加</button>
-            <button type="button" class="btn btn-primary pull-right m_r_10" style="margin-right:1.5%;"
+            <button type="button"
+                    class="btn btn-primary pull-right m_r_10"
+                    style="margin-right:1.5%;"
                     data-toggle="modal"
+                    v-has="'Account:get'"
                     v-on:click="queryData(1)">查询
             </button>
         </div>
@@ -28,14 +34,14 @@
                         <tr>
                             <th class="text-center">用户名</th>
                             <th class="text-center">角色</th>
-                            <th class="text-center">删除</th>
+                            <th class="text-center" v-has="'Account:delete'">删除</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr v-for="(item,index) in tableData" :key="index" v-on:dblclick="selectRule('3',item)">
                             <td class="text-center" style="line-height:33px;">{{item.name}}</td>
                             <td class="text-center" style="line-height:33px;">{{item.roleName}}</td>
-                            <td class="text-center" style="line-height:33px;"><button type="button" :class="'btn btn-warning'" data-toggle="modal"
+                            <td class="text-center" style="line-height:33px;" v-has="'Account:delete'"><button type="button" :class="'btn btn-warning'" data-toggle="modal"
                                                                                       v-on:click="deleteAccById(item)">删除</button></td>
                         </tr>
                         </tbody>

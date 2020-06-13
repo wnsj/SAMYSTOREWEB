@@ -16,10 +16,16 @@
                     </select>
                 </div>
             </div>
-            <button type="button" class="btn btn-warning pull-right m_r_10" style="margin-right:1.5%;" data-toggle="modal"
+            <button type="button"
+                    class="btn btn-warning pull-right m_r_10"
+                    style="margin-right:1.5%;" data-toggle="modal"
+                    v-has="'Jurisdiction:add'"
                     v-on:click="selectRule('1')">添加</button>
-            <button type="button" class="btn btn-primary pull-right m_r_10" style="margin-right:1.5%;"
+            <button type="button"
+                    class="btn btn-primary pull-right m_r_10"
+                    style="margin-right:1.5%;"
                     data-toggle="modal"
+                    v-has="'Jurisdiction:get'"
                     v-on:click="queryData(1)">查询
             </button>
         </div>
@@ -33,7 +39,7 @@
                             <th class="text-center">角色</th>
                             <th class="text-center">描述</th>
                             <th class="text-center">状态</th>
-                            <th class="text-center">权限</th>
+                            <th class="text-center" v-has="'Jurisdiction:getJur'">权限</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -41,7 +47,7 @@
                             <td class="text-center" style="line-height:33px;">{{item.roleName}}</td>
                             <td class="text-center" style="line-height:33px;">{{item.remarks}}</td>
                             <td class="text-center" style="line-height:33px;">{{item.stateLabel}}</td>
-                            <td class="text-center">
+                            <td class="text-center" v-has="'Jurisdiction:getJur'">
                                 <button type="button" data-toggle="modal" :class="'btn btn-primary'"
                                         v-on:click="Jurisdiction(item)">查看权限
                                 </button>
@@ -140,6 +146,10 @@
                     this.$refs.jurDialog.initData('add')
                     $("#jurDialog").modal('show')
                 } else if (param === "3") {
+                    if (!this.has('Jurisdiction:modify')) {
+                        alert("您没有该访问权限！")
+                        return
+                    }
                     this.$refs.jurDialog.initData('modify', item)
                     $("#jurDialog").modal('show')
                 }

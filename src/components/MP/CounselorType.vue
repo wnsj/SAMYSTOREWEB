@@ -14,9 +14,15 @@
 					<input class="form-control" type="text" v-model="ccName">
 				</div>
 			</div>
-			<button type="button" class="btn btn-warning pull-right m_r_10" style="margin-right:1.5%;" data-toggle="modal"
+			<button type="button"
+                    class="btn btn-warning pull-right m_r_10"
+                    style="margin-right:1.5%;" data-toggle="modal"
+                    v-has="'CounselorType:add'"
 			 v-on:click="selectRule('1')">添加</button>
-			<button type="button" class="btn btn-primary pull-right m_r_10" style="margin-right:1.5%;" data-toggle="modal"
+			<button type="button"
+                    class="btn btn-primary pull-right m_r_10"
+                    style="margin-right:1.5%;" data-toggle="modal"
+                    v-has="'CounselorType:get'"
 			 v-on:click="counselorTypeAction()">查询</button>
 		</div>
 		<div class="">
@@ -28,14 +34,14 @@
 							<tr>
 								<th class="text-center">ID</th>
 								<th class="text-center">测试类型</th>
-								<th class="text-center">修改</th>
+								<th class="text-center" v-has="'CounselorType:modify'">修改</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr v-for="(item,index) in ctList" :key="index" v-on:dblclick="selectRule('3',item)">
 								<td class="text-center" style="line-height:33px;">{{item.ccId}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.ccName}}</td>
-								<td class="text-center" style="line-height:33px;"><button type="button" class="btn btn-warning" v-on:click="selectRule('3',item)">修改</button></td>
+								<td class="text-center" style="line-height:33px;" v-has="'CounselorType:modify'"><button type="button" class="btn btn-warning" v-on:click="selectRule('3',item)">修改</button></td>
 							</tr>
 						</tbody>
 					</table>
@@ -90,7 +96,7 @@
 // 				this.current = page
 // 				this.checkEvaluation(page);
 // 			},
-			
+
 			//feedback from adding and modifying view
 			feedBack() {
 				this.counselorTypeAction()
@@ -103,6 +109,10 @@
 					this.$refs.ct.initData('add')
 					$("#ctContent").modal('show')
 				} else if (param == "3") {
+				    if (!this.has('CounselorType:modify')) {
+                        alert("您没有该访问权限！")
+                        return
+                    }
 					this.$refs.ct.initData('modify', item)
 					$("#ctContent").modal('show')
 				}

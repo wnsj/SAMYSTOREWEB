@@ -16,10 +16,16 @@
                     </select>
                 </div>
             </div>
-            <button type="button" class="btn btn-warning pull-right m_r_10" style="margin-right:1.5%;" data-toggle="modal"
+            <button type="button"
+                    class="btn btn-warning pull-right m_r_10"
+                    style="margin-right:1.5%;" data-toggle="modal"
+                    v-has="'Menu:add'"
                     v-on:click="selectRule('1')">添加</button>
-            <button type="button" class="btn btn-primary pull-right m_r_10" style="margin-right:1.5%;"
+            <button type="button"
+                    class="btn btn-primary pull-right m_r_10"
+                    style="margin-right:1.5%;"
                     data-toggle="modal"
+                    v-has="'Menu:get'"
                     v-on:click="queryData(1)">查询
             </button>
         </div>
@@ -127,6 +133,10 @@
                     this.$refs.auditMenuRef.initData('add')
                     $("#auditMenu").modal('show')
                 } else if (param === "3") {
+                    if (!this.has('Menu:modify')) {
+                        alert("您没有该访问权限！")
+                        return
+                    }
                     this.$refs.auditMenuRef.initData('modify', item)
                     $("#auditMenu").modal('show')
                 }
