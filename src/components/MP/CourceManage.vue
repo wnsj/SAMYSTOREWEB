@@ -113,7 +113,7 @@
         </div>
         <div class="row newRow" style="padding-bottom:15px;">
             <button type="button" class="btn btn-warning pull-right m_r_10" style="margin-right:1.5%;" data-toggle="modal"
-                v-on:click="selectRule('1')">添加</button>
+                v-has="'CourceManage:add'" v-on:click="selectRule('1')">添加</button>
             <button type="button" class="btn btn-primary pull-right m_r_10" style="margin-right:1.5%;" data-toggle="modal"
                 v-on:click="checkProject(1)">查询</button>
         </div>
@@ -235,6 +235,10 @@
                     this.$refs.subVideo.initData('add')
                     $("#videoContent").modal('show')
                 } else if (param == "3") {
+					if(!this.has('CourceManage:modify')){
+						alert('您还没有权限，请联系管理员')
+						return 
+					}
                     this.$refs.subVideo.initData('modify', item)
                     $("#videoContent").modal('show')
                 }
@@ -312,6 +316,10 @@
                 }
             },
             openCourceChapter(item) {
+				if(!this.has('Activity:getTable:getPhone')){
+					alert('您还没有权限，请联系管理员')
+					return
+				}
                 //console.log("openCourceChapter" + item)
 				$('#courceChapter').modal({backdrop: 'static', keyboard: false});
                 $("#courceChapter").modal('show')

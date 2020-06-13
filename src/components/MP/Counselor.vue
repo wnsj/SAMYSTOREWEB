@@ -53,7 +53,7 @@
 				</div>
 			</div> -->
 			<button type="button" class="btn btn-warning pull-right m_r_10" style="margin-right:1.5%;" data-toggle="modal"
-			 v-on:click="selectRule('1')">添加</button>
+			 v-has="'Counselor:add'" v-on:click="selectRule('1')">添加</button>
 			<button type="button" class="btn btn-primary pull-right m_r_10" style="margin-right:1.5%;" data-toggle="modal"
 			 v-on:click="checkEvaluation(1)">查询</button>
 		</div>
@@ -183,6 +183,10 @@
 					this.$refs.subCou.initData('add')
 					$("#scContent").modal('show')
 				} else if (param == "3") {
+					if(!this.has('Counselor:modify')){
+						alert('您还没有权限，请联系管理员')
+						return 
+					}
 					this.$refs.subCou.initData('modify', item)
 					$("#scContent").modal('show')
 				}

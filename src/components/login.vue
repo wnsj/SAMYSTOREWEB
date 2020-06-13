@@ -68,6 +68,7 @@
 						}
 						// 孙云龙添加
                         sessionStorage.setItem("menuList", JSON.stringify(this.accountData.menuData))
+                        sessionStorage.setItem("btnData",JSON.stringify(this.accountData.btnData))
                         // end
 						this.$parent.setRouter("/MainPage");
 					} else {

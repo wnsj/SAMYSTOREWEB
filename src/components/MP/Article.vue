@@ -32,7 +32,7 @@
 				</div>
 			</div>
 			<button type="button" class="btn btn-warning pull-right m_r_10" style="margin-right:1.5%;" data-toggle="modal"
-			 v-on:click="selectRule('1')">添加</button>
+			 v-has="'Article:add'" v-on:click="selectRule('1')">添加</button>
 			<button type="button" class="btn btn-primary pull-right m_r_10" style="margin-right:1.5%;" data-toggle="modal"
 			 v-on:click="checkProject(1)">查询</button>
 		</div>
@@ -134,6 +134,10 @@
 					this.$refs.subProject.initData('add')
 					$("#articleContent").modal('show')
 				} else if (param == "3") {
+					if(!this.has('Article:modify')){
+						alert('您还没有权限，请联系管理员')
+						return 
+					}
 					this.$refs.subProject.initData('modify', item)
 					$("#articleContent").modal('show')
 				}

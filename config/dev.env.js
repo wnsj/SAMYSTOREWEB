@@ -11,6 +11,6 @@ module.exports = merge(prodEnv, {
 	// API_HOST:'"http://172.16.213.210:8080/samy"',
 	// API_HOST:'"https://111.160.38.141:4093/samystore"',
 	//API_HOST:'"http://172.16.3.116:8080/"'
-	
+
 	API_HOST_SAMY:'"https://111.160.38.141:4093/samy"',
 })

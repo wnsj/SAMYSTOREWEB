@@ -31,20 +31,22 @@ constant.phone = function(phoneNum) {
 constant.has = function(param) {
 	//未传值
 	if (this.isBlank(param)) return false;
-	var jsonString = Cookies.get("itemList");
+	var jsonString = sessionStorage.getItem("btnData");
 	//未登录
-	if (this.isBlank(jsonString)){
-		alert("您还没有任何权限，请联系管理员添加权限")
-		return false;
-	} 
-	var itemRuleList = [];
-	 itemRuleList=JSON.parse(jsonString);
-	for (var i=0; i < itemRuleList.length;i++){
-		var item = itemRuleList[i];
-		if(item.urlName == param){
-			return true;
-		}
-	}
+	// if (this.isBlank(jsonString)){
+	// 	alert("您还没有任何权限，请联系管理员添加权限")
+	// 	return false;
+	// }
+
+    if (!this.isBlank(jsonString)) {
+        var itemRuleList=JSON.parse(jsonString);
+        for (var i=0; i < itemRuleList.length;i++){
+            var item = itemRuleList[i];
+            if(item.urlName == param){
+                return true;
+            }
+        }
+    }
 	return false;
 }
 //账户的姓名
