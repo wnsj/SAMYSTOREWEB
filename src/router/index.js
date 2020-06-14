@@ -7,7 +7,7 @@ import Audio from '../components/MP/Audio.vue'
 import Article from '../components/MP/Article.vue'
 import Evaluation from '../components/MP/Evaluation.vue'
 import Video from '../components/MP/Video.vue'
-import test from '../components/MP/test.vue'
+// import test from '../components/MP/test.vue'
 import newtree from '../components/MP/newtree.vue'
 import CourceManage from '../components/MP/CourceManage.vue'
 import PlayAV from '@/components/common/PlayAV.vue'
@@ -16,6 +16,7 @@ import SignInImgManage from '../components/MP/SignInImgManage.vue'
 import EvaluationType from '../components/MP/EvaluationType.vue'
 import SummerNote from '@/components/common/SummerNote.vue'
 
+import ArticleTheme from '../components/MP/ArticleTheme.vue'
 
 Vue.use(Router)
 
@@ -61,11 +62,11 @@ export default new Router({
                     name: 'CourceManage',
                     component: CourceManage,
                 },
-                {
-                    path: '/MP/test',
-                    name: 'test',
-                    component: test,
-                },
+//                 {
+//                     path: '/MP/test',
+//                     name: 'test',
+//                     component: test,
+//                 },
                 {
                     path: '/MP/newtree',
                     name: 'newtree',
@@ -90,6 +91,11 @@ export default new Router({
                     path: '/SummerNote',
                     name: 'SummerNote',
                     component: SummerNote,
+                },
+                {
+                    path: '/ArticleTheme',
+                    name: 'ArticleTheme',
+                    component: ArticleTheme,
                 }
             ],
             redirect: '/MP/CourceManage'

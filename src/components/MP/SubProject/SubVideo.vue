@@ -448,6 +448,8 @@
             //预览图
             imgChange() {
                 var file = $("#file")[0].files[0]; //获取file对象
+                console.log('file:');
+                console.log($("#file"));
                 if (file == null || file == undefined) {
                     $("#pingZhengDiv").remove();
                 } else {
@@ -461,6 +463,7 @@
                     //新建fileReader对象
                     var reader = new FileReader();
                     reader.readAsDataURL(file);
+                   
                     //图片加载事件style='width:350px;height:350px;overflow:hidden'
                     reader.onloadend = function() {
                         var dataUrl = reader.result;

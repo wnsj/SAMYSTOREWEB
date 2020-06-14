@@ -85,7 +85,7 @@
                                 <router-link to="/MP/Project"><i class="fa" aria-hidden="true">课程管理</i></router-link>
                             </dd>
                         </dl> -->
-                        <dl v-bind:class="{h25:bool4}">
+                        <dl v-bind:class="{h4:bool4}">
                             <dt @click="onShow(3)" v-bind:class="{'li-active':bool4}">
                                 <i class="fa" v-bind:class="{'fa-folder-open':bool4,'fa-folder':!bool4}" aria-hidden="true">
                                     编辑管理
@@ -113,11 +113,11 @@
                             <dd @click="addCheck('SignInImgManage')" v-bind:class="{'li-active':onString=='SignInImgManage'}">
                                 <router-link to="/MP/SignInImgManage"><i class="fa" aria-hidden="true">签到图片管理</i></router-link>
                             </dd>
-                            <dd @click="addCheck('SummerNote')" v-bind:class="{'li-active':onString=='SummerNote'}">
+                            <!-- <dd @click="addCheck('SummerNote')" v-bind:class="{'li-active':onString=='SummerNote'}">
                                 <router-link to="/SummerNote"><i class="fa" aria-hidden="true">排版</i></router-link>
-                            </dd>
+                            </dd> -->
                         </dl>
-						<dl v-bind:class="{h5:bool3}">
+						<dl v-bind:class="{h2:bool3}">
 						    <dt @click="onShow(2)" v-bind:class="{'li-active':bool3}">
 						        <i class="fa" v-bind:class="{'fa-folder-open':bool3,'fa-folder':!bool3}" aria-hidden="true">
 						            基础设置
@@ -126,6 +126,9 @@
 						    <dd @click="addCheck('EvaluationType')" v-bind:class="{'li-active':onString=='EvaluationType'}">
 						        <router-link to="/MP/EvaluationType"><i class="fa" aria-hidden="true">测评类型管理</i></router-link>
 						    </dd>
+							<dd @click="addCheck('ArticleTheme')" v-bind:class="{'li-active':onString=='ArticleTheme'}">
+							    <router-link to="/ArticleTheme"><i class="fa" aria-hidden="true">主题分类管理</i></router-link>
+							</dd>
 						    <!-- <dd @click="addCheck('ScheduleEmp')" v-bind:class="{'li-active':onString=='ScheduleEmp'}">
 						        <router-link to="/MP/ScheduleEmp"><i class="fa" aria-hidden="true">排班管理</i></router-link>
 						    </dd>
@@ -145,15 +148,15 @@
 						        <router-link to="/MP/Project"><i class="fa" aria-hidden="true">课程管理</i></router-link>
 						    </dd> -->
 						</dl>
-                        <dl v-bind:class="{h5:bool5}">
+                        <dl v-bind:class="{h1:bool5}">
                             <dt @click="onShow(4)" v-bind:class="{'li-active':bool5}">
                                 <i class="fa" v-bind:class="{'fa-folder-open':bool5,'fa-folder':!bool5}" aria-hidden="true">
                                     测试
                                 </i>
                             </dt>
-                            <dd @click="addCheck('test')" v-bind:class="{'li-active':onString=='test'}">
+                            <!-- <dd @click="addCheck('test')" v-bind:class="{'li-active':onString=='test'}">
                                 <router-link to="/MP/test"><i class="fa" aria-hidden="true">测试文本编辑</i></router-link>
-                            </dd>
+                            </dd> -->
                         </dl>
 
                         <!-- <dl>
@@ -302,23 +305,18 @@
         color: #f2ad4e
     }
 
-    #aside-menu dl.h10 {
+    #aside-menu dl.h4 {
+		margin-top: 0px;
         height: 250px;
     }
 
-    #aside-menu dl.h15 {
-        height: 200px;
-    }
-
-    #aside-menu dl.h25 {
-        height: 300px;
-    }
-
-    #aside-menu dl.h40 {
-        height: 400px;
+    #aside-menu dl.h2 {
+		margin-top: 0px;
+        height: 150px;
     }
 	
-	#aside-menu dl.h5 {
+	#aside-menu dl.h1 {
+		margin-top: 0px;
 	    height: 100px;
 	}
 

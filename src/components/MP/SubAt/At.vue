@@ -3,15 +3,15 @@
 	<div class="modal-content">
 		<div class="modal-header">
 			<!-- <button type="button" aria-hidden="true" class="close" v-on:click="closeCurrentPage()">×</button> -->
-			<h4 id="myModalLabel" class="modal-title">{{title}}测评类型</h4>
+			<h4 id="myModalLabel" class="modal-title">{{title}}主题类型</h4>
 		</div>
 		<div class="modal-body  pos_r">
 			<div class="tab-pane fade in active martop" id="basic">
 				<form action="" class="clearfix">
 					<div class="col-md-6 form-group clearfix">
-						<label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">测评类型</label><span class="sign-left">:</span>
+						<label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">主题类型</label><span class="sign-left">:</span>
 						<div class="col-md-8">
-							<input type="text" class="form-control" v-model="evaluationType.ttName" placeholder="">
+							<input type="text" class="form-control" v-model="artTheme.atName" placeholder="">
 						</div>
 					</div>
 					<!-- <div class="col-md-6 form-group clearfix">
@@ -49,9 +49,9 @@
 		},
 		data() {
 			return {
-				evaluationType: {
-					ttId:'',
-					ttName: '',
+				artTheme: {
+					atId:'',
+					atName: '',
 					isUse:'1',
 				},
 				title: '',
@@ -59,34 +59,34 @@
 		},
 		methods: {
 			// Initialization projcet’s content
-			initData(param, evaluationType) {
-				$('#etContent').modal({backdrop: 'static', keyboard: false});
+			initData(param, artTheme) {
+				$('#atContent').modal({backdrop: 'static', keyboard: false});
 				if (param == 'add') {
 					this.title = '新增'
-					this.evaluationType= {
-						ttId:'',
-						ttName: '',
+					this.artTheme= {
+						atId:'',
+						atName: '',
 						isUse:'1'
 					}
 				} else if (param == 'modify') {
 					this.title = '修改'
-					Object.assign(this.evaluationType,evaluationType)
+					Object.assign(this.artTheme,artTheme)
 				}
 			},
 			certainAction() {
 				console.log('the event of addtional button')
 				
-				if (this.isBlank(this.evaluationType.ttName)) {
+				if (this.isBlank(this.artTheme.atName)) {
 					alert("测评类型名字为空")
 					return
 				}
 				
 				switch(this.title){
 					case '新增':
-						var url = this.url+'/testType/addTestProblemType'
+						var url = this.url+'/articleThemeAction/addArticleTheme'
 						break;
 					case '修改':
-						var url = this.url+'/testType/updateTestProblemType'
+						var url = this.url+'/articleThemeAction/updateArticleTheme'
 						break;
 				}
 				
@@ -97,7 +97,7 @@
 						'Content-Type': this.contentType,
 						'Access-Token': this.accessToken
 					},
-					data: this.evaluationType,
+					data: this.artTheme,
 					dataType: 'json',
 				}).then((response) => {
 					var res = response.data
@@ -112,7 +112,7 @@
 				});
 			},
 			closeCurrentPage() {
-				$("#etContent").modal("hide")
+				$("#atContent").modal("hide")
 				console.log('关闭添加测评类型界面')
 			},
 			

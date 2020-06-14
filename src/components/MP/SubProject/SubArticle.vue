@@ -16,12 +16,19 @@
                         </div>
                     </div>
                     <div class="col-md-6 form-group clearfix">
-                        <label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">分类</label><span
+                        <label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">主题分类</label><span
                             class="sign-left">:</span>
                         <div class="col-md-8">
                             <ArticleTheme ref="atRef" @atChange="setAtData"></ArticleTheme>
                         </div>
                     </div>
+					<div class="col-md-6 form-group clearfix">
+					    <label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">文章分类</label><span
+					        class="sign-left">:</span>
+					    <div class="col-md-8">
+					        <et ref='et' @etChange='etChange'></et>
+					    </div>
+					</div>
 					<!-- <div class="col-md-6 form-group clearfix">
 					    <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">内容</label><span
 					        class="sign-left">:</span>
@@ -31,14 +38,6 @@
 					</div>
                     -->
 
-
-                    <div class="col-md-6 form-group clearfix">
-                        <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">内容</label><span
-                            class="sign-left">:</span>
-                        <div class="col-md-8">
-                           <textarea v-model="project.content"></textarea>
-                        </div>
-                    </div>
                     <div class="col-md-6 form-group clearfix">
                         <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">图片</label><span
                             class="sign-left">:</span>
@@ -47,7 +46,14 @@
                             <div id="artImgOutDiv"></div>
                         </div>
                     </div>
-
+					<div class="col-md-12 form-group clearfix">
+					    <label for="erpzh" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">内容</label><span
+					        class="sign-left">:</span>
+					</div>
+					<div class="col-md-12 form-group clearfix">
+					    <SummerNote ref="sn"></SummerNote>
+					</div>
+					
                     <div class="form-group clearfix">
                         <div class="col-md-12">
                             <button type="button" class="btn btn-warning pull-right m_r_10" style="margin-right:1.5%;"
@@ -67,7 +73,8 @@
 <script>
     import moment from 'moment'
     import ArticleTheme from '@/components/common/ArticleTheme.vue'
-
+	import et from '../../common/EvaluationType.vue'
+	
 	import quillConfig from '../../../assets/js/quill-config.js'
 
     import SummerNote from '@/components/common/SummerNote.vue'
@@ -75,7 +82,8 @@
     export default {
         components: {
             ArticleTheme,
-            SummerNote
+            SummerNote,
+			et,
         },
         data() {
             return {
@@ -86,6 +94,7 @@
                 project: {
                     artId: '',
                     atId: '',
+					ttId:'',
                     title: '',
                     content: '',
                     author: '',
@@ -96,10 +105,11 @@
         methods: {
             // Initialization projcet’s content
             initData(param, project) {
-                //this.$refs.SummerNoteRef.resetData();
+                $('#articleContent').modal({backdrop: 'static', keyboard: false});
                 this.project = {
                     artId: '',
                     atId: '',
+					ttId:'',
                     title: '',
                     content: '',
                     author: ''
@@ -113,6 +123,7 @@
                     this.project = {
                         artId: '',
                         atId: '',
+						ttId:'',
                         title: '',
                         content: '',
                         author: ''
@@ -122,6 +133,8 @@
                     this.title = '修改文章'
                     Object.assign(this.project, project)
                     this.$refs.atRef.setAtId(project.atId);
+					this.$refs.sn.setData(project.content);
+					this.$refs.et.setEt(project.ttId);
                     if (!this.isBlank(project.artImg)) {
                         var dataUrl = this.addTimesParam(this.url + project.artImg);
                         //console.log("dataUrl:" + dataUrl)
@@ -132,10 +145,17 @@
                     }
                 }
             },
+			etChange(param){
+				if(this.isBlank(param)){
+					this.project.ttId=""
+				}else{
+					this.project.ttId=param.ttId
+				}
+			},
             //the event of addtional button
             certainAction() {
                 //console.log('the event of addtional button')
-
+				this.project.content = this.$refs.sn.getData()
                 if (this.isBlank(this.project.title)) {
                     alert("标题不能为空!")
                     return
@@ -144,10 +164,16 @@
                     alert("分类不能为空")
                     return
                 }
+				if(this.isBlank(this.project.content)){
+					alert("文章内容不能为空")
+					return
+				}
+				
                 var fd = new FormData();
                 var file = $("#artImgFile")[0].files[0];
                 fd.append("title", this.project.title);
                 fd.append("atId", this.project.atId);
+				fd.append("ttId", this.project.ttId);
                 fd.append("content", this.project.content);
                 if (!this.isBlank(file)) {
                     fd.append("file", file);
