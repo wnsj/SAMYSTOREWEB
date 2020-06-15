@@ -225,10 +225,10 @@
                         <el-input v-model="accountName" disabled style="width: 90%"></el-input>
                     </el-form-item>
                     <el-form-item label="新密码">
-                        <el-input v-model="pwd" placeholder="请输入新设置密码" style="width: 90%"></el-input>
+                        <el-input v-model="pwd" show-password placeholder="请输入新设置密码" style="width: 90%"></el-input>
                     </el-form-item>
                     <el-form-item label="确认密码">
-                        <el-input v-model="confirmPwb" placeholder="请输入确认密码" style="width: 90%"></el-input>
+                        <el-input v-model="confirmPwb" show-password placeholder="请输入确认密码" style="width: 90%"></el-input>
                     </el-form-item>
                 </el-form>
             </el-row>
@@ -389,6 +389,8 @@
                 );
             },
             modifyPassWord() {
+                this.pwd = ''
+                this.confirmPwb = ''
                 this.modifyPwbDialogVisible = true
             }
         },

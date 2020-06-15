@@ -34,15 +34,28 @@
                         <tr>
                             <th class="text-center">用户名</th>
                             <th class="text-center">角色</th>
-                            <th class="text-center" v-has="'Account:delete'">删除</th>
+                            <th class="text-center" v-has="'Account:delete'">管理</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr v-for="(item,index) in tableData" :key="index" v-on:dblclick="selectRule('3',item)">
                             <td class="text-center" style="line-height:33px;">{{item.account}}</td>
                             <td class="text-center" style="line-height:33px;">{{item.roleName}}</td>
-                            <td class="text-center" style="line-height:33px;" v-has="'Account:delete'"><button type="button" :class="'btn btn-warning'" data-toggle="modal"
-                                                                                      v-on:click="deleteAccById(item)">删除</button></td>
+                            <td class="text-center" style="line-height:33px;">
+                                <button type="button"
+                                        :class="'btn btn-warning'"
+                                        data-toggle="modal"
+                                        v-has="'Account:delete'"
+                                        v-on:click="deleteAccById(item)">删除
+                                </button>
+                                <button type="button"
+                                        :class="'btn btn-warning'"
+                                        data-toggle="modal"
+                                        style="margin-left: 3%"
+                                        v-has="'Account:initPwd'"
+                                        v-on:click="patchAccById(item)">初始化密码
+                                </button>
+                            </td>
                         </tr>
                         </tbody>
                     </table>
@@ -156,6 +169,36 @@
                         'Access-Token': this.accessToken
                     },
                     data: item,
+                    dataType: 'json',
+                }).then((response) => {
+                    var res = response.data
+                    if (res.retCode === '0000') {
+                        alert(res.retMsg)
+                        this.queryData(1)
+                    } else {
+                        alert(res.retMsg)
+                    }
+                }).catch((error) => {
+                    console.log('数据请求失败处理')
+                });
+            },
+            patchAccById(item) {
+                if (!confirm("确定初始化密码?")) {
+                    return;
+                }
+                var url = this.url + '/SysAccountController/patchAccount'
+                this.$ajax({
+                    method: 'POST',
+                    url: url,
+                    headers: {
+                        'Content-Type': this.contentType,
+                        'Access-Token': this.accessToken
+                    },
+                    data: {
+                        account: item.account,
+                        saId: item.saId,
+                        pwd: null
+                    },
                     dataType: 'json',
                 }).then((response) => {
                     var res = response.data
