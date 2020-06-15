@@ -41,8 +41,6 @@ body{
     list-style: none;
     width: 100%;
     margin: 0;
-    margin-top: -10px;
-    padding: 10px 0;
 }
 .my-aside ul li{
     text-align: center;
@@ -65,7 +63,6 @@ body{
 .my-aside ul li i{
     display:inline-block;
     text-align: left;
-    width:190px;
 }   
 .my-aside ul li p{
     display:inline-block;
@@ -151,10 +148,7 @@ body{
 }
 .wraper{
     position:relative;
-    box-shadow: -5px 0 5px #ccc, 5px 0 5px #ccc, 0 -5px 5px #ccc, 0 5px 5px #ccc;
-    width:95%; 
     background:#fff; 
-    margin:30px auto;
     padding:10px 10px 20px 10px;
 }
 .posAb{
@@ -170,4 +164,33 @@ body{
     -moz-user-select:none;
     -ms-user-select:none;
     user-select:none;
+}
+
+#aside-menu ul li ul li{
+    text-align: left;
+    text-indent: 30px;
+}
+#aside-menu ul li ul li.is-active{
+    background-color: #fff !important;
+}
+#aside-menu ul li .el-submenu__icon-arrow{
+    display: none;
+}
+.el-submenu__title{
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+    text-indent: 15px;
+}
+.el-submenu__title i{
+    color: #795548 !important;
+    font-size: 20px;
+}
+.el-submenu.is-active .el-submenu__title {
+    border-bottom-color: #ccc !important;
+}
+#aside-menu ul>li.is-opened .el-submenu__title{
+    color: #f2ad4e !important;
+}
+#aside-menu ul>li.is-opened i{
+    color: #f2ad4e !important;
 }

@@ -3,7 +3,7 @@
 
 	<div class="wraper">
 		<div class="col-md-12 col-lg-12 main-title">
-			<h1 class="titleCss">测评管理</h1>
+			<h1 class="titleCss">咨询师管理</h1>
 		</div>
 		<div class="row newRow" style="padding-bottom:15px;">
 			<!-- <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" v-show="accountType==true">
@@ -16,18 +16,30 @@
 			</div> -->
 			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 				<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="padding: 0; line-height: 34px;">
-					<p class="end-aline col-md-11 col-lg-11" style="padding-right:5px; padding-left:20px;">标题</p><span class="sign-left">:</span>
+					<p class="end-aline col-md-11 col-lg-11" style="padding-right:5px; padding-left:20px;">姓名</p><span class="sign-left">:</span>
 				</div>
 				<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
 					<input class="form-control" type="text" v-model="title">
 				</div>
 			</div>
-			<div class="col-md-3">
+			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+				<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="padding: 0; line-height: 34px;">
+					<p class="end-aline col-md-11 col-lg-11" style="padding-right:5px; padding-left:20px;">是否推广</p><span class="sign-left">:</span>
+				</div>
+				<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+					<select class="form-control" v-model="isExtent">
+						<option value="">--未选择--</option>
+						<option value="1">推广</option>
+						<option value="0">不推广</option>
+					</select>
+				</div>
+			</div>
+			<!-- <div class="col-md-3">
 				<label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">测评类型</label><span class="sign-left">:</span>
 				<div class="col-md-8">
 					<et ref='et' @etChange='etChange'></et>
 				</div>
-			</div>
+			</div> -->
 			<!-- <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 				<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="padding: 0; line-height: 34px;">
 					<p class="end-aline col-md-11 col-lg-11" style="padding-right:5px; padding-left:20px;">是否在用</p><span class="sign-left">:</span>
@@ -41,7 +53,7 @@
 				</div>
 			</div> -->
 			<button type="button" class="btn btn-warning pull-right m_r_10" style="margin-right:1.5%;" data-toggle="modal"
-			 v-has="'Evaluation:add'" v-on:click="selectRule('1')">添加</button>
+			 v-has="'Counselor:add'" v-on:click="selectRule('1')">添加</button>
 			<button type="button" class="btn btn-primary pull-right m_r_10" style="margin-right:1.5%;" data-toggle="modal"
 			 v-on:click="checkEvaluation(1)">查询</button>
 		</div>
@@ -52,42 +64,67 @@
 
 						<thead class="datathead">
 							<tr>
-								<th class="text-center">序号</th>
-								<th class="text-center">标题</th>
-								<th class="text-center">测试人数(人)</th>
-								<th class="text-center">价格(元)</th>
-								<th class="text-center">题目数(个)</th>
-								<th class="text-center">测试题类型</th>
-								<th class="text-center">头图链接</th>
+								<th class="text-center">ID</th>
+								<th class="text-center">姓名</th>
+								<th class="text-center">单价</th>
+								<th class="text-center">首次单价</th>
+								<th class="text-center">预约定金</th>
+								<th class="text-center">咨询经验</th>
+								<th class="text-center">咨询方式</th>
+								<!-- <th class="text-center">咨询分类</th> -->
+								<!-- <th class="text-center">擅长方向</th> -->
+								<!-- <th class="text-center">受训经历</th> -->
+								<th class="text-center">受训通过</th>
+								<!-- <th class="text-center">职业履历</th> -->
+								<th class="text-center">履历通过</th>
+								<th class="text-center">是否推广</th>
+								<th class="text-center">标签1</th>
+								<th class="text-center">标签2</th>
+								<th class="text-center">标签3</th>
+								<!-- <th class="text-center">简介</th> -->
+								<!-- <th class="text-center">关联咨询师</th> -->
 								<th class="text-center">修改</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr v-for="(item,index) in evaluationList" :key="index" v-on:dblclick="selectRule('3',item)">
-								<td class="text-center" style="line-height:33px;">{{item.serialNumber}}</td>
-								<td class="text-center" style="line-height:33px;">{{item.title}}</td>
-								<td class="text-center" style="line-height:33px;">{{item.testNum}}</td>
+							<tr v-for="(item,index) in counselorList" :key="index" v-on:dblclick="selectRule('3',item)">
+								<td class="text-center" style="line-height:33px;">{{item.colId}}</td>
+								<td class="text-center" style="line-height:33px;">{{item.colName}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.price}}</td>
-								<td class="text-center" style="line-height:33px;">{{item.problemNum}}</td>
-								<td class="text-center" style="line-height:33px;">{{item.ttName}}</td>
-								<td class="text-center" style="line-height:33px;">{{item.imgUrl}}</td>
+								<td class="text-center" style="line-height:33px;">{{item.firstPrice}}</td>
+								<td class="text-center" style="line-height:33px;">{{item.prePrice}}</td>
+								<td class="text-center" style="line-height:33px;">{{item.practiseTimeNum}}</td>
+								<td class="text-center" style="line-height:33px;" v-show="item.askType==1">面对面</td>
+								<td class="text-center" style="line-height:33px;" v-show="item.askType==2">电话</td>
+								<td class="text-center" style="line-height:33px;" v-show="item.askType==3">面对面/电话</td>
+								<!-- <td class="text-center" style="line-height:33px;">{{item.ccContent}}</td> -->
+								<!-- <td class="text-center" style="line-height:33px;">擅长方向</td> -->
+								<!-- <td class="text-center" style="line-height:33px;">受训经历</td> -->
+								<td class="text-center" style="line-height:33px;">{{item.isRt==1 ? '通过' :'未通过'}}</td>
+								<!-- <td class="text-center" style="line-height:33px;">职业履历</td> -->
+								<td class="text-center" style="line-height:33px;">{{item.isCv==1 ? '通过' : '未通过'}}</td>
+								<td class="text-center" style="line-height:33px;">{{item.isExtent==1 ? '推广' : '不推广'}}</td>
+								<td class="text-center" style="line-height:33px;">{{item.label1}}</td>
+								<td class="text-center" style="line-height:33px;">{{item.label2}}</td>
+								<td class="text-center" style="line-height:33px;">{{item.label3}}</td>
+								<!-- <td class="text-center" style="line-height:33px;">介绍</td> -->
 								<td class="text-center" style="line-height:33px;"><button type="button" class="btn btn-warning" v-on:click="selectRule('3',item)">修改</button></td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
 				<!--分页插件-->
-				<div class="page">
+				<!-- <div class="page">
 					<p class="tips">* 双击单行，可对当前数据进行修改</p>
-					<!--这里时通过props传值到子级，并有一个回调change的函数，来获取自己传值到父级的值-->
+					这里时通过props传值到子级，并有一个回调change的函数，来获取自己传值到父级的值
 					<paging ref="paging" @change="pageChange"></paging>
-				</div>
+				</div> -->
 			</div>
 		</div>
 		<div class="row row_edit">
-			<div class="modal fade" id="evaluationContent">
+			<div class="modal fade" id="scContent">
 				<div class="modal-dialog">
-					<SubEvaluation ref='subEvaluation' @certainAction='feedBack'></SubEvaluation>
+					<SubCounselor ref='subCou' @certainAction='feedBack'></SubCounselor>
 				</div>
 			</div>
 		</div>
@@ -100,7 +137,7 @@
 	import store from '../common/Store.vue'
 	import et from '../common/EvaluationType.vue'
 	import emp from '../common/Employee.vue'
-	import SubEvaluation from '../MP/SubProject/SubEvaluation.vue'
+	import SubCounselor from '../MP/SubCounselor/SubCounselor.vue'
 	import {
 		init
 	} from '@/../static/js/common.js'
@@ -109,21 +146,22 @@
 		components: {
 			store,
 			emp,
-			SubEvaluation,
-			Paging,
+			SubCounselor,
+			// Paging,
 			et,
 		},
 		data() {
 			return {
-				evaluationList: [],
+				counselorList: [],
 				title:'',
+				isExtent:'1',
 				testType:'',
 				
 				//分页需要的数据
-				pages: '', //总页数
-				current: 1, //当前页码
-				pageSize: 10, //一页显示的数量
-				total: '', //数据的数量
+// 				pages: '', //总页数
+// 				current: 1, //当前页码
+// 				pageSize: 10, //一页显示的数量
+// 				total: '', //数据的数量
 			};
 		},
 		methods: {
@@ -136,21 +174,21 @@
 			//feedback from adding and modifying view
 			feedBack() {
 				this.checkEvaluation(1)
-				$("#evaluationContent").modal('hide')
+				$("#scContent").modal('hide')
 			},
 
 			// check the adding and modifying rule of account
 			selectRule(param, item) {
 				if (param == "1") {
-					this.$refs.subEvaluation.initData('add')
-					$("#evaluationContent").modal('show')
+					this.$refs.subCou.initData('add')
+					$("#scContent").modal('show')
 				} else if (param == "3") {
-					if(!this.has('Evaluation:modify')){
+					if(!this.has('Counselor:modify')){
 						alert('您还没有权限，请联系管理员')
 						return 
 					}
-					this.$refs.subEvaluation.initData('modify', item)
-					$("#evaluationContent").modal('show')
+					this.$refs.subCou.initData('modify', item)
+					$("#scContent").modal('show')
 				}
 
 			},
@@ -163,7 +201,7 @@
 			},
 			//check the list of position
 			checkEvaluation(page) {
-				var url = this.url + '/testProblemBase/queryTestProblemBaseList'
+				var url = this.url + '/counselor/queryCounselorList'
 				this.$ajax({
 					method: 'POST',
 					url: url,
@@ -172,23 +210,15 @@
 						'Access-Token': this.accessToken
 					},
 					data: {
-						tpbId: "",
-						title:this.title,
-						testType:this.testType,
-						
-						page: page.toString(),
-						pageSize: this.pageSize.toString(),
+						isExtent:this.isExtent,
+						othersTypeList:[],
+						dateArr:[],
 					},
 					dataType: 'json',
 				}).then((response) => {
 					var res = response.data
 					if (res.retCode == '0000') {
-						this.pages = res.retData.pages //总页数
-						this.current = res.retData.current //当前页码
-						this.pageSize = res.retData.size //一页显示的数量  必须是奇数
-						this.total = res.retData.total //数据的数量
-						this.$refs.paging.setParam(this.pages, this.current, this.total)
-						this.evaluationList = res.retData.records
+						this.counselorList = res.retData
 					} else {
 						alert(res.retMsg)
 					}

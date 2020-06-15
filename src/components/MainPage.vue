@@ -10,6 +10,7 @@
             </div>
             <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 text-right">
                 <p style="color: #1b4fa3;">欢迎<span style="color: #d58512;"> {{accountName}} </span>来到，商城管理系统</p>
+                <button class="btn btn-default m_r_10" style="margin-top: 40px;margin-right: 20px" v-on:click="modifyPassWord()">修改密码</button>
                 <button class="btn btn-default m_r_10" style="margin-top: 40px;" v-on:click="loginOut()">退出</button>
             </div>
         </div>
@@ -85,79 +86,75 @@
                                 <router-link to="/MP/Project"><i class="fa" aria-hidden="true">课程管理</i></router-link>
                             </dd>
                         </dl> -->
-                        <dl v-bind:class="{h4:bool4}">
-                            <dt @click="onShow(3)" v-bind:class="{'li-active':bool4}">
-                                <i class="fa" v-bind:class="{'fa-folder-open':bool4,'fa-folder':!bool4}" aria-hidden="true">
-                                    编辑管理
-                                </i>
-                            </dt>
-                            <!--  <dd @click="addCheck('Audio')" v-bind:class="{'li-active':onString=='Audio'}">
-                                <router-link to="/MP/Audio"><i class="fa" aria-hidden="true">音频管理</i></router-link>
-                            </dd> -->
-                            <dd @click="addCheck('CourceManage')" v-bind:class="{'li-active':onString=='CourceManage'}">
-                                <router-link to="/MP/CourceManage"><i class="fa" aria-hidden="true">课程管理</i></router-link>
-                            </dd>
-                            <!--  <dd @click="addCheck('Video')" v-bind:class="{'li-active':onString=='Video'}">
-                                <router-link to="/MP/Video"><i class="fa" aria-hidden="true">视频管理</i></router-link>
-                            </dd> -->
+<!--                        <dl v-bind:class="{h4:bool4}">-->
+<!--                            <dt @click="onShow(3)" v-bind:class="{'li-active':bool4}">-->
+<!--                                <i class="fa" v-bind:class="{'fa-folder-open':bool4,'fa-folder':!bool4}" aria-hidden="true">-->
+<!--                                    编辑管理-->
+<!--                                </i>-->
+<!--                            </dt>-->
+<!--                            &lt;!&ndash;  <dd @click="addCheck('Audio')" v-bind:class="{'li-active':onString=='Audio'}">-->
+<!--                                <router-link to="/MP/Audio"><i class="fa" aria-hidden="true">音频管理</i></router-link>-->
+<!--                            </dd> &ndash;&gt;-->
+<!--                            <dd @click="addCheck('CourceManage')" v-bind:class="{'li-active':onString=='CourceManage'}">-->
+<!--                                <router-link to="/MP/CourceManage"><i class="fa" aria-hidden="true">课程管理</i></router-link>-->
+<!--                            </dd>-->
+<!--                            &lt;!&ndash;  <dd @click="addCheck('Video')" v-bind:class="{'li-active':onString=='Video'}">-->
+<!--                                <router-link to="/MP/Video"><i class="fa" aria-hidden="true">视频管理</i></router-link>-->
+<!--                            </dd> &ndash;&gt;-->
 
-                            <dd @click="addCheck('Evaluation')" v-bind:class="{'li-active':onString=='Evaluation'}">
-                                <router-link to="/MP/Evaluation"><i class="fa" aria-hidden="true">测评管理</i></router-link>
-                            </dd>
-                            <dd @click="addCheck('Article')" v-bind:class="{'li-active':onString=='Article'}">
-                                <router-link to="/MP/Article"><i class="fa" aria-hidden="true">文章管理</i></router-link>
-                            </dd>
-                            <!-- <dd @click="addCheck('PlayAV')" v-bind:class="{'li-active':onString=='PlayAV'}">
-                                <router-link to="/PlayAV"><i class="fa" aria-hidden="true">音视频播放</i></router-link>
-                            </dd> -->
-                            <dd @click="addCheck('SignInImgManage')" v-bind:class="{'li-active':onString=='SignInImgManage'}">
-                                <router-link to="/MP/SignInImgManage"><i class="fa" aria-hidden="true">签到图片管理</i></router-link>
-                            </dd>
-                            <!-- <dd @click="addCheck('SummerNote')" v-bind:class="{'li-active':onString=='SummerNote'}">
-                                <router-link to="/SummerNote"><i class="fa" aria-hidden="true">排版</i></router-link>
-                            </dd> -->
-                        </dl>
-						<dl v-bind:class="{h2:bool3}">
-						    <dt @click="onShow(2)" v-bind:class="{'li-active':bool3}">
-						        <i class="fa" v-bind:class="{'fa-folder-open':bool3,'fa-folder':!bool3}" aria-hidden="true">
-						            基础设置
-						        </i>
-						    </dt>
-						    <dd @click="addCheck('EvaluationType')" v-bind:class="{'li-active':onString=='EvaluationType'}">
-						        <router-link to="/MP/EvaluationType"><i class="fa" aria-hidden="true">测评类型管理</i></router-link>
-						    </dd>
-							<dd @click="addCheck('ArticleTheme')" v-bind:class="{'li-active':onString=='ArticleTheme'}">
-							    <router-link to="/ArticleTheme"><i class="fa" aria-hidden="true">主题分类管理</i></router-link>
-							</dd>
-						    <!-- <dd @click="addCheck('ScheduleEmp')" v-bind:class="{'li-active':onString=='ScheduleEmp'}">
-						        <router-link to="/MP/ScheduleEmp"><i class="fa" aria-hidden="true">排班管理</i></router-link>
-						    </dd>
-						    <dd @click="addCheck('Position')" v-bind:class="{'li-active':onString=='Position'}">
-						        <router-link to="/MP/Position"><i class="fa" aria-hidden="true">岗位管理</i></router-link>
-						    </dd>
-						    <dd @click="addCheck('Store')" v-bind:class="{'li-active':onString=='Store'}">
-						        <router-link to="/MP/Store"><i class="fa" aria-hidden="true">门店管理</i></router-link>
-						    </dd>
-						    <dd @click="addCheck('RuleManager')" v-bind:class="{'li-active':onString=='RuleManager'}">
-						        <router-link to="/MP/RuleManager"><i class="fa" aria-hidden="true">权限管理</i></router-link>
-						    </dd>
-						    <dd @click="addCheck('Royalty')" v-bind:class="{'li-active':onString=='Royalty'}">
-						        <router-link to="/MP/Royalty"><i class="fa" aria-hidden="true">提成规则管理</i></router-link>
-						    </dd>
-						    <dd @click="addCheck('Project')" v-bind:class="{'li-active':onString=='Project'}">
-						        <router-link to="/MP/Project"><i class="fa" aria-hidden="true">课程管理</i></router-link>
-						    </dd> -->
-						</dl>
-                        <dl v-bind:class="{h1:bool5}">
-                            <dt @click="onShow(4)" v-bind:class="{'li-active':bool5}">
-                                <i class="fa" v-bind:class="{'fa-folder-open':bool5,'fa-folder':!bool5}" aria-hidden="true">
-                                    测试
-                                </i>
-                            </dt>
-                            <!-- <dd @click="addCheck('test')" v-bind:class="{'li-active':onString=='test'}">
-                                <router-link to="/MP/test"><i class="fa" aria-hidden="true">测试文本编辑</i></router-link>
-                            </dd> -->
-                        </dl>
+<!--                            <dd @click="addCheck('Evaluation')" v-bind:class="{'li-active':onString=='Evaluation'}">-->
+<!--                                <router-link to="/MP/Evaluation"><i class="fa" aria-hidden="true">测评管理</i></router-link>-->
+<!--                            </dd>-->
+<!--                            <dd @click="addCheck('Article')" v-bind:class="{'li-active':onString=='Article'}">-->
+<!--                                <router-link to="/MP/Article"><i class="fa" aria-hidden="true">文章管理</i></router-link>-->
+<!--                            </dd>-->
+<!--							<dd @click="addCheck('Counselor')" v-bind:class="{'li-active':onString=='Counselor'}">-->
+<!--							    <router-link to="/MP/Counselor"><i class="fa" aria-hidden="true">咨询师管理</i></router-link>-->
+<!--							</dd>-->
+<!--							<dd @click="addCheck('Activity')" v-bind:class="{'li-active':onString=='Activity'}">-->
+<!--							    <router-link to="/MP/Activity"><i class="fa" aria-hidden="true">热门沙龙</i></router-link>-->
+<!--							</dd>-->
+<!--							-->
+<!--							-->
+<!--                            &lt;!&ndash; <dd @click="addCheck('PlayAV')" v-bind:class="{'li-active':onString=='PlayAV'}">-->
+<!--                                <router-link to="/PlayAV"><i class="fa" aria-hidden="true">音视频播放</i></router-link>-->
+<!--                            </dd> &ndash;&gt;-->
+<!--                            <dd @click="addCheck('SignInImgManage')" v-bind:class="{'li-active':onString=='SignInImgManage'}">-->
+<!--                                <router-link to="/MP/SignInImgManage"><i class="fa" aria-hidden="true">签到图片管理</i></router-link>-->
+<!--                            </dd>-->
+<!--                            &lt;!&ndash; <dd @click="addCheck('SummerNote')" v-bind:class="{'li-active':onString=='SummerNote'}">-->
+<!--                                <router-link to="/SummerNote"><i class="fa" aria-hidden="true">排版</i></router-link>-->
+<!--                            </dd> &ndash;&gt;-->
+<!--                        </dl>-->
+<!--						<dl v-bind:class="{h3:bool3}">-->
+<!--						    <dt @click="onShow(2)" v-bind:class="{'li-active':bool3}">-->
+<!--						        <i class="fa" v-bind:class="{'fa-folder-open':bool3,'fa-folder':!bool3}" aria-hidden="true">-->
+<!--						            基础设置-->
+<!--						        </i>-->
+<!--						    </dt>-->
+<!--						    <dd @click="addCheck('EvaluationType')" v-bind:class="{'li-active':onString=='EvaluationType'}">-->
+<!--						        <router-link to="/MP/EvaluationType"><i class="fa" aria-hidden="true">测评类型管理</i></router-link>-->
+<!--						    </dd>-->
+<!--							<dd @click="addCheck('ArticleTheme')" v-bind:class="{'li-active':onString=='ArticleTheme'}">-->
+<!--							    <router-link to="/ArticleTheme"><i class="fa" aria-hidden="true">主题分类管理</i></router-link>-->
+<!--							</dd>-->
+<!--							<dd @click="addCheck('CounselorType')" v-bind:class="{'li-active':onString=='CounselorType'}">-->
+<!--							    <router-link to="/MP/CounselorType"><i class="fa" aria-hidden="true">咨询师分类管理</i></router-link>-->
+<!--							</dd>-->
+<!--						</dl>-->
+<!--                        <dl v-bind:class="{h2:bool5}">-->
+<!--                            <dt @click="onShow(4)" v-bind:class="{'li-active':bool5}">-->
+<!--                                <i class="fa" v-bind:class="{'fa-folder-open':bool5,'fa-folder':!bool5}" aria-hidden="true">-->
+<!--                                    消费查询-->
+<!--                                </i>-->
+<!--                            </dt>-->
+<!--                            <dd @click="addCheck('PreApporint')" v-bind:class="{'li-active':onString=='PreApporint'}">-->
+<!--                                <router-link to="/MP/PreApporint"><i class="fa" aria-hidden="true">咨询师预约付费</i></router-link>-->
+<!--                            </dd>-->
+<!--							<dd @click="addCheck('PreActivity')" v-bind:class="{'li-active':onString=='PreActivity'}">-->
+<!--							    <router-link to="/MP/PreActivity"><i class="fa" aria-hidden="true">沙龙活动付费</i></router-link>-->
+<!--							</dd>-->
+<!--                        </dl>-->
 
                         <!-- <dl>
                             <dt v-on:click="selectRule('newtree')" v-bind:class="{'li-active':onString == 'newtree'}">
@@ -167,6 +164,45 @@
                             </dt>
                         </dl> -->
                         <!-- <router-link to="/MP/PatientStype"><i class="fa fa-table" aria-hidden="false" v-on:click="titleChange('患者类型')">　患者类型</i></router-link> -->
+<!--                        孙云龙修改-->
+                        <el-row class="tac">
+                            <el-col :span="24">
+                                <el-menu :unique-opened="true"
+                                         :router="true"
+                                         text-color="#795548"
+                                         background-color="#E6E6E6"
+                                         active-text-color="#F2AD4E"
+                                         default-active="/MP/BuildingControl/BuildingControl"
+                                         class="el-menu-vertical-demo">
+                                    <template v-for="item in menuList">
+                                        <el-submenu :index="item.menuPath" :key="item.menuPath">
+                                            <template slot="title">
+                                                <i class="fa fa-folder"></i>
+                                                <span style="font-size: 20px;font-weight: normal">{{item.menuName}}</span>
+                                            </template>
+                                            <template v-for="itemChild in item.menuBeanList">
+                                                <!--三级菜单-->
+                                                <el-submenu
+                                                    v-if="itemChild.menuBeanList && itemChild.menuBeanList.length"
+                                                    :index="itemChild.menuPath" :key="itemChild.menuPath">
+                                                    <template slot="title"><span style="font-size: 20px;font-weight: normal">{{itemChild.menuName}}</span>
+                                                    </template>
+                                                    <el-menu-item v-for="itemChildChild in itemChild.menuBeanList"
+                                                                  :index="itemChildChild.menuPath"
+                                                                  :key="itemChildChild.menuPath">
+                                                        <span slot="title" style="font-size: 20px;font-weight: normal">{{itemChildChild.menuName}}</span>
+                                                    </el-menu-item>
+                                                </el-submenu>
+                                                <!--二级菜单-->
+                                                <el-menu-item v-else :index="itemChild.menuPath" :key="itemChild.menuPath">
+                                                    <span slot="title" style="font-size: 20px;font-weight: normal">{{itemChild.menuName}}</span></el-menu-item>
+                                            </template>
+                                        </el-submenu>
+                                    </template>
+                                </el-menu>
+                            </el-col>
+                        </el-row>
+<!--                        end-->
                     </div>
                 </div>
                 <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 embed-responsive embed-responsive-16by9" style="overflow: inherit; background-color:">
@@ -174,6 +210,32 @@
                 </div>
             </div>
         </div>
+        <el-dialog
+            :visible.sync="modifyPwbDialogVisible"
+            width="35%"
+            top="25vh"
+            center
+            class="updatePwd">
+            <template slot="title">
+                <el-row style="border-bottom: 1px solid #f2f2f2;padding-bottom: 10px;">修改密码</el-row>
+            </template>
+            <el-row style="padding-left: 80px;padding-right: 80px;">
+                <el-form label-position="right" label-width="80px" size="small" class="formClass">
+                    <el-form-item label="用户名">
+                        <el-input v-model="accountName" disabled style="width: 90%"></el-input>
+                    </el-form-item>
+                    <el-form-item label="新密码">
+                        <el-input v-model="pwd" placeholder="请输入新设置密码" style="width: 90%"></el-input>
+                    </el-form-item>
+                    <el-form-item label="确认密码">
+                        <el-input v-model="confirmPwb" placeholder="请输入确认密码" style="width: 90%"></el-input>
+                    </el-form-item>
+                </el-form>
+            </el-row>
+            <span slot="footer" class="dialog-footer">
+                      <el-button type="primary" @click="modifyPwb" size="small" style="border-radius: 5px;width: 100px;">保存</el-button>
+                    </span>
+        </el-dialog>
     </div>
 
 </template>
@@ -181,6 +243,7 @@
 <script type="module">
     import axios from 'axios'
     import Cookies from 'js-cookie'
+    import { Message } from 'element-ui'
     import {
         init
     } from '@/../static/js/common.js'
@@ -190,6 +253,13 @@
         data() {
             return {
                 accountName:this.accountName(),
+                // 孙云龙添加
+                menuList: [],
+                accountData:{},
+                pwd: '',
+                confirmPwb: '',
+                modifyPwbDialogVisible:false,
+                // end
                 itemList:[],
                 bool1:true,
                 bool2:false,
@@ -203,6 +273,9 @@
             titleChange(param){
                 console.log('param:'+param)
                 this.title=param
+            },
+            newShow(index){
+                alert(index);
             },
             onShow(index){
                 switch(index){
@@ -268,8 +341,64 @@
                     this.accountId = '';
                 }
             },
+            modifyPwb() {
+                if (this.isBlank(this.pwd)) {
+                    Message.warning('请输入新密码')
+                    return
+                }
+                if (this.isBlank(this.confirmPwb)) {
+                    Message.warning('请输入确认密码')
+                    return;
+                }
+                if (this.pwd != this.confirmPwb) {
+                    Message.error('新密码与确认密码不一致')
+                    return;
+                }
+                var url = this.url + "/SysAccountController/patchAccount";
+                axios({
+                    method: "post",
+                    url: url,
+                    headers: {
+                        "Content-Type": this.contentType,
+                        "Access-Token": this.accessToken
+                    },
+                    data: {
+                        "account": this.accountName,
+                        "saId": this.accountData.saId,
+                        "pwd": this.pwd,
+                    },
+                    dataType: "json"
+                }).then((response) => {
+                    if (response.data.retCode == '0000') {
+                        Message.success('修改成功,请重新登录')
+                        setTimeout(() => {
+                            //删除cookie
+                            Cookies.remove("accountData");
+                            Cookies.remove("accessToken");
+                            this.$parent.setRouter("/login");
+                            this.accountId = '';
+                        }, 2000)
+
+                    } else {
+                        Message.warning('修改密码失败')
+                    }
+
+                }).catch((error) => {
+                        console.log("请求失败处理");
+                    }
+                );
+            },
+            modifyPassWord() {
+                this.modifyPwbDialogVisible = true
+            }
         },
         mounted() {
+            // 孙云龙添加
+            var menu = JSON.parse(sessionStorage.getItem("menuList"));
+            this.menuList = menu.menuBeanList
+            this.accountData = JSON.parse(sessionStorage.getItem("account"));
+            this.accountName = this.accountData.account
+            // end
             init();
 
         },
@@ -307,14 +436,18 @@
 
     #aside-menu dl.h4 {
 		margin-top: 0px;
-        height: 250px;
+        height: 300px;
     }
 
     #aside-menu dl.h2 {
 		margin-top: 0px;
         height: 150px;
     }
-	
+	#aside-menu dl.h3 {
+		margin-top: 0px;
+	    height: 200px;
+	}
+
 	#aside-menu dl.h1 {
 		margin-top: 0px;
 	    height: 100px;

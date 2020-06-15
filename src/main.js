@@ -9,12 +9,22 @@ import Cookies from 'js-cookie'
 import constant from '../src/assets/js/constant'
 import vueBeauty from 'vue-beauty'
 
+
+
+// 孙云龙添加
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+
+// end
 // 富文本编辑----------------------------------
 import QuillEditor from 'vue-quill-editor'
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.bubble.css'
 import 'quill/dist/quill.snow.css'
 Vue.use(QuillEditor)
+// 孙云龙添加
+Vue.use(ElementUI)
+// end
 // ----------------------------------------------
 
 // import utilDate from '../src/assets/js/utilDate'
@@ -25,6 +35,7 @@ import {
 Vue.use(vueBeauty)
 Vue.prototype.$ajax = axios
 Vue.prototype.url = process.env.API_HOST
+Vue.prototype.urlSamy = process.env.API_HOST_SAMY
 
 
 Vue.config.productionTip = false
@@ -124,8 +135,16 @@ Vue.prototype.getSecTimestamp = function() {
 }
 //为链接添加时间戳参数
 Vue.prototype.addTimesParam = function(url) {
-    return ''.concat(url).concat("&t=").concat(this.getSecTimestamp())
+	if(!this.isBlank(url) && url.indexOf("?")!=-1){
+		return ''.concat(url).concat("&t=").concat(this.getSecTimestamp())
+	}else{
+		return ''.concat(url).concat("?t=").concat(this.getSecTimestamp())
+	}
+
 }
+
+//商城活动url
+Vue.prototype.storeUrl = 'http://sc.tjmyjk.com/upload/activity/'
 // Vue.prototype.endDate = function(beginDate,index){
 //
 // 	return utilDate.calculateEndDate(beginDate,index);
@@ -178,6 +197,27 @@ Vue.prototype.phoneNum = function(phoneNum) {
 Vue.prototype.ipAddress = function() {
     return constant.ipAddress();
 }
+
+// 孙云龙添加
+//http request拦截器
+var ip = sessionStorage.getItem("IP")
+axios.interceptors.request.use(
+
+    config =>{
+        if(ip){//设置公共的请求参数
+            let test = config.data;
+            if(test){
+                config.data['ip']= ip;
+            }
+        }
+
+        return config;
+    },
+    err =>{
+        return Promise.reject(err);
+    }
+)
+// end
 
 
 /*

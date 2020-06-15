@@ -6,6 +6,8 @@ import MainPage from '@/components/MainPage.vue'
 import Audio from '../components/MP/Audio.vue'
 import Article from '../components/MP/Article.vue'
 import Evaluation from '../components/MP/Evaluation.vue'
+import Counselor from '../components/MP/Counselor.vue'
+import CounselorType from '../components/MP/CounselorType.vue'
 import Video from '../components/MP/Video.vue'
 // import test from '../components/MP/test.vue'
 import newtree from '../components/MP/newtree.vue'
@@ -14,9 +16,17 @@ import PlayAV from '@/components/common/PlayAV.vue'
 import SignInImgManage from '../components/MP/SignInImgManage.vue'
 
 import EvaluationType from '../components/MP/EvaluationType.vue'
+import PreApporint from '../components/MP/PreApporint.vue'
 import SummerNote from '@/components/common/SummerNote.vue'
+// 孙云龙添加
+import Jurisdiction from '../components/MP/Jurisdiction/Jurisdiction.vue'
+import Menu from '../components/MP/Menu/Menu.vue'
+import Account from '../components/MP/Account/Account.vue'
+// end
 
 import ArticleTheme from '../components/MP/ArticleTheme.vue'
+import Activity from '../components/MP/Activity.vue'
+import PreActivity from '../components/MP/PreActivity.vue'
 
 Vue.use(Router)
 
@@ -43,10 +53,20 @@ export default new Router({
                     component: Audio,
                 },
                 {
-                    path: '/MP/Article',
-                    name: 'Article',
-                    component: Article,
+                    path: '/MP/Activity',
+                    name: 'Activity',
+                    component: Activity,
                 },
+				{
+				    path: '/MP/PreActivity',
+				    name: 'PreActivity',
+				    component: PreActivity,
+				},
+				{
+				    path: '/MP/Article',
+				    name: 'Article',
+				    component: Article,
+				},
                 {
                     path: '/MP/Evaluation',
                     name: 'Evaluation',
@@ -62,6 +82,21 @@ export default new Router({
                     name: 'CourceManage',
                     component: CourceManage,
                 },
+				{
+				    path: '/MP/Counselor',
+				    name: 'Counselor',
+				    component: Counselor,
+				},
+				{
+				    path: '/MP/CounselorType',
+				    name: 'CounselorType',
+				    component: CounselorType,
+				},
+				{
+				    path: '/MP/PreApporint',
+				    name: 'PreApporint',
+				    component: PreApporint,
+				},
 //                 {
 //                     path: '/MP/test',
 //                     name: 'test',
@@ -96,6 +131,21 @@ export default new Router({
                     path: '/ArticleTheme',
                     name: 'ArticleTheme',
                     component: ArticleTheme,
+                },
+                {
+                    path: '/MP/Jurisdiction/Jurisdiction',
+                    name: 'Jurisdiction',
+                    component: Jurisdiction,
+                },
+                {
+                    path: '/MP/Menu/Menu',
+                    name: 'Menu',
+                    component: Menu,
+                },
+                {
+                    path: '/MP/Account/Account',
+                    name: 'Account',
+                    component: Account,
                 }
             ],
             redirect: '/MP/CourceManage'
