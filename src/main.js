@@ -208,6 +208,7 @@ axios.interceptors.request.use(
             let test = config.data;
             if(test){
                 config.data['ip']= ip;
+                config.data['user'] = JSON.parse(sessionStorage.getItem("user"))
             }
         }
 

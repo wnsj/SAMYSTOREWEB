@@ -40,6 +40,8 @@
 			login() {
 				this.btnText = '登录中...';
 				// var url = this.url + "/systemAccount/login";
+                sessionStorage.setItem("user",JSON.stringify(this.accountName))
+                // console.log('数据' + JSON.parse(sessionStorage.getItem("user")));
 				var url = this.url + "/SysAccountController/login";
 				axios({
 					method: "post",
@@ -51,9 +53,6 @@
 					data: {
 						"account": this.accountName,
 						"Pwd": this.accountPwd,
-                        // 孙云龙添加
-                        "ip": sessionStorage.getItem("IP")
-                        // end
 						// "ipaddress":returnCitySN.cip,
 					},
 					dataType: "json"

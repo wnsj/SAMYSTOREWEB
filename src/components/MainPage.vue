@@ -334,6 +334,7 @@
                     //删除cookie
                     Cookies.remove("accountData");
                     Cookies.remove("accessToken");
+                    sessionStorage.clear()
                     this.$parent.setRouter("/login");
                     this.accountId = '';
                 }
