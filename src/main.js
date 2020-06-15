@@ -204,13 +204,17 @@ var ip = sessionStorage.getItem("IP")
 axios.interceptors.request.use(
 
     config =>{
-        if(ip){//设置公共的请求参数
+        //设置公共的请求参数
             let test = config.data;
             if(test){
-                config.data['ip']= ip;
-                config.data['user'] = JSON.parse(sessionStorage.getItem("user"))
+                if (ip) {
+                    config.data['ip']= ip;
+                }
+                if (JSON.parse(sessionStorage.getItem("user"))) {
+                    config.data['user'] = JSON.parse(sessionStorage.getItem("user"))
+                }
+
             }
-        }
 
         return config;
     },
