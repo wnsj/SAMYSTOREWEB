@@ -71,6 +71,7 @@
 								<th class="text-center">标签</th>
 								<th class="text-center">参加人数</th>
 								<th class="text-center">价格(¥)</th>
+								<th class="text-center">现价格(¥)</th>
 								<th class="text-center">购买人数</th>
 								<th class="text-center">是否在用</th>
 								<th class="text-center">是否置顶</th>
@@ -88,6 +89,7 @@
 								<td class="text-center" style="line-height:33px;">{{item.labelTitle}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.limitNum}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.price}}</td>
+								<td class="text-center" style="line-height:33px;">{{item.sourcePrice}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.preNum}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.isUse=='1'? "是" : "否"}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.isTop=='1'? "是" : "否"}}</td>

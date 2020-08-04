@@ -177,7 +177,7 @@
                                     <template v-for="item in menuList">
                                         <el-submenu :index="item.menuPath" :key="item.menuPath">
                                             <template slot="title">
-                                                <i class="el-icon-menu"></i>
+                                                <i class="fa fa-folder"></i>
                                                 <span style="font-size: 20px;font-weight: normal">{{item.menuName}}</span>
                                             </template>
                                             <template v-for="itemChild in item.menuBeanList">
@@ -273,6 +273,9 @@
             titleChange(param){
                 console.log('param:'+param)
                 this.title=param
+            },
+            newShow(index){
+                alert(index);
             },
             onShow(index){
                 switch(index){

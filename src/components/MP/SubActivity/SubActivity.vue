@@ -58,6 +58,14 @@
 						</div>
 					</div>
 					<div class="col-md-6 form-group clearfix">
+						<label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">原价格</label><span
+						 class="sign-left">:</span>
+						<div class="col-md-8">
+							<input type="text" class="form-control" v-model="object.sourcePrice" placeholder="例:30">
+							<span class="pos-ab pos-tr">¥</span>
+						</div>
+					</div>
+					<div class="col-md-6 form-group clearfix">
 						<label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">价格</label><span
 						 class="sign-left">:</span>
 						<div class="col-md-8">
@@ -75,16 +83,14 @@
 							</select>
 						</div>
 					</div>
-					<div class="col-md-12 form-group clearfix">
-						<div class="col-md-6"style="margin: 0px;padding: 0px 15px 0px 0px;">
-							<label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">是否置顶</label><span
-							 class="sign-left">:</span>
-							<div class="col-md-8">
-								<select class="form-control" v-model="object.isTop">
-									<option value="0">否</option>
-									<option value="1">是</option>
-								</select>
-							</div>
+					<div class="col-md-6 form-group clearfix">
+						<label for="cyname" class="col-md-3 control-label text-right nopad end-aline" style="padding:0;line-height:34px;">是否置顶</label><span
+						 class="sign-left">:</span>
+						<div class="col-md-8">
+							<select class="form-control" v-model="object.isTop">
+								<option value="0">否</option>
+								<option value="1">是</option>
+							</select>
 						</div>
 					</div>
 					<div class="col-md-6 form-group clearfix">
@@ -158,6 +164,7 @@
 					isUse: '1',
 					detailContent: '',
 					price: '',
+					sourcePrice:'',
 					isTop: 1,
 				},
 				title: '',
@@ -182,6 +189,7 @@
 					isTop: 1,
 					detailContent: '',
 					price: '',
+					sourcePrice:'',
 				}
 				if (param == 'add') {
 					this.title = '新增'
@@ -239,6 +247,10 @@
 				}
 				if (this.isBlank(this.object.colId)) {
 					alert("咨询师不能为空")
+					return
+				}
+				if (this.isBlank(this.object.sourcePrice)) {
+					alert("原价格不能为空")
 					return
 				}
 				if (this.isBlank(this.object.price)) {

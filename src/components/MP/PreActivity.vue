@@ -54,6 +54,7 @@
 								<th class="text-center">咨询师姓名</th>
 								<th class="text-center">标题</th>
 								<th class="text-center">订单号</th>
+								<th class="text-center">购买价格</th>
 								<th class="text-center">时间</th>
 								<!-- <th class="text-center">备注</th> -->
 								<th class="text-center" v-has="'PreActivity:refund'">退费</th>
@@ -68,6 +69,7 @@
 								<td class="text-center" style="line-height:33px;">{{item.colName}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.title}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.tradeNum}}</td>
+								<td class="text-center" style="line-height:33px;">{{item.prePrice}}</td>
 								<td class="text-center" style="line-height:33px;">{{item.createDate | dateFormatFilter('YYYY-MM-DD HH:mm:ss')}}</td>
 								<!-- <td class="text-center" style="line-height:33px;">{{item.remark}}</td> -->
 								<td class="text-center" v-show="item.state=='0'" style="line-height:33px;" v-has="'PreActivity:refund'">未付款</td>
