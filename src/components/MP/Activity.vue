@@ -71,7 +71,7 @@
 								<th class="text-center">标签</th>
 								<th class="text-center">参加人数</th>
 								<th class="text-center">现价格(¥)</th>
-								<th class="text-center">源价格(¥)</th>
+								<th class="text-center">原价格(¥)</th>
 								<th class="text-center">购买人数</th>
 								<th class="text-center">是否在用</th>
 								<th class="text-center">是否置顶</th>
